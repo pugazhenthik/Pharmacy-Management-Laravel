@@ -10,7 +10,7 @@ Route::get('/', 'AppMainController@index');
 Route::get('/admin', 'AppMainController@index');
 Route::prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {
-
+    
 
     });
 });
