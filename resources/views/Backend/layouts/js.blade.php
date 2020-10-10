@@ -15,7 +15,8 @@
 
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 
-
+{{-- datatable cdn --}}
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 {{-- iziToast js script --}}
 
 <script>
