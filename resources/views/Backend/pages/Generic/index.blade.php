@@ -37,7 +37,7 @@
                                     stroke-linejoin="round" class="feather feather-edit-2 text-success">
                                     <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
                                 </svg></a>
-                        <a href="{{ route('generic.destroy',($generic->manufac_id)) }}" data-toggle="tooltip" data-placement="top" title=""onclick="event.preventDefault(); Delete({{ $generic->manufac_id }});"
+                        <a href="" data-toggle="tooltip" data-placement="top" title=""onclick="event.preventDefault(); Delete({{ $generic->manufac_id }});"
                                 data-original-title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
@@ -67,4 +67,48 @@
     </table>
 </div>
 
+
+<!-- Add Modal -->
+
+<div class="modal fade" tabindex="-1" role="dialog" id="addModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Generic</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('generic.store') }}" method="post" id="addForm">
+                @csrf
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label> Name:</label>
+                        <input type="text" class="form-control"  name="generic_name" placeholder="Type Name">
+                    </div>
+            
+
+                    <div class="form-group">
+                        <label> Details:</label>
+                        <textarea class="form-control" style="max-height: 65px;" name="generic_details" cols="10"
+                            rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer bg-whitesmoke br">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+@endsection
+
+@section('script')
+<script>
+    
+</script>
+{!! JsValidator::formRequest('App\Http\Requests\GenericRequest', '#addForm'); !!}
 @endsection

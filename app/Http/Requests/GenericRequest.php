@@ -13,7 +13,7 @@ class GenericRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,15 @@ class GenericRequest extends FormRequest
      */
     public function rules()
     {
+    
         return [
-            //
+            'generic_name'=>"required",
+        ];
+    }
+    public function name(){
+        return[
+            'generic_name'=>'Generic Name',
+
         ];
     }
 }

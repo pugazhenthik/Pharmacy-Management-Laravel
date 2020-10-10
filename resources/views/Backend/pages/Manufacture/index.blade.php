@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="col-md-10 header">
-    <h3>Manufacture</h3>
+    <h3>Manufacture</h3> 
 </div>
 <div class="col-md-2"><button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add
         Manufacture</button></div>

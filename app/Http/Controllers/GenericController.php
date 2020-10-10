@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Generic;
 use Illuminate\Http\Request;
-use App\Request\GenericRequest;
+use App\Http\Requests\GenericRequest;
 use JsValidator;
 class GenericController extends Controller
 {
@@ -15,7 +15,7 @@ class GenericController extends Controller
      */
     public function index()
     {
-        $generics = Generic::orderBy('generic_id','desc');
+        $generics = Generic::orderBy('generic_id','desc')->get();
         return view('Backend.pages.Generic.index',compact('generics'));
     }
 
@@ -35,9 +35,17 @@ class GenericController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GenericRequest $request)
     {
-        //
+        $generic = new Generic;
+        $generic->fill($request->all())->save();
+        $notification = array(
+            'title' => 'Generic',
+            'message'=>"Generic Added Successfully",
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+         
     }
 
     /**
