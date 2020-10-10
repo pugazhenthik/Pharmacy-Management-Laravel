@@ -9,8 +9,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/', 'AppMainController@index');
 Route::get('/admin', 'AppMainController@index');
 Route::prefix('admin')->group(function () {
-    Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () {
     
-
+    //Manufacture Route
+    Route::resource('manufacture','ManufactureController');
+    
     });
+
 });
