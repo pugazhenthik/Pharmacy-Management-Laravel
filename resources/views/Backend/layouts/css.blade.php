@@ -10,3 +10,4 @@
   <script src="{{ asset('izitoast/dist/js/iziToast.min.js ')}}" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="{{asset('Backend_assets/plugins/table/datatable/datatables.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('Backend_assets/plugins/table/datatable/dt-global_style.css')}}">
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
