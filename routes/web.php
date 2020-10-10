@@ -13,6 +13,9 @@ Route::middleware('auth')->group(function () {
     
     //Manufacture Route
     Route::resource('manufacture','ManufactureController');
+
+    //Generic Route
+    Route::resource('generic','GenericController');
     
     });
 
