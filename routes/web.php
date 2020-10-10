@@ -13,7 +13,7 @@ Route::middleware('auth')->group(function () {
     
     //Manufacture Route
     Route::resource('manufacture','ManufactureController');
-    // Route::post('manufacture/update/{id}','ManufactureController@update');
+    
     });
 
 });

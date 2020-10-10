@@ -103,9 +103,28 @@ class ManufactureController extends Controller
      * @param  \App\Models\Manufacture  $manufacture
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Manufacture $manufacture)
+    public function destroy($id)
     {
-        //
+        $manufacture = Manufacture::findOrFail($id);
+        $delete =$manufacture->delete();
+        if($delete){
+            $notification = array(
+                'title'=> 'Manufacture',
+                'message' => 'Successfully! Manufacture Information Deleted',
+                'alert-type' => 'success',
+            );  
+        }
+        else{
+            $notification = array(
+                'title'=> 'Manufacture',
+                'message' =>  'Ooh No! Something Went Wrong.',
+                'alert-type' => 'success',
+            ); 
+
+        }
+        return redirect()->back()->with($notification);
+    
+        
     }
 } 
  
