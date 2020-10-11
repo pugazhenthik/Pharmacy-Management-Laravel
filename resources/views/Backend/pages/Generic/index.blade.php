@@ -26,18 +26,18 @@
             <tr>
                 <td><input type="checkbox" data-id=""></td>
                 <td>{{ $generic-> generic_name}}</td>
-                <td>{{ $generic-> generic_generic_details }}</td>
+                <td>{{ $generic-> generic_details }}</td>
     
     
                 <td class="text-center">
                     <ul class="table-controls">
-                        <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$generic->manufac_id}}" title="Edit" data-target="#editModal"><svg
+                        <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$generic->generic_id}}" title="Edit" data-target="#editModal"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="feather feather-edit-2 text-success">
                                     <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
                                 </svg></a>
-                        <a href="" data-toggle="tooltip" data-placement="top" title=""onclick="event.preventDefault(); Delete({{ $generic->manufac_id }});"
+                        <a href="" data-toggle="tooltip" data-placement="top" title=""onclick="event.preventDefault(); Delete({{ $generic->generic_id }});"
                                 data-original-title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
@@ -104,11 +104,69 @@
 </div>
 </div>
 
+<!-- Edit Modal -->
+
+<div class="modal fade "  role="dialog" id="editModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Generic</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
+                        aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="post" id="editForm">
+                @csrf
+                @method('put')
+                <div class="modal-body">
+            
+                    <div class="form-group">
+                        <label> Name:</label>
+                        <input class="form-control" name="generic_name" 
+                            id="e_name">
+                    </div>
+                    <div class="form-group">
+                        <label> Details:</label>
+                        <textarea class="form-control" style="max-height: 65px;" name="generic_details" cols="10"
+                            rows="10" id="e_details"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer bg-whitesmoke br">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
 @endsection
 
 @section('script')
 <script>
-    
+   $(document).ready(function(){
+       $("#dataTable").DataTable();
+       $(".edit").click(function(){
+           let id=$(this).attr("data-id");
+           $.ajax({
+               url:"/admin/generic/"+id+"/edit",
+               type:"get",
+               data:{"_token":"{{ csrf_token() }}"},
+               dataType:"json",
+               success:function(data){
+                   console.log(data);
+                   $("#e_name").val(data.generic_name);
+                   $("#e_details").val(data.generic_details);
+                    
+                   $("#editForm").attr("action","/admin/generic/"+data.generic_id);
+
+               }
+
+           });
+
+       });
+
+   }); 
 </script>
 {!! JsValidator::formRequest('App\Http\Requests\GenericRequest', '#addForm'); !!}
 @endsection

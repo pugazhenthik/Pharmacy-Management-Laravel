@@ -65,9 +65,11 @@ class GenericController extends Controller
      * @param  \App\Models\Generic  $generic
      * @return \Illuminate\Http\Response
      */
-    public function edit(Generic $generic)
+    public function edit($id)
     {
-        //
+        $generic= Generic::findOrFail($id);
+        return response()->json($generic);
+        
     }
 
     /**
@@ -77,9 +79,16 @@ class GenericController extends Controller
      * @param  \App\Models\Generic  $generic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Generic $generic)
+    public function update(GenericRequest $request,$id)
     {
-        //
+        $generic = Generic::find($id);
+        $generic->fill($request->all())->save();
+        $notification = array(
+            'title' => 'Generic',
+            'message' => 'Successfully ! Generic Information Updated',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
     }
 
     /**
