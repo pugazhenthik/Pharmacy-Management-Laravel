@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Generic extends Model
 {
     use HasFactory;
+    protected $table='generics';
+
+    protected $primaryKey = 'generic_id';
+
+    protected$fillable = [
+        'generic_name',
+        'generic_details',
+        
+    ];
 }

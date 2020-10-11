@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Generic;
 use Illuminate\Http\Request;
-use App\Request\GenericRequest;
+use App\Http\Requests\GenericRequest;
 use JsValidator;
 class GenericController extends Controller
 {
@@ -15,7 +15,7 @@ class GenericController extends Controller
      */
     public function index()
     {
-        $generics = Generic::orderBy('generic_id','desc');
+        $generics = Generic::orderBy('generic_id','desc')->get();
         return view('Backend.pages.Generic.index',compact('generics'));
     }
 
@@ -35,9 +35,17 @@ class GenericController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GenericRequest $request)
     {
-        //
+        $generic = new Generic;
+        $generic->fill($request->all())->save();
+        $notification = array(
+            'title' => 'Generic',
+            'message'=>"Generic Added Successfully",
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+         
     }
 
     /**
@@ -57,9 +65,11 @@ class GenericController extends Controller
      * @param  \App\Models\Generic  $generic
      * @return \Illuminate\Http\Response
      */
-    public function edit(Generic $generic)
+    public function edit($id)
     {
-        //
+        $generic= Generic::findOrFail($id);
+        return response()->json($generic);
+        
     }
 
     /**
@@ -69,9 +79,16 @@ class GenericController extends Controller
      * @param  \App\Models\Generic  $generic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Generic $generic)
+    public function update(GenericRequest $request,$id)
     {
-        //
+        $generic = Generic::find($id);
+        $generic->fill($request->all())->save();
+        $notification = array(
+            'title' => 'Generic',
+            'message' => 'Successfully ! Generic Information Updated',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
     }
 
     /**
@@ -80,8 +97,24 @@ class GenericController extends Controller
      * @param  \App\Models\Generic  $generic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Generic $generic)
+    public function destroy($id)
     {
-        //
+        $generic = Generic::findOrFail($id);
+        $delete = $generic->delete();
+        if($delete){
+            $notification = array(
+                'title'=> 'Generic',
+                'message' => 'Successfully! Generic Information Deleted',
+                'alert-type' => 'success',
+            );  
+        }
+        else{
+            $notification = array(
+                'title'=> 'Generic',
+                'message' =>  'Ooh No! Something Went Wrong.',
+                'alert-type' => 'success',
+            ); 
+        }
+        return redirect()->back()->with($notification);
     }
 }
