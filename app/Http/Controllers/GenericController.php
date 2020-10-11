@@ -97,8 +97,24 @@ class GenericController extends Controller
      * @param  \App\Models\Generic  $generic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Generic $generic)
+    public function destroy($id)
     {
-        //
+        $generic = Generic::findOrFail($id);
+        $delete = $generic->delete();
+        if($delete){
+            $notification = array(
+                'title'=> 'Generic',
+                'message' => 'Successfully! Generic Information Deleted',
+                'alert-type' => 'success',
+            );  
+        }
+        else{
+            $notification = array(
+                'title'=> 'Generic',
+                'message' =>  'Ooh No! Something Went Wrong.',
+                'alert-type' => 'success',
+            ); 
+        }
+        return redirect()->back()->with($notification);
     }
 }
