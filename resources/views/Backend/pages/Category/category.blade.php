@@ -44,9 +44,9 @@
                     <ul class="table-controls">
 
                     	@if ($value->status == 1)
-		                    <button class="btn btn-info mb-2 mr-2 rounded-circle status_id" style="height: 33px; width: 33px;" data-id="{{$value->category_id}}"><i class="fa fa-refresh"></i></button>
+		                    <button class="btn btn-info rounded-circle status_id" style="height: 33px; width: 33px;" data-id="{{$value->category_id}}"><i class="fa fa-refresh"></i></button>
 		                @else
-		                    <button class="btn btn-danger mb-2 mr-2 rounded-circle status_id" style="height: 33px; width: 33px" data-id="{{$value->category_id}}"><i class="fa fa-refresh"></i></button>
+		                    <button class="btn btn-danger rounded-circle status_id" style="height: 33px; width: 33px" data-id="{{$value->category_id}}"><i class="fa fa-refresh"></i></button>
 		                @endif
 
                         <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$value->category_id}}" title="Edit" data-target="#editModal"><svg
@@ -105,21 +105,17 @@
 
                     <div class="form-group mb-4">
                         <label class="control-label">Category Name:</label>
-                        <input type="text" name="category_name" class="form-control" >
+                        <input type="text" name="category_name" class="form-control" placeholder="Category Name">
                     </div>
                     <div class="form-group mb-4">
                         <label class="control-label">Category Descryption:</label>
-                        <input type="text" name="category_description" class="form-control">
+                        <input type="text" name="category_description" class="form-control" placeholder="Category Descryption">
                     </div>
 
                     <!-- <div class="form-group mb-4">
                         <label for="exampleFormControlSelect1">Sub Category</label>
                         <select class="form-control" id="exampleFormControlSelect1">
                             <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
                         </select>
                     </div> -->
 
@@ -209,6 +205,11 @@
                 {
                     iziToast.show({
 				    title: 'Category',
+				    timeout: 20000,
+				    timeout: 20000,
+			        close: true,
+			        overlay: true,
+			        displayMode: 'once',
 				    message: 'status Changed successfully'
 					});
 					location.reload();

@@ -1,5 +1,6 @@
 @extends('Backend.layouts.app')
 @section('title') Manufacture @endsection
+@section('head', 'Manufacture')
 @section('content')
 
 <div class="col-md-10 header">

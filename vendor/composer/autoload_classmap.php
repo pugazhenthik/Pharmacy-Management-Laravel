@@ -39,6 +39,12 @@ return array(
     'App\\Http\\Requests\\CategoryRequest' => $baseDir . '/app/Http/Requests/CategoryRequest.php',
     'App\\Http\\Requests\\CompanydRequest' => $baseDir . '/app/Http/Requests/CompanydRequest.php',
 
+    'App\\Http\\Requests\\GenericRequest' => $baseDir . '/app/Http/Requests/GenericRequest.php',
+    'App\\Http\\Requests\\ManufactureRequest' => $baseDir . '/app/Http/Requests/ManufactureRequest.php',
+    'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
+    'App\\Models\\Generic' => $baseDir . '/app/Models/Generic.php',
+
+
 
 
     'App\\Http\\Requests\\ManufactureRequest' => $baseDir . '/app/Http/Requests/ManufactureRequest.php',
@@ -48,10 +54,12 @@ return array(
     'App\\Http\\Requests\\ManufactureRequest' => $baseDir . '/app/Http/Requests/ManufactureRequest.php',
     'App\\Models\\Generic' => $baseDir . '/app/Models/Generic.php',
 
+
     'App\\Models\\Manufacture' => $baseDir . '/app/Models/Manufacture.php',
 
     'App\\Models\\Membership' => $baseDir . '/app/Models/Membership.php',
     'App\\Models\\Team' => $baseDir . '/app/Models/Team.php',
+    'App\\Models\\Type' => $baseDir . '/app/Models/Type.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Policies\\TeamPolicy' => $baseDir . '/app/Policies/TeamPolicy.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

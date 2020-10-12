@@ -1,23 +1,20 @@
 @extends('Backend.layouts.app')
-@section('title') Generic @endsection
-
-@section('head', 'Generic')
-
+@section('title') Type @endsection
+@section('head', 'Type')
 @section('content')
 
 <div class="col-md-10 header">
-    <h3>Generic</h3>
+    <h3>Type</h3>
 </div>
-<div class="col-md-2"><button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add
-        Generic</button></div>
+<div class="col-md-2"><button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add Type</button></div>
 
-<div class="col-md mt-5 ">
+<div class="col-md  mt-5">
     <table id="dataTable" class="table table-striped table-bordered ">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Detalis</th>
+                <th>Type Name</th>
+                <th>Type Descryption</th>
                 <th class="text-center">Action</th>
             </tr>
         </thead>
@@ -26,24 +23,24 @@
             @csrf
         </form>
         <tbody>
-            @foreach($generics as $generic)
+            @foreach($type as $value)
     
            
             <tr>
                 <td><input type="checkbox" data-id=""></td>
-                <td>{{ $generic-> generic_name}}</td>
-                <td>{{ $generic-> generic_details }}</td>
-    
+                <td>{{ $value-> type_name }}</td>
+                <td>{{ $value-> type_description }}</td>
     
                 <td class="text-center">
                     <ul class="table-controls">
-                        <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$generic->generic_id}}" title="Edit" data-target="#editModal"><svg
+
+                        <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$value->type_id}}" title="Edit" data-target="#editModal"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="feather feather-edit-2 text-success">
                                     <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
                                 </svg></a>
-                        <a href="{{ route('generic.destroy',($generic->generic_id)) }}" data-toggle="tooltip" data-placement="top" title=""onclick="event.preventDefault(); Delete({{ $generic->generic_id }});"
+                        <a href="{{ route('type.destroy',($value->type_id)) }}" data-toggle="tooltip" data-placement="top" title=""onclick="event.preventDefault(); Delete({{ $value->type_id }})";
                                 data-original-title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
@@ -54,7 +51,7 @@
                                     </path>
                                     <line x1="10" y1="11" x2="10" y2="17"></line>
                                     <line x1="14" y1="11" x2="14" y2="17"></line>
-                                </svg></a>
+                                </svg></a>                      
                     </ul>
                 </td>
             </tr>
@@ -64,14 +61,15 @@
         <tfoot>
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Detalis</th>
-               
+                <th>Type Name</th>
+                <th>Type Descryption</th>
                 <th class="text-center">Action</th>
             </tr>
         </tfoot>
     </table>
 </div>
+
+
 
 
 <!-- Add Modal -->
@@ -80,25 +78,22 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Generic</h5>
+                <h5 class="modal-title">Add Type</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
                         aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('generic.store') }}" method="post" id="addForm">
+            <form action="{{ route('type.store') }}" method="post" id="addForm">
                 @csrf
                 <div class="modal-body">
 
-                    <div class="form-group">
-                        <label> Name:</label>
-                        <input type="text" class="form-control"  name="generic_name" placeholder="Type Name">
+                    <div class="form-group mb-4">
+                        <label class="control-label">Type Name:</label>
+                        <input type="text" name="type_name" class="form-control" placeholder="Type Name">
                     </div>
-            
-
-                    <div class="form-group">
-                        <label> Details:</label>
-                        <textarea class="form-control" style="max-height: 65px;" name="generic_details" cols="10"
-                            rows="10"></textarea>
+                    <div class="form-group mb-4">
+                        <label class="control-label">Type Descryption:</label>
+                        <input type="text" name="type_description" class="form-control" placeholder="Type Descryption">
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
@@ -116,7 +111,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit Generic</h5>
+                <h5 class="modal-title">Edit Type</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
                         aria-hidden="true">&times;</span>
                 </button>
@@ -125,16 +120,14 @@
                 @csrf
                 @method('put')
                 <div class="modal-body">
-            
-                    <div class="form-group">
-                        <label> Name:</label>
-                        <input class="form-control" name="generic_name" 
-                            id="e_name">
+
+                    <div class="form-group mb-4">
+                        <label class="control-label">Type Name:</label>
+                        <input type="text" name="type_name" class="form-control" id="e_type_name">
                     </div>
-                    <div class="form-group">
-                        <label> Details:</label>
-                        <textarea class="form-control" style="max-height: 65px;" name="generic_details" cols="10"
-                            rows="10" id="e_details"></textarea>
+                    <div class="form-group mb-4">
+                        <label class="control-label">Type Descryption:</label>
+                        <input type="text" name="type_description" class="form-control" id="e_type_description">
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
@@ -145,36 +138,36 @@
     </div>
 </div>
 </div>
-
 @endsection
-
 @section('script')
 <script>
-   $(document).ready(function(){
-       $("#dataTable").DataTable();
-       $(".edit").click(function(){
-           let id=$(this).attr("data-id");
-           $.ajax({
-               url:"/admin/generic/"+id+"/edit",
-               type:"get",
-               data:{"_token":"{{ csrf_token() }}"},
-               dataType:"json",
-               success:function(data){
-                   console.log(data);
-                   $("#e_name").val(data.generic_name);
-                   $("#e_details").val(data.generic_details);
-                    
-                   $("#editForm").attr("action","/admin/generic/"+data.generic_id);
 
-               }
+    $(document).ready(function(){
+        $("#dataTable").DataTable();
+        $(".edit").click(function(){
+            let id=$(this).attr("data-id");
+           
 
-           });
+            $.ajax({
+                url:"/admin/type/"+id+"/edit",
+                type:'get',
+                data:{"_token":"{{ csrf_token() }}"},
+                dataType:"json",
+                success:function(data)
+                {
+                    console.log(data);
+                    $("#e_type_name").val(data.type_name);
+                    $("#e_type_description").val(data.type_description);
 
-       });
+                    $("#editForm").attr("action","/admin/type/"+data.type_id);
 
-   }); 
+                }
 
-   function Delete(id){
+            });
+        });
+    });
+
+    function Delete(id){
     var id=id;
     iziToast.question({
         timeout: 20000,
@@ -190,7 +183,7 @@
             ['<button><b>YES</b></button>', function () {
                 var $form = $("#deleteForm").closest('form');
 
-                $form.attr('action','/admin/generic/'+id);
+                $form.attr('action','/admin/type/'+id);
                 $form.submit()
             }, true],
             ['<button>NO</button>', function (instance, toast) {
@@ -201,8 +194,12 @@
         ],
     });
 }
+
 </script>
-{!! JsValidator::formRequest('App\Http\Requests\GenericRequest', '#addForm'); !!}
-{!! JsValidator::formRequest('App\Http\Requests\GenericRequest', '#editForm'); !!}
+
+{!! JsValidator::formRequest('App\Http\Requests\TypeRequest', '#addForm'); !!}
+{!! JsValidator::formRequest('App\Http\Requests\TypeRequest', '#editForm'); !!}
 
 @endsection
+
+

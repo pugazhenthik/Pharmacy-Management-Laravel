@@ -632,6 +632,12 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'App\\Http\\Requests\\CategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CategoryRequest.php',
         'App\\Http\\Requests\\CompanydRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CompanydRequest.php',
 
+        'App\\Http\\Requests\\GenericRequest' => __DIR__ . '/../..' . '/app/Http/Requests/GenericRequest.php',
+        'App\\Http\\Requests\\ManufactureRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ManufactureRequest.php',
+        'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
+        'App\\Models\\Generic' => __DIR__ . '/../..' . '/app/Models/Generic.php',
+
+
 
         'App\\Http\\Requests\\ManufactureRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ManufactureRequest.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
@@ -640,10 +646,12 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'App\\Http\\Requests\\ManufactureRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ManufactureRequest.php',
         'App\\Models\\Generic' => __DIR__ . '/../..' . '/app/Models/Generic.php',
 
+
         'App\\Models\\Manufacture' => __DIR__ . '/../..' . '/app/Models/Manufacture.php',
 
         'App\\Models\\Membership' => __DIR__ . '/../..' . '/app/Models/Membership.php',
         'App\\Models\\Team' => __DIR__ . '/../..' . '/app/Models/Team.php',
+        'App\\Models\\Type' => __DIR__ . '/../..' . '/app/Models/Type.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Policies\\TeamPolicy' => __DIR__ . '/../..' . '/app/Policies/TeamPolicy.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

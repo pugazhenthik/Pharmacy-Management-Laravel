@@ -44,13 +44,10 @@
             </a>
             <ul class="collapse submenu list-unstyled" id="Medicine" data-parent="#accordionExample">
                 <li>
-                    <a href="#">Company/Brand</a>
-                </li>
-                <li>
                     <a href="{{ url('/admin/category') }}">Medicine Category</a>
                 </li>
                 <li>
-                    <a href="#">Desk Manager</a>
+                    <a href="{{ url('/admin/type') }}">Medicine Type</a>
                 </li>
 
             </ul>
