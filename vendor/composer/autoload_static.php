@@ -613,7 +613,9 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AppMainController' => __DIR__ . '/../..' . '/app/Http/Controllers/AppMainController.php',
+
         'App\\Http\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoryController.php',
+
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\GenericController' => __DIR__ . '/../..' . '/app/Http/Controllers/GenericController.php',
         'App\\Http\\Controllers\\ManufactureController' => __DIR__ . '/../..' . '/app/Http/Controllers/ManufactureController.php',
@@ -629,11 +631,24 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\CategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CategoryRequest.php',
         'App\\Http\\Requests\\CompanydRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CompanydRequest.php',
+
         'App\\Http\\Requests\\GenericRequest' => __DIR__ . '/../..' . '/app/Http/Requests/GenericRequest.php',
         'App\\Http\\Requests\\ManufactureRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ManufactureRequest.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Generic' => __DIR__ . '/../..' . '/app/Models/Generic.php',
+
+
+
+        'App\\Http\\Requests\\ManufactureRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ManufactureRequest.php',
+        'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
+
+        'App\\Http\\Requests\\GenericRequest' => __DIR__ . '/../..' . '/app/Http/Requests/GenericRequest.php',
+        'App\\Http\\Requests\\ManufactureRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ManufactureRequest.php',
+        'App\\Models\\Generic' => __DIR__ . '/../..' . '/app/Models/Generic.php',
+
+
         'App\\Models\\Manufacture' => __DIR__ . '/../..' . '/app/Models/Manufacture.php',
+
         'App\\Models\\Membership' => __DIR__ . '/../..' . '/app/Models/Membership.php',
         'App\\Models\\Team' => __DIR__ . '/../..' . '/app/Models/Team.php',
         'App\\Models\\Type' => __DIR__ . '/../..' . '/app/Models/Type.php',

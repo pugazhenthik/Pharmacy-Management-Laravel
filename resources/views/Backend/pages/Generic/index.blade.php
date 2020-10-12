@@ -1,6 +1,8 @@
 @extends('Backend.layouts.app')
 @section('title') Generic @endsection
+
 @section('head', 'Generic')
+
 @section('content')
 
 <div class="col-md-10 header">
