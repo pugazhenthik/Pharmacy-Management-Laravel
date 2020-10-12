@@ -33,7 +33,7 @@
                 <td>{{ $manufacture-> manufac_name }}</td>
                 <td>{{ $manufacture-> manufac_mobile }}</td>
                 <td>{{ $manufacture-> manufac_address}}</td>
-                <td>{{ $manufacture-> manufac_details }}</td>
+                <td>{{ $manufacture-> manufac_balance }}</td>
     
     
                 <td class="text-center">
