@@ -47,7 +47,7 @@
                     <a href="#">Company/Brand</a>
                 </li>
                 <li>
-                    <a href="#">Medicine Category</a>
+                    <a href="{{ url('/admin/category') }}">Medicine Category</a>
                 </li>
                 <li>
                     <a href="#">Desk Manager</a>
