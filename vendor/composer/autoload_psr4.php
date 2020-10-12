@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'voku\\' => array($vendorDir . '/voku/portable-ascii/src/voku'),
     'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/reflection-docblock/src', $vendorDir . '/phpdocumentor/type-resolver/src'),
+    'Yajra\\DataTables\\' => array($vendorDir . '/yajra/laravel-datatables-oracle/src'),
     'XdgBaseDir\\' => array($vendorDir . '/dnoegel/php-xdg-base-dir/src'),
     'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
@@ -50,6 +51,7 @@ return array(
     'Psr\\EventDispatcher\\' => array($vendorDir . '/psr/event-dispatcher/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src/Prophecy'),
+    'Proengsoft\\JsValidation\\' => array($vendorDir . '/proengsoft/laravel-jsvalidation/src'),
     'PragmaRX\\Google2FA\\' => array($vendorDir . '/pragmarx/google2fa/src'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
     'PhpOption\\' => array($vendorDir . '/phpoption/phpoption/src/PhpOption'),

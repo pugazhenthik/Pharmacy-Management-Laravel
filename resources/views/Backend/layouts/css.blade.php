@@ -6,5 +6,10 @@
 <link href="{{asset('Backend_assets/assets/css/plugins.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('Backend_assets/plugins/apex/apexcharts.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('Backend_assets/assets/css/dashboard/dash_1.css')}}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="{{ asset('izitoast/dist/css/iziToast.min.css') }}">
+  <script src="{{ asset('izitoast/dist/js/iziToast.min.js ')}}" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="{{asset('Backend_assets/plugins/table/datatable/datatables.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('Backend_assets/plugins/table/datatable/dt-global_style.css')}}">
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+<!-- extra -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

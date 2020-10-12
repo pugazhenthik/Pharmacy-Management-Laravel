@@ -23,9 +23,16 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
+        
         return [
-            "catagory_name"=>"required",
-            "catagory_description"=>"required",
+            "category_name"=>"required",
+            "category_description"=>"required",
+        ];
+    }
+    public function name(){
+        return[
+            "category_name"=>"Category Name",
+            "category_description"=>"Category Description"
         ];
     }
 }

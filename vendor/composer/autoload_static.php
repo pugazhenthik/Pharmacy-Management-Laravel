@@ -38,6 +38,7 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'b6ec61354e97f32c0ae683041c78392a' => __DIR__ . '/..' . '/scrivo/highlight.php/HighlightUtilities/functions.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
+        '0b47d6d4a00ca9112ba3953b49e7c9a4' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/helper.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -48,6 +49,10 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
+        ),
+        'Y' => 
+        array (
+            'Yajra\\DataTables\\' => 17,
         ),
         'X' => 
         array (
@@ -108,6 +113,7 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
             'Prophecy\\' => 9,
+            'Proengsoft\\JsValidation\\' => 24,
             'PragmaRX\\Google2FA\\' => 19,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
@@ -205,6 +211,10 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'Yajra\\DataTables\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -373,6 +383,10 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'Prophecy\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
+        ),
+        'Proengsoft\\JsValidation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src',
         ),
         'PragmaRX\\Google2FA\\' => 
         array (
@@ -599,7 +613,12 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AppMainController' => __DIR__ . '/../..' . '/app/Http/Controllers/AppMainController.php',
+
+        'App\\Http\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoryController.php',
+
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\GenericController' => __DIR__ . '/../..' . '/app/Http/Controllers/GenericController.php',
+        'App\\Http\\Controllers\\ManufactureController' => __DIR__ . '/../..' . '/app/Http/Controllers/ManufactureController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckAge' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckAge.php',
@@ -612,6 +631,17 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\CategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CategoryRequest.php',
         'App\\Http\\Requests\\CompanydRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CompanydRequest.php',
+
+
+        'App\\Http\\Requests\\ManufactureRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ManufactureRequest.php',
+        'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
+
+        'App\\Http\\Requests\\GenericRequest' => __DIR__ . '/../..' . '/app/Http/Requests/GenericRequest.php',
+        'App\\Http\\Requests\\ManufactureRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ManufactureRequest.php',
+        'App\\Models\\Generic' => __DIR__ . '/../..' . '/app/Models/Generic.php',
+
+        'App\\Models\\Manufacture' => __DIR__ . '/../..' . '/app/Models/Manufacture.php',
+
         'App\\Models\\Membership' => __DIR__ . '/../..' . '/app/Models/Membership.php',
         'App\\Models\\Team' => __DIR__ . '/../..' . '/app/Models/Team.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
@@ -797,6 +827,8 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'DASPRiD\\Enum\\Exception\\SerializeNotSupportedException' => __DIR__ . '/..' . '/dasprid/enum/src/Exception/SerializeNotSupportedException.php',
         'DASPRiD\\Enum\\Exception\\UnserializeNotSupportedException' => __DIR__ . '/..' . '/dasprid/enum/src/Exception/UnserializeNotSupportedException.php',
         'DASPRiD\\Enum\\NullValue' => __DIR__ . '/..' . '/dasprid/enum/src/NullValue.php',
+        'Database\\Factories\\GenericFactory' => __DIR__ . '/../..' . '/database/factories/GenericFactory.php',
+        'Database\\Factories\\ManufactureFactory' => __DIR__ . '/../..' . '/database/factories/ManufactureFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
@@ -4060,6 +4092,24 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'PragmaRX\\Google2FA\\Support\\Base32' => __DIR__ . '/..' . '/pragmarx/google2fa/src/Support/Base32.php',
         'PragmaRX\\Google2FA\\Support\\Constants' => __DIR__ . '/..' . '/pragmarx/google2fa/src/Support/Constants.php',
         'PragmaRX\\Google2FA\\Support\\QRCode' => __DIR__ . '/..' . '/pragmarx/google2fa/src/Support/QRCode.php',
+        'Proengsoft\\JsValidation\\Exceptions\\PropertyNotFoundException' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Exceptions/PropertyNotFoundException.php',
+        'Proengsoft\\JsValidation\\Facades\\JsValidatorFacade' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Facades/JsValidatorFacade.php',
+        'Proengsoft\\JsValidation\\Javascript\\JavascriptRulesTrait' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Javascript/JavascriptRulesTrait.php',
+        'Proengsoft\\JsValidation\\Javascript\\JavascriptValidator' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Javascript/JavascriptValidator.php',
+        'Proengsoft\\JsValidation\\Javascript\\MessageParser' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Javascript/MessageParser.php',
+        'Proengsoft\\JsValidation\\Javascript\\RuleParser' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Javascript/RuleParser.php',
+        'Proengsoft\\JsValidation\\Javascript\\ValidatorHandler' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Javascript/ValidatorHandler.php',
+        'Proengsoft\\JsValidation\\JsValidationServiceProvider' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/JsValidationServiceProvider.php',
+        'Proengsoft\\JsValidation\\JsValidatorFactory' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/JsValidatorFactory.php',
+        'Proengsoft\\JsValidation\\RemoteValidationMiddleware' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/RemoteValidationMiddleware.php',
+        'Proengsoft\\JsValidation\\Remote\\FormRequest' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Remote/FormRequest.php',
+        'Proengsoft\\JsValidation\\Remote\\Resolver' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Remote/Resolver.php',
+        'Proengsoft\\JsValidation\\Remote\\Validator' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Remote/Validator.php',
+        'Proengsoft\\JsValidation\\Support\\AccessProtectedTrait' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Support/AccessProtectedTrait.php',
+        'Proengsoft\\JsValidation\\Support\\DelegatedValidator' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Support/DelegatedValidator.php',
+        'Proengsoft\\JsValidation\\Support\\RuleListTrait' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Support/RuleListTrait.php',
+        'Proengsoft\\JsValidation\\Support\\UseDelegatedValidatorTrait' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Support/UseDelegatedValidatorTrait.php',
+        'Proengsoft\\JsValidation\\Support\\ValidationRuleParserProxy' => __DIR__ . '/..' . '/proengsoft/laravel-jsvalidation/src/Support/ValidationRuleParserProxy.php',
         'Prophecy\\Argument' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument.php',
         'Prophecy\\Argument\\ArgumentsWildcard' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/ArgumentsWildcard.php',
         'Prophecy\\Argument\\Token\\AnyValueToken' => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy/Argument/Token/AnyValueToken.php',
@@ -5426,6 +5476,21 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+        'Yajra\\DataTables\\ApiResourceDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/ApiResourceDataTable.php',
+        'Yajra\\DataTables\\CollectionDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/CollectionDataTable.php',
+        'Yajra\\DataTables\\Contracts\\DataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Contracts/DataTable.php',
+        'Yajra\\DataTables\\DataTableAbstract' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTableAbstract.php',
+        'Yajra\\DataTables\\DataTables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTables.php',
+        'Yajra\\DataTables\\DataTablesServiceProvider' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/DataTablesServiceProvider.php',
+        'Yajra\\DataTables\\EloquentDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/EloquentDataTable.php',
+        'Yajra\\DataTables\\Exceptions\\Exception' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Exceptions/Exception.php',
+        'Yajra\\DataTables\\Facades\\DataTables' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Facades/DataTables.php',
+        'Yajra\\DataTables\\Processors\\DataProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/DataProcessor.php',
+        'Yajra\\DataTables\\Processors\\RowProcessor' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Processors/RowProcessor.php',
+        'Yajra\\DataTables\\QueryDataTable' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/QueryDataTable.php',
+        'Yajra\\DataTables\\Utilities\\Config' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Config.php',
+        'Yajra\\DataTables\\Utilities\\Helper' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Helper.php',
+        'Yajra\\DataTables\\Utilities\\Request' => __DIR__ . '/..' . '/yajra/laravel-datatables-oracle/src/Utilities/Request.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
         'phpDocumentor\\Reflection\\DocBlockFactoryInterface' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactoryInterface.php',

@@ -12,30 +12,62 @@
 <script src="{{asset('Backend_assets/plugins/apex/apexcharts.min.js')}}"></script>
 <script src="{{asset('Backend_assets/assets/js/dashboard/dash_1.js')}}"></script>
 
-    
-<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
- --><script type="text/javascript" src="{{asset('Backend_assets/js/sweetalert.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('Backend_assets/js/toastr.min.js')}}"></script>
-<script type="text/javascript">
-	toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": true,
-        "positionClass": "toast-bottom-right",
-        "preventDuplicates": true,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    }
+
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+
+{{-- datatable cdn --}}
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js">
 </script>
+{{-- iziToast js script --}}
+
+<script>
+    @foreach ($errors->all() as $error)
+    iziToast.warning({
+        title: "Warning",
+        message: "{{ $error }}",
+        position: 'topRight',
+    });
+    @endforeach
+
+    @if(Session::has('message'))
+      var type = "{{ Session::get('alert-type') }}";
+      switch(type){
+          case 'info':
+          iziToast.info({
+            title: "{{ Session::get('title') }}",
+            message: "{{ Session::get('message') }}",
+            position: 'topRight',
+        });
+              break;
+
+          case 'warning':
+              iziToast.warning({
+                title: "{{ Session::get('title') }}",
+                message: "{{ Session::get('message') }}",
+                position: 'topRight',
+            });
+              break;
+
+          case 'success':
+          iziToast.success({
+                title: "{{ Session::get('title') }}",
+                message: "{{ Session::get('message') }}",
+                position: 'topRight',
+                });
+              break;
+
+          case 'error':
+              iziToast.error({
+                title: "{{ Session::get('message') }}",
+                message: "{{ Session::get('message') }}",
+                position: 'topRight',
+                });
+              break;
+      }
+    @endif
+  </script>
+
+
 <script type="text/javascript">
     function readURL(input) {
   if (input.files && input.files[0]) {
@@ -50,4 +82,4 @@
   }
 }
 </script>
-@yield('js')
+@yield('script')
