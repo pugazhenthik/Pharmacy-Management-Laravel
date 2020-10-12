@@ -19,7 +19,10 @@ return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AppMainController' => $baseDir . '/app/Http/Controllers/AppMainController.php',
+
+
     'App\\Http\\Controllers\\CategoryController' => $baseDir . '/app/Http/Controllers/CategoryController.php',
+
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\GenericController' => $baseDir . '/app/Http/Controllers/GenericController.php',
     'App\\Http\\Controllers\\ManufactureController' => $baseDir . '/app/Http/Controllers/ManufactureController.php',
@@ -36,6 +39,8 @@ return array(
     'App\\Http\\Requests\\CategoryRequest' => $baseDir . '/app/Http/Requests/CategoryRequest.php',
     'App\\Http\\Requests\\CompanydRequest' => $baseDir . '/app/Http/Requests/CompanydRequest.php',
 
+
+
     'App\\Http\\Requests\\ManufactureRequest' => $baseDir . '/app/Http/Requests/ManufactureRequest.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
 
@@ -44,6 +49,7 @@ return array(
     'App\\Models\\Generic' => $baseDir . '/app/Models/Generic.php',
 
     'App\\Models\\Manufacture' => $baseDir . '/app/Models/Manufacture.php',
+
     'App\\Models\\Membership' => $baseDir . '/app/Models/Membership.php',
     'App\\Models\\Team' => $baseDir . '/app/Models/Team.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
