@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Generic;
 use Illuminate\Http\Request;
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\GenericRequest;
 use JsValidator;
-
-class CategoryController extends Controller
+class GenericController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        return view ('Backend.pages.Category.category', [
-            'category' => $category,
-        ]);
-        // return view('Backend.pages.Category.category');
+        $generics = Generic::orderBy('generic_id','desc')->get();
+        return view('Backend.pages.Generic.index',compact('generics'));
     }
 
     /**
@@ -39,63 +35,57 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request) 
-    {        
-        $category = new Category;
-        $category->fill($request->all())->save();
+    public function store(GenericRequest $request)
+    {
+        $generic = new Generic;
+        $generic->fill($request->all())->save();
         $notification = array(
-            'title' => 'Category',
-            'message'=>"Category Added Successfully",
+            'title' => 'Generic',
+            'message'=>"Generic Added Successfully",
             'alert-type' => 'success',
         );
         return redirect()->back()->with($notification);
+         
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Generic  $generic
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Generic $generic)
     {
-        $data = Category::findOrFail($id);
-        if($data->status == 1) {
-            $data->status= 0;
-        }else{
-            $data->status= 1;
-        } 
-        $data->save();
-        $status=200;
-        return response()->json($status);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Generic  $generic
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $category_edit = Category::findOrFail($id);
-        return response()->json($category_edit);
+        $generic= Generic::findOrFail($id);
+        return response()->json($generic);
+        
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Generic  $generic
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(GenericRequest $request,$id)
     {
-        $category= Category::find($id);
-        $category->fill($request->all())->save();
+        $generic = Generic::find($id);
+        $generic->fill($request->all())->save();
         $notification = array(
-            'title' => 'Category',
-            'message' => 'Successfully ! Category Updated',
+            'title' => 'Generic',
+            'message' => 'Successfully ! Generic Information Updated',
             'alert-type' => 'success',
         );
         return redirect()->back()->with($notification);
@@ -104,27 +94,26 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Generic  $generic
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $delete =$category->delete();
+        $generic = Generic::findOrFail($id);
+        $delete = $generic->delete();
         if($delete){
             $notification = array(
-                'title'=> 'Category',
-                'message' => 'Successfully! Category Information Deleted',
+                'title'=> 'Generic',
+                'message' => 'Successfully! Generic Information Deleted',
                 'alert-type' => 'success',
-            ); 
+            );  
         }
         else{
             $notification = array(
-                'title'=> 'Category',
+                'title'=> 'Generic',
                 'message' =>  'Ooh No! Something Went Wrong.',
                 'alert-type' => 'success',
             ); 
-
         }
         return redirect()->back()->with($notification);
     }

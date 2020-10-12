@@ -1,21 +1,20 @@
 @extends('Backend.layouts.app')
-@section('title') Category @endsection
-@section('head', 'Category')
+@section('title') Type @endsection
+@section('head', 'Type')
 @section('content')
 
 <div class="col-md-10 header">
-    <h3>Category</h3>
+    <h3>Type</h3>
 </div>
-<div class="col-md-2"><button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add Category</button></div>
+<div class="col-md-2"><button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add Type</button></div>
 
 <div class="col-md  mt-5">
     <table id="dataTable" class="table table-striped table-bordered ">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Category Name</th>
-                <th>Category Descryption</th>
-                <th>Satus</th>
+                <th>Type Name</th>
+                <th>Type Descryption</th>
                 <th class="text-center">Action</th>
             </tr>
         </thead>
@@ -24,38 +23,24 @@
             @csrf
         </form>
         <tbody>
-            @foreach($category as $value)
+            @foreach($type as $value)
     
            
             <tr>
                 <td><input type="checkbox" data-id=""></td>
-                <td>{{ $value-> category_name }}</td>
-                <td>{{ $value-> category_description }}</td>
-                <td>
-                	@if ($value->status == 1)
-                    <span class="text-info">Active</span>
-	                @else
-	                    <span class="text-danger">Inactive</span>
-	                @endif
-	            </td>
-    
+                <td>{{ $value-> type_name }}</td>
+                <td>{{ $value-> type_description }}</td>
     
                 <td class="text-center">
                     <ul class="table-controls">
 
-                    	@if ($value->status == 1)
-		                    <button class="btn btn-info rounded-circle status_id" style="height: 33px; width: 33px;" data-id="{{$value->category_id}}"><i class="fa fa-refresh"></i></button>
-		                @else
-		                    <button class="btn btn-danger rounded-circle status_id" style="height: 33px; width: 33px" data-id="{{$value->category_id}}"><i class="fa fa-refresh"></i></button>
-		                @endif
-
-                        <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$value->category_id}}" title="Edit" data-target="#editModal"><svg
+                        <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$value->type_id}}" title="Edit" data-target="#editModal"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="feather feather-edit-2 text-success">
                                     <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
                                 </svg></a>
-                        <a href="{{ route('category.destroy',($value->category_id)) }}" data-toggle="tooltip" data-placement="top" title=""onclick="event.preventDefault(); Delete({{ $value->category_id }})";
+                        <a href="{{ route('type.destroy',($value->type_id)) }}" data-toggle="tooltip" data-placement="top" title=""onclick="event.preventDefault(); Delete({{ $value->type_id }})";
                                 data-original-title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
@@ -66,7 +51,7 @@
                                     </path>
                                     <line x1="10" y1="11" x2="10" y2="17"></line>
                                     <line x1="14" y1="11" x2="14" y2="17"></line>
-                                </svg></a>                       
+                                </svg></a>                      
                     </ul>
                 </td>
             </tr>
@@ -76,9 +61,8 @@
         <tfoot>
             <tr>
                 <th>#</th>
-                <th>Category Name</th>
-                <th>Category Descryption</th>
-                <th>Status</th>
+                <th>Type Name</th>
+                <th>Type Descryption</th>
                 <th class="text-center">Action</th>
             </tr>
         </tfoot>
@@ -94,32 +78,23 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Category</h5>
+                <h5 class="modal-title">Add Type</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
                         aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('category.store') }}" method="post" id="addForm">
+            <form action="{{ route('type.store') }}" method="post" id="addForm">
                 @csrf
                 <div class="modal-body">
 
                     <div class="form-group mb-4">
-                        <label class="control-label">Category Name:</label>
-                        <input type="text" name="category_name" class="form-control" placeholder="Category Name">
+                        <label class="control-label">Type Name:</label>
+                        <input type="text" name="type_name" class="form-control" placeholder="Type Name">
                     </div>
                     <div class="form-group mb-4">
-                        <label class="control-label">Category Descryption:</label>
-                        <input type="text" name="category_description" class="form-control" placeholder="Category Descryption">
+                        <label class="control-label">Type Descryption:</label>
+                        <input type="text" name="type_description" class="form-control" placeholder="Type Descryption">
                     </div>
-
-                    <!-- <div class="form-group mb-4">
-                        <label for="exampleFormControlSelect1">Sub Category</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>1</option>
-                        </select>
-                    </div> -->
-
-
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -136,7 +111,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit Category</h5>
+                <h5 class="modal-title">Edit Type</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
                         aria-hidden="true">&times;</span>
                 </button>
@@ -147,12 +122,12 @@
                 <div class="modal-body">
 
                     <div class="form-group mb-4">
-                        <label class="control-label">Category Name:</label>
-                        <input type="text" name="category_name" class="form-control" id="e_category_name">
+                        <label class="control-label">Type Name:</label>
+                        <input type="text" name="type_name" class="form-control" id="e_type_name">
                     </div>
                     <div class="form-group mb-4">
-                        <label class="control-label">Category Descryption:</label>
-                        <input type="text" name="category_description" class="form-control" id="e_category_description">
+                        <label class="control-label">Type Descryption:</label>
+                        <input type="text" name="type_description" class="form-control" id="e_type_description">
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
@@ -174,50 +149,24 @@
            
 
             $.ajax({
-                url:"/admin/category/"+id+"/edit",
+                url:"/admin/type/"+id+"/edit",
                 type:'get',
                 data:{"_token":"{{ csrf_token() }}"},
                 dataType:"json",
                 success:function(data)
                 {
                     console.log(data);
-                    $("#e_category_name").val(data.category_name);
-                    $("#e_category_description").val(data.category_description);
+                    $("#e_type_name").val(data.type_name);
+                    $("#e_type_description").val(data.type_description);
 
-                    $("#editForm").attr("action","/admin/category/"+data.category_id);
+                    $("#editForm").attr("action","/admin/type/"+data.type_id);
 
                 }
 
             });
         });
-
-
-        $('.status_id').click(function(){
-			var id=$(this).attr("data-id");
-
-			$.ajax({
-            url: "/admin/category/show/"+id,
-            type: "get",
-            dataType: "json",
-            success: function (response) {
-            	console.log(response);
-                if (response == 200) 
-                {
-                    iziToast.show({
-				    title: 'Category',
-				    timeout: 20000,
-				    timeout: 20000,
-			        close: true,
-			        overlay: true,
-			        displayMode: 'once',
-				    message: 'status Changed successfully'
-					});
-					location.reload();
-                }
-            }
-        })
-		});
     });
+
     function Delete(id){
     var id=id;
     iziToast.question({
@@ -234,7 +183,7 @@
             ['<button><b>YES</b></button>', function () {
                 var $form = $("#deleteForm").closest('form');
 
-                $form.attr('action','/admin/category/'+id);
+                $form.attr('action','/admin/type/'+id);
                 $form.submit()
             }, true],
             ['<button>NO</button>', function (instance, toast) {
@@ -248,8 +197,8 @@
 
 </script>
 
-{!! JsValidator::formRequest('App\Http\Requests\CategoryRequest', '#addForm'); !!}
-{!! JsValidator::formRequest('App\Http\Requests\CategoryRequest', '#editForm'); !!}
+{!! JsValidator::formRequest('App\Http\Requests\TypeRequest', '#addForm'); !!}
+{!! JsValidator::formRequest('App\Http\Requests\TypeRequest', '#editForm'); !!}
 
 @endsection
 

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Type;
 use Illuminate\Http\Request;
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\TypeRequest;
 use JsValidator;
 
-class CategoryController extends Controller
+class TypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +16,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        return view ('Backend.pages.Category.category', [
-            'category' => $category,
+        $type = Type::all();
+        return view ('Backend.pages.Type.type', [
+            'type' => $type,
         ]);
-        // return view('Backend.pages.Category.category');
+        // return view('Backend.pages.Type.type');
     }
 
     /**
@@ -39,13 +39,13 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request) 
-    {        
-        $category = new Category;
-        $category->fill($request->all())->save();
+    public function store(TypeRequest $request)
+    {
+        $type = new Type;
+        $type->fill($request->all())->save();
         $notification = array(
-            'title' => 'Category',
-            'message'=>"Category Added Successfully",
+            'title' => 'Type',
+            'message'=>"Type Added Successfully",
             'alert-type' => 'success',
         );
         return redirect()->back()->with($notification);
@@ -54,48 +54,40 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Type $type)
     {
-        $data = Category::findOrFail($id);
-        if($data->status == 1) {
-            $data->status= 0;
-        }else{
-            $data->status= 1;
-        } 
-        $data->save();
-        $status=200;
-        return response()->json($status);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $category_edit = Category::findOrFail($id);
-        return response()->json($category_edit);
+        $type_edit = Type::findOrFail($id);
+        return response()->json($type_edit);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(TypeRequest $request, $id)
     {
-        $category= Category::find($id);
-        $category->fill($request->all())->save();
+        $type_update= Type::find($id);
+        $type_update->fill($request->all())->save();
         $notification = array(
-            'title' => 'Category',
-            'message' => 'Successfully ! Category Updated',
+            'title' => 'Type',
+            'message' => 'Successfully ! Type Updated',
             'alert-type' => 'success',
         );
         return redirect()->back()->with($notification);
@@ -104,23 +96,23 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $delete =$category->delete();
+        $type_destroy = Type::findOrFail($id);
+        $delete =$type_destroy->delete();
         if($delete){
             $notification = array(
-                'title'=> 'Category',
-                'message' => 'Successfully! Category Information Deleted',
+                'title'=> 'Type',
+                'message' => 'Successfully! Type Information Deleted',
                 'alert-type' => 'success',
             ); 
         }
         else{
             $notification = array(
-                'title'=> 'Category',
+                'title'=> 'Type',
                 'message' =>  'Ooh No! Something Went Wrong.',
                 'alert-type' => 'success',
             ); 
