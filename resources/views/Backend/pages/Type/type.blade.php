@@ -6,7 +6,7 @@
 <div class="col-md-10 header">
     <h3>Type</h3>
 </div>
-<div class="col-md-2"><button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add Type</button></div>
+<div class="col-md-2"> <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add Type</button> </div>
 
 <div class="col-md  mt-5">
     <table id="dataTable" class="table table-striped table-bordered ">
