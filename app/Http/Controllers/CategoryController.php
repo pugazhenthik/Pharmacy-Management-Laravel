@@ -16,11 +16,38 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        return view ('Backend.pages.Category.category', [
-            'category' => $category,
-        ]);
-        // return view('Backend.pages.Category.category');
+        $categories = Category::with('sub_category')->get();
+        $subcategory=[];
+        $category=[];
+        foreach ($categories as $key => $value) {
+            if ($value->parentId) 
+            {
+                $subcategory[]=
+                [
+                    'id'=>$value->category_id,
+                    'name'=>$value->category_name,
+                    'description'=>$value->category_description,
+                    'category'=>$value->category->category_name,
+                    'status'=>$value->status,
+                ];    
+            }
+            else{
+                $category[]=[
+                   'id'=>$value->category_id,
+                    'name'=>$value->category_name,
+                    'description'=>$value->category_description,
+                    'status'=>$value->status,
+                ];
+            }
+        }
+        $data['category']=$category;
+        $data['subcategory']=$subcategory;
+        return view ('Backend.pages.Category.category', $data);
+    }
+
+    public function allCategory(){
+        $categories = Category::whereNull('parentId')->get();
+        return response()->json($categories,200); 
     }
 
     /**

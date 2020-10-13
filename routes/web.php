@@ -15,6 +15,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('manufacture','ManufactureController');
     //Category Route
     Route::resource('category','CategoryController');
+    Route::get('allCategory','CategoryController@allCategory');
     Route::get('category/show/{id}','CategoryController@show');
     //Generic Route
     Route::resource('generic','GenericController');
