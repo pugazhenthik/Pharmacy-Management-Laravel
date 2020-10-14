@@ -16,7 +16,7 @@ class GenericController extends Controller
     public function index()
     {
         $generics = Generic::orderBy('generic_id','desc')->get();
-        return view('Backend.pages.Generic.index',compact('generics'));
+        return view('Backend.pages.Generic.generic',compact('generics'));
     }
 
     /**

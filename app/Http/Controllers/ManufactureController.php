@@ -18,7 +18,7 @@ class ManufactureController extends Controller
     {
         $manufactures=Manufacture::orderBy('manufac_id','desc')->get();
         
-        return view('Backend.pages.Manufacture.index',compact('manufactures'));
+        return view('Backend.pages.Manufacture.manufacture',compact('manufactures'));
     }
 
     /**

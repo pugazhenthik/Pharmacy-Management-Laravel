@@ -18,3 +18,22 @@
 .dataTables_length {
     display: inline;
 }
+/*DataTable Refresh Btn Begin*/
+.active_btn svg{
+	color: green;
+	margin-right: 5px
+}
+.inactive_btn svg{
+	color: red;
+	margin-right: 5px
+}
+.active_btn{
+	cursor:pointer;
+}
+.inactive_btn{
+	cursor:pointer;
+}
+/*DataTable Refresh Btn END*/
+.form-container{
+    background-color: #e6f2ff;
+}
