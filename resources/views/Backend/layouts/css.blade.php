@@ -6,7 +6,6 @@
 
 <!-- Theme Css -->
 <link href="{{asset('Backend_assets/assets/css/plugins.css')}}" rel="stylesheet" type="text/css" />
-<link href="{{asset('Backend_assets/assets/css/dashboard/dash_1.css')}}" rel="stylesheet" type="text/css" />
 <!-- Theme Css -->
 
 <!-- Preloader -->

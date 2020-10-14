@@ -53,7 +53,7 @@
         </li>
 
         <li class="menu">
-            <a href="{{ url('/admin/generic') }}" aria-expanded="false" class="dropdown-toggle">
+            <a href="{{ url('/admin/supplier') }}" aria-expanded="false" class="dropdown-toggle">
                 <div class="">
                     <i data-feather="truck"></i>
                     <span>Supplier</span>

@@ -7,15 +7,14 @@
 <script src="{{asset('Backend_assets/bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- Bootstrap -->
 
-<!-- Scrollbar -->
-<script src="{{asset('Backend_assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
-<!-- Scrollbar -->
-
 <!-- Feather  Icon -->
 <script>
     feather.replace()
 </script>
 <!-- Feather  Icon -->
+
+<!-- Theme JS -->
+<script src="{{asset('Backend_assets/plugins/apex/apexcharts.min.js')}}"></script>
 
 <script src="{{asset('Backend_assets/assets/js/app.js')}}"></script>
 <script>
@@ -23,10 +22,6 @@
         App.init();
     });
 </script>
-
-<!-- Theme JS -->
-<script src="{{asset('Backend_assets/plugins/apex/apexcharts.min.js')}}"></script>
-<script src="{{asset('Backend_assets/assets/js/dashboard/dash_1.js')}}"></script>
 <!-- Theme JS -->
 
 <!-- JS Validation -->
@@ -88,9 +83,9 @@
               break;
       }
     @endif
-  </script>
+</script>
 
-  <!-- iziToast js script END -->
+<!-- iziToast js script END -->
 
 
 <script type="text/javascript">
