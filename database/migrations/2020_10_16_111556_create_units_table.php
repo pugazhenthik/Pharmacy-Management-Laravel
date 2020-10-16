@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTypesTable extends Migration
+class CreateUnitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('types', function (Blueprint $table) {
-            $table->bigIncrements('type_id');
-            $table->string('type_name');
-            $table->string('type_description');
+        Schema::create('units', function (Blueprint $table) {
+            $table->bigIncrements('unit_id');
+            $table->string('unit_name');
+            $table->string('unit_description')->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('types');
+        Schema::dropIfExists('units');
     }
 }

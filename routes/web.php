@@ -21,6 +21,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('generic','GenericController');
     //Type Route
     Route::resource('/type','TypeController');
+    //Unit Route
+    Route::resource('unit','UnitController');
+    Route::get('unit/show/{id}','UnitController@show');
     
     });
 
