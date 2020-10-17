@@ -37,7 +37,9 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\CategoryRequest' => $baseDir . '/app/Http/Requests/CategoryRequest.php',
     'App\\Http\\Requests\\CompanydRequest' => $baseDir . '/app/Http/Requests/CompanydRequest.php',
+
     'App\\Http\\Requests\\CustomarRequest' => $baseDir . '/app/Http/Requests/CustomarRequest.php',
+
     'App\\Http\\Requests\\GenericRequest' => $baseDir . '/app/Http/Requests/GenericRequest.php',
     'App\\Http\\Requests\\ManufactureRequest' => $baseDir . '/app/Http/Requests/ManufactureRequest.php',
     'App\\Http\\Requests\\TypeRequest' => $baseDir . '/app/Http/Requests/TypeRequest.php',
@@ -49,6 +51,7 @@ return array(
     'App\\Models\\Membership' => $baseDir . '/app/Models/Membership.php',
     'App\\Models\\Team' => $baseDir . '/app/Models/Team.php',
     'App\\Models\\Type' => $baseDir . '/app/Models/Type.php',
+    'App\\Models\\Unit' => $baseDir . '/app/Models/Unit.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Policies\\TeamPolicy' => $baseDir . '/app/Policies/TeamPolicy.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

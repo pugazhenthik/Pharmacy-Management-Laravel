@@ -631,7 +631,9 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\CategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CategoryRequest.php',
         'App\\Http\\Requests\\CompanydRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CompanydRequest.php',
+
         'App\\Http\\Requests\\CustomarRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CustomarRequest.php',
+
         'App\\Http\\Requests\\GenericRequest' => __DIR__ . '/../..' . '/app/Http/Requests/GenericRequest.php',
         'App\\Http\\Requests\\ManufactureRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ManufactureRequest.php',
         'App\\Http\\Requests\\TypeRequest' => __DIR__ . '/../..' . '/app/Http/Requests/TypeRequest.php',
@@ -643,6 +645,7 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'App\\Models\\Membership' => __DIR__ . '/../..' . '/app/Models/Membership.php',
         'App\\Models\\Team' => __DIR__ . '/../..' . '/app/Models/Team.php',
         'App\\Models\\Type' => __DIR__ . '/../..' . '/app/Models/Type.php',
+        'App\\Models\\Unit' => __DIR__ . '/../..' . '/app/Models/Unit.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Policies\\TeamPolicy' => __DIR__ . '/../..' . '/app/Policies/TeamPolicy.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
