@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Manufacture;
+use App\Models\Customar;
 use Illuminate\Http\Request;
-use App\Http\Requests\ManufactureRequest;
-use JsValidator;
+use App\Http\Requests\CustomarRequest;
 
-class ManufactureController extends Controller
+class CustomarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,8 @@ class ManufactureController extends Controller
      */
     public function index()
     {
-        $manufactures=Manufacture::orderBy('manufac_id','desc')->get();
-        
-        return view('Backend.pages.Manufacture.manufacture',compact('manufactures'));
+        $customers = Customar::orderBy('customar_name','desc')->get();
+        return view('Backend.pages.Customar.index',compact('customers'));
     }
 
     /**
@@ -26,9 +24,19 @@ class ManufactureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function status($id)
     {
-        //
+        $customar = Customar::findOrFail($id);
+        if($customar->customar_status== 1) {
+            $customar->customar_status = 0;
+
+        }
+        else{
+            $customar->customar_status =1;
+        }
+        $customar->save();
+        $status=200;
+        return response()->json($status);
     }
 
     /**
@@ -37,15 +45,13 @@ class ManufactureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ManufactureRequest $request)
+    public function store(CustomarRequest $request)
     {
-       
-        $manufacture = new Manufacture;
-        $manufacture->fill($request->all())->save();
-        
+        $customar = new Customar;
+        $customar->fill($request->all())->save();
         $notification = array(
-            'title' => 'Manufacture',
-            'message'=>"Manufacturer Added Successfully",
+            'title'=>'Customer',
+            'message'=>'Customar Added Successfully!',
             'alert-type' => 'success',
         );
         return redirect()->back()->with($notification);
@@ -55,10 +61,10 @@ class ManufactureController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Manufacture  $manufacture
+     * @param  \App\Models\Customar  $customar
      * @return \Illuminate\Http\Response
      */
-    public function show(Manufacture $manufacture)
+    public function show(Customar $customar)
     {
         //
     }
@@ -66,65 +72,59 @@ class ManufactureController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Manufacture  $manufacture
+     * @param  \App\Models\Customar  $customar
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-     
-        $manufacture = Manufacture::findOrFail($id);
-        return response()->json($manufacture);
+        $customar = Customar::findOrFail($id);
+        return response()->json($customar);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Manufacture  $manufacture
+     * @param  \App\Models\Customar  $customar
      * @return \Illuminate\Http\Response
      */
-    public function update(ManufactureRequest $request, $id)
+    public function update(CustomarRequest $request,$id)
     {
-        
-        $manufacture= Manufacture::find($id);
-        $manufacture->fill($request->all())->save();
+        $customar= Customar::find($id);
+        $customar->fill($request->all())->save();
         $notification = array(
             'title' => 'Manufacture',
             'message' => 'Successfully ! Manufacture Information Updated',
             'alert-type' => 'success',
         );
         return redirect()->back()->with($notification);
-        
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Manufacture  $manufacture
+     * @param  \App\Models\Customar  $customar
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $manufacture = Manufacture::findOrFail($id);
-        $delete =$manufacture->delete();
+        $customar = Customar::findOrFail($id);
+        $delete = $customar->delete();
         if($delete){
             $notification = array(
-                'title'=> 'Manufacture',
-                'message' => 'Successfully! Manufacture Information Deleted',
+                'title'=> 'Customar',
+                'message' => 'Successfully! Customar Information Deleted',
                 'alert-type' => 'success',
             );  
         }
         else{
             $notification = array(
-                'title'=> 'Manufacture',
-                'message' =>  'Ooh No! Something Went Wrong.',
+                'title'=> 'Customar',
+                'message' => 'Successfully! Customar Information Deleted',
                 'alert-type' => 'error',
-            ); 
+            );  
 
         }
         return redirect()->back()->with($notification);
-    
-        
     }
-} 
- 
+}

@@ -21,7 +21,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('generic','GenericController');
     //Type Route
     Route::resource('/type','TypeController');
-    
+    //Customer Route
+    Route::resource('customar','CustomarController');
+    Route::get('customar/status/{id}','CustomarController@status');
     });
 
 });
