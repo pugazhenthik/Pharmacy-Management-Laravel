@@ -615,6 +615,7 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'App\\Http\\Controllers\\AppMainController' => __DIR__ . '/../..' . '/app/Http/Controllers/AppMainController.php',
         'App\\Http\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoryController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\CustomarController' => __DIR__ . '/../..' . '/app/Http/Controllers/CustomarController.php',
         'App\\Http\\Controllers\\GenericController' => __DIR__ . '/../..' . '/app/Http/Controllers/GenericController.php',
         'App\\Http\\Controllers\\ManufactureController' => __DIR__ . '/../..' . '/app/Http/Controllers/ManufactureController.php',
         'App\\Http\\Controllers\\TypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/TypeController.php',
@@ -630,11 +631,15 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\CategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CategoryRequest.php',
         'App\\Http\\Requests\\CompanydRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CompanydRequest.php',
+
+        'App\\Http\\Requests\\CustomarRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CustomarRequest.php',
+
         'App\\Http\\Requests\\GenericRequest' => __DIR__ . '/../..' . '/app/Http/Requests/GenericRequest.php',
         'App\\Http\\Requests\\ManufactureRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ManufactureRequest.php',
         'App\\Http\\Requests\\TypeRequest' => __DIR__ . '/../..' . '/app/Http/Requests/TypeRequest.php',
         'App\\Mail\\UserRegisterMail' => __DIR__ . '/../..' . '/app/Mail/UserRegisterMail.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
+        'App\\Models\\Customar' => __DIR__ . '/../..' . '/app/Models/Customar.php',
         'App\\Models\\Generic' => __DIR__ . '/../..' . '/app/Models/Generic.php',
         'App\\Models\\Manufacture' => __DIR__ . '/../..' . '/app/Models/Manufacture.php',
         'App\\Models\\Membership' => __DIR__ . '/../..' . '/app/Models/Membership.php',

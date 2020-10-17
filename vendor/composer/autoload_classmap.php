@@ -21,6 +21,7 @@ return array(
     'App\\Http\\Controllers\\AppMainController' => $baseDir . '/app/Http/Controllers/AppMainController.php',
     'App\\Http\\Controllers\\CategoryController' => $baseDir . '/app/Http/Controllers/CategoryController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\CustomarController' => $baseDir . '/app/Http/Controllers/CustomarController.php',
     'App\\Http\\Controllers\\GenericController' => $baseDir . '/app/Http/Controllers/GenericController.php',
     'App\\Http\\Controllers\\ManufactureController' => $baseDir . '/app/Http/Controllers/ManufactureController.php',
     'App\\Http\\Controllers\\TypeController' => $baseDir . '/app/Http/Controllers/TypeController.php',
@@ -36,11 +37,15 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\CategoryRequest' => $baseDir . '/app/Http/Requests/CategoryRequest.php',
     'App\\Http\\Requests\\CompanydRequest' => $baseDir . '/app/Http/Requests/CompanydRequest.php',
+
+    'App\\Http\\Requests\\CustomarRequest' => $baseDir . '/app/Http/Requests/CustomarRequest.php',
+
     'App\\Http\\Requests\\GenericRequest' => $baseDir . '/app/Http/Requests/GenericRequest.php',
     'App\\Http\\Requests\\ManufactureRequest' => $baseDir . '/app/Http/Requests/ManufactureRequest.php',
     'App\\Http\\Requests\\TypeRequest' => $baseDir . '/app/Http/Requests/TypeRequest.php',
     'App\\Mail\\UserRegisterMail' => $baseDir . '/app/Mail/UserRegisterMail.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
+    'App\\Models\\Customar' => $baseDir . '/app/Models/Customar.php',
     'App\\Models\\Generic' => $baseDir . '/app/Models/Generic.php',
     'App\\Models\\Manufacture' => $baseDir . '/app/Models/Manufacture.php',
     'App\\Models\\Membership' => $baseDir . '/app/Models/Membership.php',
