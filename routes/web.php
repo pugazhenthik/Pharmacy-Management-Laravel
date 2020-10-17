@@ -29,6 +29,9 @@ Route::middleware('auth')->group(function () {
     //Customer Route
     Route::resource('customar','CustomarController');
     Route::get('customar/status/{id}','CustomarController@status');
+    //Supplier Route
+    Route::resource('supplier','SupplierController');
+    Route::get('supplier/show/{id}','SupplierController@show');
 
     });
 
