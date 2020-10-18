@@ -1,23 +1,25 @@
 @extends('Backend.layouts.app')
 @section('title') Supplier @endsection
-
 @section('head', 'Supplier')
-
 @section('content')
 
 <div class="col-md-10 header">
-    <h3>Generic</h3>
+    <h3>Supplier</h3>
 </div>
-<div class="col-md-2"><button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add
-        Generic</button></div>
-
-<div class="col-md mt-5 ">
+<div class="col-md-2"> <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add Supplier</button> </div>
+    
+<div class="col-md  mt-5">
     <table id="dataTable" class="table table-striped table-bordered ">
-        <thead>
+        <thead class="text-center">
             <tr>
                 <th>#</th>
-                <th>Name</th>
-                <th>Detalis</th>
+                <th>Supplier Name</th>
+                <th>Address</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Previous Balance</th>
+                <th>Current Balance</th>
+                <th>Status</th>
                 <th class="text-center">Action</th>
             </tr>
         </thead>
@@ -25,53 +27,49 @@
             @method('delete')
             @csrf
         </form>
-        <tbody>
-            @foreach($generics as $generic)
+        <tbody class="text-center">
+            @foreach($supplier as $value)
     
            
             <tr>
                 <td><input type="checkbox" data-id=""></td>
-                <td>{{ $generic-> generic_name}}</td>
-                <td>{{ $generic-> generic_details }}</td>
+                <td>{{ $value-> supplier_name }}</td>
+                <td>{{ $value-> supplier_address }}</td>
+                <td>{{ $value-> supplier_mobile }}</td>
+                <td>{{ $value-> supplier_email }}</td>
+                <td>{{ $value-> supplier_previous_balance }}</td>
+                <td>{{ $value-> supplier_current_balance }}</td>
+                <td>
+                    @if ($value->status == 1)
+                    <span class="text-success">Active</span>
+                    @else
+                        <span class="text-danger">Inactive</span>
+                    @endif
+                </td>
     
-    
-                <td class="text-center">
+                <td>
                     <ul class="table-controls">
-                        <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$generic->generic_id}}" title="Edit" data-target="#editModal"><svg
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="feather feather-edit-2 text-success">
-                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                                </svg></a>
-                        <a href="{{ route('generic.destroy',($generic->generic_id)) }}" data-toggle="tooltip" data-placement="top" title=""onclick="event.preventDefault(); Delete({{ $generic->generic_id }});"
-                                data-original-title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"
-                                    class="feather feather-trash-2 text-danger">
-                                    <polyline points="3 6 5 6 21 6"></polyline>
-                                    <path
-                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                    </path>
-                                    <line x1="10" y1="11" x2="10" y2="17"></line>
-                                    <line x1="14" y1="11" x2="14" y2="17"></line>
-                                </svg></a>
+
+                        @if ($value->status == 1)
+                            <a class="status_id active_btn" data-id="{{$value->supplier_id}}"><i data-feather="refresh-ccw"></i></a>
+                        @else
+                            <a class="status_id inactive_btn" data-id="{{$value->supplier_id}}"><i data-feather="refresh-ccw"></i></a>
+                        @endif
+
+                        <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$value->supplier_id}}" title="Edit" data-target="#editModal"><i class="text-info" data-feather="edit"></i></a>
+
+                        <a href="{{ route('supplier.destroy',($value->supplier_id)) }}" data-toggle="tooltip" data-placement="top" title=""onclick="event.preventDefault(); Delete({{ $value->supplier_id }})";
+                                data-original-title="Delete"><i class="text-danger" data-feather="trash-2"></i></a>                      
                     </ul>
                 </td>
             </tr>
             @endforeach
     
         </tbody>
-        <tfoot>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Detalis</th>
-               
-                <th class="text-center">Action</th>
-            </tr>
-        </tfoot>
     </table>
 </div>
+
+
 
 
 <!-- Add Modal -->
@@ -80,25 +78,46 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Generic</h5>
+                <h5 class="modal-title">Add Supplier</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
                         aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('generic.store') }}" method="post" id="addForm">
+            <form action="{{ route('supplier.store') }}" method="post" id="addForm">
                 @csrf
                 <div class="modal-body">
 
-                    <div class="form-group">
-                        <label> Name:</label>
-                        <input type="text" class="form-control"  name="generic_name" placeholder="Type Name">
+                    <div class="form-group mb-4">
+                        <label class="control-label">Supplier Name:</label>
+                        <input type="text" name="supplier_name" class="form-control" placeholder="Name">
                     </div>
-            
-
-                    <div class="form-group">
-                        <label> Details:</label>
-                        <textarea class="form-control" style="max-height: 65px;" name="generic_details" cols="10"
-                            rows="10"></textarea>
+                    <div class="form-row sm mb-4">
+                        <div class="form-group col-md-6">
+                            <label for="name">Address:</label>
+                            <input type="name" class="form-control" name="supplier_address"
+                                placeholder="Address">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="text">Mobile:</label>
+                            <input type="text" class="form-control" name="supplier_mobile"
+                                placeholder="Mobile">
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="control-label">Email:</label>
+                        <input type="email" name="supplier_email" class="form-control" placeholder="email@gmail.com">
+                    </div>
+                    <div class="form-row sm mb-4">
+                        <div class="form-group col-md-6">
+                            <label for="number">Previous Balance:</label>
+                            <input type="number" class="form-control" name="supplier_previous_balance"
+                                placeholder="Previous Balance">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="number">Current Balance:</label>
+                            <input type="number" class="form-control" name="supplier_current_balance"
+                                placeholder="Current Balance">
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
@@ -111,12 +130,11 @@
 </div>
 
 <!-- Edit Modal -->
-
-<div class="modal fade "  role="dialog" id="editModal">
+<div class="modal fade" tabindex="-1" role="dialog" id="editModal">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit Generic</h5>
+                <h5 class="modal-title">Edit Supplier</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
                         aria-hidden="true">&times;</span>
                 </button>
@@ -125,56 +143,106 @@
                 @csrf
                 @method('put')
                 <div class="modal-body">
-            
-                    <div class="form-group">
-                        <label> Name:</label>
-                        <input class="form-control" name="generic_name" 
-                            id="e_name">
+
+                    <div class="form-group mb-4">
+                        <label class="control-label">Supplier Name:</label>
+                        <input type="text" name="supplier_name" class="form-control" placeholder="Name" id="e_supplier_name">
                     </div>
-                    <div class="form-group">
-                        <label> Details:</label>
-                        <textarea class="form-control" style="max-height: 65px;" name="generic_details" cols="10"
-                            rows="10" id="e_details"></textarea>
+                    <div class="form-row sm mb-4">
+                        <div class="form-group col-md-6">
+                            <label for="name">Address:</label>
+                            <input type="name" class="form-control" name="supplier_address"
+                                placeholder="Address" id="e_supplier_address">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="text">Mobile:</label>
+                            <input type="text" class="form-control" name="supplier_mobile"
+                                placeholder="Mobile" id="e_supplier_mobile">
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="control-label">Email:</label>
+                        <input type="email" name="supplier_email" class="form-control" placeholder="email@gmail.com" id="e_supplier_email">
+                    </div>
+                    <div class="form-row sm mb-4">
+                        <div class="form-group col-md-6">
+                            <label for="number">Previous Balance:</label>
+                            <input type="number" class="form-control" name="supplier_previous_balance"
+                                placeholder="Previous Balance" id="e_supplier_previous_balance">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="number">Current Balance:</label>
+                            <input type="number" class="form-control" name="supplier_current_balance"
+                                placeholder="Current Balance" id="e_supplier_current_balance">
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary">Save</button>
+                    <button class="btn btn-primary">Update</button>
             </form>
         </div>
     </div>
 </div>
-</div>
-
 @endsection
-
 @section('script')
 <script>
-   $(document).ready(function(){
-       $("#dataTable").DataTable();
-       $(".edit").click(function(){
-           let id=$(this).attr("data-id");
-           $.ajax({
-               url:"/admin/generic/"+id+"/edit",
-               type:"get",
-               data:{"_token":"{{ csrf_token() }}"},
-               dataType:"json",
-               success:function(data){
-                   console.log(data);
-                   $("#e_name").val(data.generic_name);
-                   $("#e_details").val(data.generic_details);
-                    
-                   $("#editForm").attr("action","/admin/generic/"+data.generic_id);
 
-               }
+    $(document).ready(function(){
+        $("#dataTable").DataTable();
+        $(".edit").click(function(){
+            let id=$(this).attr("data-id");
+           
 
-           });
+            $.ajax({
+                url:"/admin/supplier/"+id+"/edit",
+                type:'get',
+                data:{"_token":"{{ csrf_token() }}"},
+                dataType:"json",
+                success:function(data)
+                {
+                    console.log(data);
+                    $("#e_supplier_name").val(data.supplier_name);
+                    $("#e_supplier_address").val(data.supplier_address);
+                    $("#e_supplier_mobile").val(data.supplier_mobile);
+                    $("#e_supplier_email").val(data.supplier_email);
+                    $("#e_supplier_previous_balance").val(data.supplier_previous_balance);
+                    $("#e_supplier_current_balance").val(data.supplier_current_balance);
 
-       });
+                    $("#editForm").attr("action","/admin/supplier/"+data.supplier_id);
 
-   }); 
+                }
 
-   function Delete(id){
+            });
+        });
+        $('.status_id').click(function(){
+            var id=$(this).attr("data-id");
+
+            $.ajax({
+            url: "/admin/supplier/show/"+id,
+            type: "get",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                if (response == 200) 
+                {
+                    iziToast.show({
+                    title: 'Category',
+                    timeout: 20000,
+                    timeout: 20000,
+                    close: true,
+                    overlay: true,
+                    displayMode: 'once',
+                    message: 'status Changed successfully'
+                    });
+                    location.reload();
+                }
+            }
+        })
+        });
+    });
+
+    function Delete(id){
     var id=id;
     iziToast.question({
         timeout: 20000,
@@ -190,7 +258,7 @@
             ['<button><b>YES</b></button>', function () {
                 var $form = $("#deleteForm").closest('form');
 
-                $form.attr('action','/admin/generic/'+id);
+                $form.attr('action','/admin/supplier/'+id);
                 $form.submit()
             }, true],
             ['<button>NO</button>', function (instance, toast) {
@@ -201,8 +269,10 @@
         ],
     });
 }
+
 </script>
-{!! JsValidator::formRequest('App\Http\Requests\GenericRequest', '#addForm'); !!}
-{!! JsValidator::formRequest('App\Http\Requests\GenericRequest', '#editForm'); !!}
+
+{!! JsValidator::formRequest('App\Http\Requests\SupplierRequest', '#addForm'); !!}
+{!! JsValidator::formRequest('App\Http\Requests\SupplierRequest', '#editForm'); !!}
 
 @endsection

@@ -21,10 +21,21 @@ Route::middleware('auth')->group(function () {
     Route::resource('generic','GenericController');
     //Type Route
     Route::resource('/type','TypeController');
+
+    //Unit Route
+    Route::resource('unit','UnitController');
+    Route::get('unit/show/{id}','UnitController@show');
+    
     //Customer Route
     Route::resource('customar','CustomarController');
     Route::get('customar/status/{id}','CustomarController@status');
     Route::get('customar/invoice/{id}','CustomarController@invoice')->name('admin.customar.invoice');
+
+    //Supplier Route
+    Route::resource('supplier','SupplierController');
+    Route::get('supplier/show/{id}','SupplierController@show');
+
+
     });
 
 });

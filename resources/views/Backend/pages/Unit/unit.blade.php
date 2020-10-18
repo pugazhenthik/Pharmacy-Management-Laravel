@@ -6,15 +6,16 @@
 <div class="col-md-10 header">
     <h3>Type</h3>
 </div>
-<div class="col-md-2"> <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add Type</button> </div>
+<div class="col-md-2"> <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add Unit</button> </div>
     
 <div class="col-md  mt-5">
     <table id="dataTable" class="table table-striped table-bordered ">
         <thead class="text-center">
             <tr>
                 <th>#</th>
-                <th>Type Name</th>
-                <th>Type Descryption</th>
+                <th>Unit Name</th>
+                <th>Unit Descryption</th>
+                <th>Status</th>
                 <th class="text-center">Action</th>
             </tr>
         </thead>
@@ -23,20 +24,33 @@
             @csrf
         </form>
         <tbody class="text-center">
-            @foreach($type as $value)
+            @foreach($unit as $value)
     
            
             <tr>
                 <td><input type="checkbox" data-id=""></td>
-                <td>{{ $value-> type_name }}</td>
-                <td>{{ $value-> type_description }}</td>
+                <td>{{ $value-> unit_name }}</td>
+                <td>{{ $value-> unit_description }}</td>
+                <td>
+                	@if ($value->status == 1)
+                    <span class="text-success">Active</span>
+	                @else
+	                    <span class="text-danger">Inactive</span>
+	                @endif
+	            </td>
     
                 <td>
                     <ul class="table-controls">
 
-                        <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$value->type_id}}" title="Edit" data-target="#editModal"><i class="text-info" data-feather="edit"></i></a>
+                        @if ($value->status == 1)
+                            <a class="status_id active_btn" data-id="{{$value->unit_id}}"><i data-feather="refresh-ccw"></i></a>
+                        @else
+                            <a class="status_id inactive_btn" data-id="{{$value->unit_id}}"><i data-feather="refresh-ccw"></i></a>
+                        @endif
 
-                        <a href="{{ route('type.destroy',($value->type_id)) }}" data-toggle="tooltip" data-placement="top" title=""onclick="event.preventDefault(); Delete({{ $value->type_id }})";
+                    	<a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$value->unit_id}}" title="Edit" data-target="#editModal"><i class="text-info" data-feather="edit"></i></a>
+
+                        <a href="{{ route('unit.destroy',($value->unit_id)) }}" data-toggle="tooltip" data-placement="top" title=""onclick="event.preventDefault(); Delete({{ $value->unit_id }})";
                                 data-original-title="Delete"><i class="text-danger" data-feather="trash-2"></i></a>                      
                     </ul>
                 </td>
@@ -56,22 +70,22 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Add Type</h5>
+                <h5 class="modal-title">Add Unit</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
                         aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('type.store') }}" method="post" id="addForm">
+            <form action="{{ route('unit.store') }}" method="post" id="addForm">
                 @csrf
                 <div class="modal-body">
 
                     <div class="form-group mb-4">
-                        <label class="control-label">Type Name:</label>
-                        <input type="text" name="type_name" class="form-control" placeholder="Type Name">
+                        <label class="control-label">Unit Name:</label>
+                        <input type="text" name="unit_name" class="form-control" placeholder="Type Name">
                     </div>
                     <div class="form-group mb-4">
-                        <label class="control-label">Type Descryption:</label>
-                        <input type="text" name="type_description" class="form-control" placeholder="Type Descryption">
+                        <label class="control-label">Unit Descryption:</label>
+                        <input type="text" name="unit_description" class="form-control" placeholder="Unit Descryption">
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
@@ -89,7 +103,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit Type</h5>
+                <h5 class="modal-title">Edit Unit</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span
                         aria-hidden="true">&times;</span>
                 </button>
@@ -100,20 +114,21 @@
                 <div class="modal-body">
 
                     <div class="form-group mb-4">
-                        <label class="control-label">Type Name:</label>
-                        <input type="text" name="type_name" class="form-control" id="e_type_name">
+                        <label class="control-label">Unit Name:</label>
+                        <input type="text" name="unit_name" class="form-control" id="e_unit_name">
                     </div>
                     <div class="form-group mb-4">
-                        <label class="control-label">Type Descryption:</label>
-                        <input type="text" name="type_description" class="form-control" id="e_type_description">
+                        <label class="control-label">Unit Descryption:</label>
+                        <input type="text" name="unit_description" class="form-control" id="e_unit_description">
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary">Save</button>
+                    <button class="btn btn-primary">Update</button>
             </form>
         </div>
     </div>
+</div>
 </div>
 @endsection
 @section('script')
@@ -126,21 +141,46 @@
            
 
             $.ajax({
-                url:"/admin/type/"+id+"/edit",
+                url:"/admin/unit/"+id+"/edit",
                 type:'get',
                 data:{"_token":"{{ csrf_token() }}"},
                 dataType:"json",
                 success:function(data)
                 {
                     console.log(data);
-                    $("#e_type_name").val(data.type_name);
-                    $("#e_type_description").val(data.type_description);
+                    $("#e_unit_name").val(data.unit_name);
+                    $("#e_unit_description").val(data.unit_description);
 
-                    $("#editForm").attr("action","/admin/type/"+data.type_id);
+                    $("#editForm").attr("action","/admin/unit/"+data.unit_id);
 
                 }
 
             });
+        });
+        $('.status_id').click(function(){
+            var id=$(this).attr("data-id");
+
+            $.ajax({
+            url: "/admin/unit/show/"+id,
+            type: "get",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                if (response == 200) 
+                {
+                    iziToast.show({
+                    title: 'Category',
+                    timeout: 20000,
+                    timeout: 20000,
+                    close: true,
+                    overlay: true,
+                    displayMode: 'once',
+                    message: 'status Changed successfully'
+                    });
+                    location.reload();
+                }
+            }
+        })
         });
     });
 
@@ -160,7 +200,7 @@
             ['<button><b>YES</b></button>', function () {
                 var $form = $("#deleteForm").closest('form');
 
-                $form.attr('action','/admin/type/'+id);
+                $form.attr('action','/admin/unit/'+id);
                 $form.submit()
             }, true],
             ['<button>NO</button>', function (instance, toast) {
@@ -174,9 +214,7 @@
 
 </script>
 
-{!! JsValidator::formRequest('App\Http\Requests\TypeRequest', '#addForm'); !!}
-{!! JsValidator::formRequest('App\Http\Requests\TypeRequest', '#editForm'); !!}
+{!! JsValidator::formRequest('App\Http\Requests\UnitRequest', '#addForm'); !!}
+{!! JsValidator::formRequest('App\Http\Requests\UnitRequest', '#editForm'); !!}
 
 @endsection
-
-

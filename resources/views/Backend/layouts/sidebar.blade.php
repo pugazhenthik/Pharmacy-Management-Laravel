@@ -31,6 +31,9 @@
                 <li>
                     <a href="{{ url('/admin/type') }}">Medicine Type</a>
                 </li>
+                <li>
+                    <a href="{{ url('/admin/unit') }}">Unit</a>
+                </li>
 
             </ul>
         </li>
