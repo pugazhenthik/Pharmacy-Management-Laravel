@@ -163,7 +163,7 @@
              <div class="row">
                  <div class="col-sm-6 invoice-left">
                      <a href="/">
-                        <img src="assets/images/logo-light@2x.png" width="60" alt="">
+                        <img src="{{asset('Backend_assets/assets/img/favicon1.png')}}"  width="60" alt="">
                         <b >Pharmacy BD</b>
                     </a>
                 </div> 
@@ -190,19 +190,19 @@
                      <table class="pull-right table table-bordered">
                          <tbody >
                              <tr >
-                             <td ><b style="color: black;">Total Product</b></td> 
-                             <td ><b style="color: black;">0</b></td>
+                             <td ><b>Total Product</b></td> 
+                             <td ><b>0</b></td>
                             </tr> <tr >
-                                <td ><b style="color: black;">Total Amount</b></td> 
-                                <td ><b style="color: black;">0</b></td>
+                                <td ><b>Total Amount</b></td> 
+                                <td ><b>0</b></td>
                             </tr> 
                             <tr >
-                                <td ><b style="color: black;">Total Paid</b></td>
-                                 <td ><b style="color: black;">0</b></td>
+                                <td ><b>Total Paid</b></td>
+                                 <td ><b>0</b></td>
                                 </tr>
                                  <tr >
-                                     <td ><b style="color: black;">Total Change</b></td>
-                                      <td ><b style="color: black;">0</b></td>
+                                     <td ><b>Total Change</b></td>
+                                      <td ><b>0</b></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -215,7 +215,7 @@
                              </div>
                             </div>
                              <center style="margin-top: 15px;">
-                                <p ><strong style="color: black;"> Developed By:</strong>
+                                <p ><strong> Developed By:</strong>
                                 </p>
                                 <hr style="margin-top: -5px; margin-bottom: 5px; width: 20%;"> 
                                 <span style="color: black; font-size: 12px;"> Pharmacy BD</span>
@@ -226,7 +226,11 @@
                         </div>
                     </div> 
                     <div class="modal-footer">
-                                    <button class="btn btn-success btn-icon icon-left hidden-print">Print Details<i class="entypo-doc-text"></i></button> <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button></div></div>
+                                    <a href="{{ route('admin.customar.invoice',($customar->customar_id)) }}"><button  class="btn btn-success btn-icon icon-left print">Print Details<i class="entypo-doc-text"></i>
+                                    </button> </a>
+                                    <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                                </div>
+                            </div>
     </div>
 </div>
 @endsection

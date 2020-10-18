@@ -29,9 +29,12 @@ Route::middleware('auth')->group(function () {
     //Customer Route
     Route::resource('customar','CustomarController');
     Route::get('customar/status/{id}','CustomarController@status');
+    Route::get('customar/invoice/{id}','CustomarController@invoice')->name('admin.customar.invoice');
+
     //Supplier Route
     Route::resource('supplier','SupplierController');
     Route::get('supplier/show/{id}','SupplierController@show');
+
 
     });
 
