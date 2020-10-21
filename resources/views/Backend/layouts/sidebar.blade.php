@@ -26,6 +26,12 @@
             </a>
             <ul class="collapse submenu list-unstyled" id="Medicine" data-parent="#accordionExample">
                 <li>
+                    <a href="{{ url('/admin/medicine/create') }}"> Add Medicine </a>
+                </li>
+                <li>
+                    <a href="{{ url('/admin/medicine') }}">Medicine List</a>
+                </li>
+                <li>
                     <a href="{{ url('/admin/category') }}">Medicine Category</a>
                 </li>
                 <li>

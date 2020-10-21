@@ -173,9 +173,9 @@
                 <hr class="margin">
                  <div class="row">
                      <div class="col-sm-6 invoice-left"><h4 >Customer Details</h4> 
-    <strong >Name: </strong>{{ $customar-> customar_name}}
-    <br > <strong >Mobile: </strong>{{ $customar-> customar_mobile}}
-    <br > <strong >Address: </strong>{{ $customar-> customar_address}}
+    Name:<b id="v_name"></b>
+    <br > <strong >Mobile: <b id="v_mobile"></b> </strong>
+    <br > <strong >Address: <b id="v_address"></b> </strong>
     <br > <strong >Due Able: </strong>NO
      </div>
      </div>
@@ -258,6 +258,23 @@
 
            });
 
+       });
+       $(".view").click(function(){
+            let id =$(this).attr("data-id");
+           $.ajax({
+            url:"{{route('customar_view')}}",
+			data:{'id':id,"_token": "{{ csrf_token() }}"},
+			type:"get",
+			dataType:"json",
+               success:function(data){
+                   console.log(data);
+                   $("#v_name").text(data.customar_name);
+                   $("#v_mobile").text(data.customar_mobile);
+                   $("#v_address").text(data.customar_address);
+
+               }
+
+           });
        });
 
    }); 
