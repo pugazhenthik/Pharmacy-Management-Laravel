@@ -24,13 +24,13 @@
     text-decoration: none;
     background: black;
 }
-.table td, .table th {
+/* .table td, .table th {
     padding: -0.25rem;
     padding: 10px 6px 0px 2px;
     vertical-align: top;
     /* margin-top: -1px; */
     border-top: 1px;
-}
+} */
 .dataTables_filter {
     display: inline;
     float: right;
