@@ -11,6 +11,7 @@ use App\Models\Unit;
 use Illuminate\Http\Request;
 use App\Http\Requests\MedicineRequest;
 use Arr;
+use File;
 class MedicineController extends Controller
 {
     /**
@@ -20,8 +21,7 @@ class MedicineController extends Controller
      */
     public function index()
     {
-        $medicines = Medicine::with('category','generic','type')->get();
-    
+        $medicines = Medicine::with('category','sub_category','generic','type')->get();
         return view('Backend.pages.Medicine.index',compact('medicines'));
     }
 
@@ -71,14 +71,13 @@ class MedicineController extends Controller
     public function store(MedicineRequest $request)
     {
         $medicine = new Medicine;
-        if($request->med_image)
+        if($request->image)
         {    
-            $ext=$request->file('med_image')->getClientOriginalExtension();
+            $ext=$request->file('image')->getClientOriginalExtension();
             $path="Backend_assets/Medicine/";
             $name='Medicine_'.time().'.'.$ext;
-            $request->file('med_image')->move($path, $name);
-            Arr::set($request,'med_image',$name);
-            $medicine->fill($request->all())->save();
+            $request->file('image')->move($path, $name);
+            Arr::set($request,'med_image',"/".$path.$name);
         }
         Arr::set($request,'med_sku','SKU-'.time());
         $medicine->fill($request->all())->save();
@@ -133,25 +132,30 @@ class MedicineController extends Controller
     public function update(MedicineRequest $request, $id)
     {
         $medicine = Medicine::find($id);
-        if($request->med_image)
-        {    
-            $ext=$request->file('med_image')->getClientOriginalExtension();
-            $path="Backend_assets/Medicine/";
-            $name='Medicine_'.time().'.'.$ext;
-            $request->file('med_image')->move($path, $name);
-            Arr::set($request,'med_image',$name);
+        if(\File::exists(public_path($medicine->med_image))){
+            \File::delete(public_path($medicine->med_image));
+          }else{
+            
+          
+            if($request->image)
+            {    
+                $ext=$request->file('image')->getClientOriginalExtension();
+                $path="Backend_assets/Medicine/";
+                $name='Medicine_'.time().'.'.$ext;
+                $request->file('image')->move($path, $name);
+                Arr::set($request,'med_image',"/".$path.$name);
+            }
+            Arr::set($request,'med_sku','SKU-'.time());
             $medicine->fill($request->all())->save();
-        }
-        Arr::set($request,'med_sku','SKU-'.time());
-        $medicine->fill($request->all())->save();
-        $notification = array(
-            'title'=>'Medicine',
-            'message'=>'Medicine Update Successfully!',
-            'alert-type' => 'success',
-        );
+            $notification = array(
+                'title'=>'Medicine',
+                'message'=>'Medicine Update Successfully!',
+                'alert-type' => 'success',
+            );
+    
         return redirect()->back()->with($notification);
         
-        
+    }
 
         
     }
@@ -165,10 +169,11 @@ class MedicineController extends Controller
     public function destroy($id)
     {
        $medicine = Medicine::findOrFail($id);
-    //    if($medicine->med_image!='')
-    //    {
-    //        unlink(public_path('Backend_assets/Medicine/').$medicine->med_image);
-    //    }
+       if(\File::exists(public_path($medicine->med_image))){
+        \File::delete(public_path($medicine->med_image));
+      }else{
+        dd('File does not exists.');
+      }
        $delete = $medicine->delete();
        if($delete){
         $notification = array(

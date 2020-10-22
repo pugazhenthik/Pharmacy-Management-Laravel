@@ -27,7 +27,7 @@
 <!-- Toaster -->
 
 <!-- DataTable -->
-<link rel="stylesheet" type="text/css" href="{{asset('Backend_assets/plugins/table/datatable/datatables.css')}}">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 <!-- DataTable -->
 
 <!-- CustomCss -->
