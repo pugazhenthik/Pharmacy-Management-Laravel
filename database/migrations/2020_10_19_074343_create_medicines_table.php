@@ -16,7 +16,7 @@ class CreateMedicinesTable extends Migration
         Schema::create('medicines', function (Blueprint $table) {
             $table->id('med_id');
             $table->string('med_name');
-            $table->integer('med_cat_id')->unsigned()->nullable();
+            $table->integer('med_cat_id')->unsigned();
             $table->integer('med_sub_cat_id')->unsigned()->nullable();
             $table->integer('med_type_id')->unsigned();
             $table->integer('med_gen_id')->unsigned();

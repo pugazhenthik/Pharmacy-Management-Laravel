@@ -15,6 +15,7 @@ class Medicine extends Model
     protected $fillable = [
         'med_name',
         'med_cat_id',
+        'med_sub_cat_id',
         'med_type_id',
         'med_gen_id',
         'med_manuf_id',
@@ -35,7 +36,8 @@ class Medicine extends Model
     public function category()
     {
         return $this->belongsTo('App\Models\Category','med_cat_id');
-    }	
+    }
+   
     public function generic()
     {
         return $this->belongsTo('App\Models\Generic','med_gen_id');

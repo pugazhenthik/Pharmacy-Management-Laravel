@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('medicine','MedicineController');
     Route::get('medicine/subCategory/{id}','MedicineController@subCatFind')->name('medicine_subCategory');
+    Route::get('medicine/status/{id}','MedicineController@status');
+    Route::get('medicine/view','MedicineController@show')->name('medicine_view');
     });
 
 });

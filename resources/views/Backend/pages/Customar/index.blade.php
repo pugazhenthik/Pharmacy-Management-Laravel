@@ -226,7 +226,7 @@
                         </div>
                     </div> 
                     <div class="modal-footer">
-                                    <a href="{{ route('admin.customar.invoice',($customar->customar_id)) }}"><button  class="btn btn-success btn-icon icon-left print">Print Details<i class="entypo-doc-text"></i>
+                                    <a href=""><button  class="btn btn-success btn-icon icon-left print">Print Details<i class="entypo-doc-text"></i>
                                     </button> </a>
                                     <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
                                 </div>

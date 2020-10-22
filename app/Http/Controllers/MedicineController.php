@@ -46,6 +46,22 @@ class MedicineController extends Controller
         return response()->json($subCategory,200);
     }
 
+    public function status($id)
+    {
+        $medicine = Medicine::findOrFail($id);
+        if($medicine->med_status== 1) {
+            $medicine->med_status = 0;
+
+        }
+        else{
+            $medicine->med_status =1;
+        }
+        $medicine->save();
+        $status=200;
+        return response()->json($status);
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -64,6 +80,7 @@ class MedicineController extends Controller
             Arr::set($request,'med_image',$name);
             $medicine->fill($request->all())->save();
         }
+        Arr::set($request,'med_sku','SKU-'.time());
         $medicine->fill($request->all())->save();
         $notification = array(
             'title'=>'Medicine',
@@ -81,9 +98,11 @@ class MedicineController extends Controller
      * @param  \App\Models\Medicine  $medicine
      * @return \Illuminate\Http\Response
      */
-    public function show(Medicine $medicine)
+    public function show(Request $request)
     {
-        //
+        $id = $request->id;
+        $medicine = Medicine::find($id);
+        return response()->json($medicine);
     }
 
     /**
@@ -94,7 +113,13 @@ class MedicineController extends Controller
      */
     public function edit($id)
     {
-        
+        $medicines = Medicine::findOrFail($id);
+        $categorys = Category:: orderBy('category_name','asc')->get();
+        $medTypes = Type::orderBy('type_name','asc')->get();
+        $generics = Generic::orderBy('generic_name','asc')->get();
+        $manufactures = Manufacture::orderBy('manufac_name','asc')->get();
+        $units = Unit::orderBy('unit_name','asc')->get();
+        return view('Backend.pages.Medicine.edit',compact('medicines','categorys','medTypes','generics','manufactures','units'));
        
     }
 
@@ -105,9 +130,30 @@ class MedicineController extends Controller
      * @param  \App\Models\Medicine  $medicine
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Medicine $medicine)
+    public function update(MedicineRequest $request, $id)
     {
-        //
+        $medicine = Medicine::find($id);
+        if($request->med_image)
+        {    
+            $ext=$request->file('med_image')->getClientOriginalExtension();
+            $path="Backend_assets/Medicine/";
+            $name='Medicine_'.time().'.'.$ext;
+            $request->file('med_image')->move($path, $name);
+            Arr::set($request,'med_image',$name);
+            $medicine->fill($request->all())->save();
+        }
+        Arr::set($request,'med_sku','SKU-'.time());
+        $medicine->fill($request->all())->save();
+        $notification = array(
+            'title'=>'Medicine',
+            'message'=>'Medicine Update Successfully!',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+        
+        
+
+        
     }
 
     /**

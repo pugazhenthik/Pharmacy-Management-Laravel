@@ -4,9 +4,9 @@
 @section('content')
 
     <div class="col-md-12 center">
-        <div class=" card-header">
-            <h3>Add Medicine</h3><a href="{{ url('/admin/medicine') }}"><button class="btn btn-dark float-right">List</button></a> 
-        </div>
+        <div class="card-header">
+           <div> Add Medicine</div> 
+            <div><a href="{{ url('/admin/medicine') }}"><button  style="margin-top:-2rem;" class="btn-sm btn-dark float-right">List</button></a> </div>
         </div>
         <div class="card mt-3">
         <form action="{{ route('medicine.store') }}" method="post" id="addForm" enctype="multipart/form-data">
@@ -28,7 +28,7 @@
                 </div> 
                 <div class="form-group col-md-12"><div class="col-sm-7">
                     <label for="mobile" class="control-label">Sub Category*</label>
-                     <select id="sub_cat" class="form-control" name="med_sub_cat_id	">
+                     <select id="sub_cat" class="form-control" name="med_sub_cat_id">
                          
                         </select>
                     </div>
@@ -159,10 +159,10 @@
                     </div>
                 </div>
                 <div class="float-right">
-                    <button class="btn btn-success" type="submit">Save</button> 
-                    <a href="#/medicine" class="router-link-active" type="button">
-                        <button data-dismiss="modal" class="btn btn-secondary">reset</button>
-                    </a>
+                    <button class="btn-sm btn-success" type="submit">Save</button> 
+                    <a href="{{ url('/admin/medicine') }}" class="close-btn"> Close</a> 
+                </div>
+                   
                 </div>
             </div> 
            
