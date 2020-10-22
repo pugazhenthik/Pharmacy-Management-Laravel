@@ -185,9 +185,9 @@
 <script>
     $(document).ready(function(){
         $("#dataTable").DataTable();
-        $(".edit").click(function(){
+    });
+    $(document).on("click",".edit",function(){
             let id=$(this).attr("data-id");
-
             $.ajax({
                 url:"/admin/manufacture/"+id+"/edit",
                 type:'get',
@@ -195,7 +195,6 @@
                 dataType:"json",
                 success:function(data)
                 {
-                    console.log(data);
                     $("#e_name").val(data.manufac_name);
                     $("#e_email").val(data.manufac_email);
                     $("#e_balence").val(data.manufac_balance);
@@ -209,7 +208,7 @@
 
             });
         });
-    });
+
     function Delete(id){
     var id=id;
     iziToast.question({

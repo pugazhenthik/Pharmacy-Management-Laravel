@@ -37,6 +37,11 @@ class Medicine extends Model
     {
         return $this->belongsTo('App\Models\Category','med_cat_id');
     }
+
+    public function sub_category()
+    {
+        return $this->belongsTo('App\Models\Category','med_sub_cat_id');
+    }
    
     public function generic()
     {
