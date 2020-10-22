@@ -28,11 +28,20 @@ Route::middleware('auth')->group(function () {
     
     //Customer Route
     Route::resource('customar','CustomarController');
-    Route::get('customar/status/{id}','CustomarController@status')->name('admin.customar.invoice');
+    Route::get('customar/status/{id}','CustomarController@status');
+    Route::get('admin/customar/invoice/{id}','CustomarController@invoice')->name('admin.customar.invoice');
+    Route::get('customar/view','CustomarController@show')->name('customar_view');
+
     //Supplier Route
     Route::resource('supplier','SupplierController');
     Route::get('supplier/show/{id}','SupplierController@show');
 
+    // Medicine Route
+
+    Route::resource('medicine','MedicineController');
+    Route::get('medicine/subCategory/{id}','MedicineController@subCatFind')->name('medicine_subCategory');
+    Route::get('medicine/status/{id}','MedicineController@status');
+    Route::get('medicine/view','MedicineController@show')->name('medicine_view');
     });
 
 });

@@ -276,7 +276,7 @@
 					location.reload();
                 }
             }
-        })
+        });
 		});
     });
     function Delete(id){

@@ -75,9 +75,13 @@ class CustomarController extends Controller
      * @param  \App\Models\Customar  $customar
      * @return \Illuminate\Http\Response
      */
-    public function show(Customar $customar)
+    public function show(Request $request)
     {
-        //
+        
+
+        $id=$request->id;
+        $customar=Customar::find($id);
+        return response()->json($customar);
     }
 
     /**

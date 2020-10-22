@@ -9,6 +9,7 @@ body {
     letter-spacing: 0.0312rem;
     font-family: 'Nunito', sans-serif;
 }
+
 h1, h2, h3, h4, h5, h6 { color: #3b3f5c; }
 :focus { outline: none; }
 ::-moz-selection { /* Code for Firefox */

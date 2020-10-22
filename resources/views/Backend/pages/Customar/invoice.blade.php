@@ -75,4 +75,4 @@
                     <div class="modal-footer">
                                     <button class="btn btn-success btn-icon icon-left hidden-print">Print Details<i class="entypo-doc-text"></i></button> <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button></div></div>
     </div>
-</div>
+</div>   
