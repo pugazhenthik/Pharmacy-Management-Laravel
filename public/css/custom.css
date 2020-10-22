@@ -9,7 +9,28 @@
     float: right;
 
 }
-
+.close-btn {
+    
+    padding: 8px;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+    background: #f31414ed;
+    color: white;
+    text-decoration: none;
+}
+.close-btn:hover {
+    color: wheat;
+    text-decoration: none;
+    background: black;
+}
+.table td, .table th {
+    padding: -0.25rem;
+    padding: 10px 6px 0px 2px;
+    vertical-align: top;
+    /* margin-top: -1px; */
+    border-top: 1px;
+}
 .dataTables_filter {
     display: inline;
     float: right;

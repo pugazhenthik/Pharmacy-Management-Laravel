@@ -8,10 +8,13 @@
 <div class="col-md-10 header">
     <h3>Customer</h3>
 </div>
-<div class="col-md-2"><button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add
-        Customer</button></div>
+<div class="col-md-2">
+    <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add Customer</button>
+    {{-- <input type="button" onclick="printDiv('printableArea')" value="print" />   --}}
+    <button type="button" onclick="printDiv('printableArea')" class="btn btn-primary mt-1 float-right" > Print</button>  
+</div>
 
-<div class="col-md mt-5 ">
+<div class="col-md mt-5 " id="printableArea">
     <table id="dataTable" class="table table-striped table-bordered ">
         <thead class="text-center">
             <tr>
@@ -158,12 +161,12 @@
         <h4 id="exampleModalLabel" class="modal-title"><b >View Customer</b></h4> 
         <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
     </div>
-     <div class="modal-body">
+     <div class="modal-body" id="printableArea2">
          <div id="printDiv" class="invoice">
              <div class="row">
                  <div class="col-sm-6 invoice-left">
                      <a href="/">
-                        <img src="assets/images/logo-light@2x.png" width="60" alt="">
+                        <img src="{{asset('Backend_assets/assets/img/favicon1.png')}}"  width="60" alt="">
                         <b >Pharmacy BD</b>
                     </a>
                 </div> 
@@ -173,9 +176,9 @@
                 <hr class="margin">
                  <div class="row">
                      <div class="col-sm-6 invoice-left"><h4 >Customer Details</h4> 
-    <strong >Name: </strong>{{ $customar-> customar_name}}
-    <br > <strong >Mobile: </strong>{{ $customar-> customar_mobile}}
-    <br > <strong >Address: </strong>{{ $customar-> customar_address}}
+    Name:<b id="v_name"></b>
+    <br > <strong >Mobile: <b id="v_mobile"></b> </strong>
+    <br > <strong >Address: <b id="v_address"></b> </strong>
     <br > <strong >Due Able: </strong>NO
      </div>
      </div>
@@ -190,19 +193,19 @@
                      <table class="pull-right table table-bordered">
                          <tbody >
                              <tr >
-                             <td ><b style="color: black;">Total Product</b></td> 
-                             <td ><b style="color: black;">0</b></td>
+                             <td ><b>Total Product</b></td> 
+                             <td ><b>0</b></td>
                             </tr> <tr >
-                                <td ><b style="color: black;">Total Amount</b></td> 
-                                <td ><b style="color: black;">0</b></td>
+                                <td ><b>Total Amount</b></td> 
+                                <td ><b>0</b></td>
                             </tr> 
                             <tr >
-                                <td ><b style="color: black;">Total Paid</b></td>
-                                 <td ><b style="color: black;">0</b></td>
+                                <td ><b>Total Paid</b></td>
+                                 <td ><b>0</b></td>
                                 </tr>
                                  <tr >
-                                     <td ><b style="color: black;">Total Change</b></td>
-                                      <td ><b style="color: black;">0</b></td>
+                                     <td ><b>Total Change</b></td>
+                                      <td ><b>0</b></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -215,7 +218,7 @@
                              </div>
                             </div>
                              <center style="margin-top: 15px;">
-                                <p ><strong style="color: black;"> Developed By:</strong>
+                                <p ><strong> Developed By:</strong>
                                 </p>
                                 <hr style="margin-top: -5px; margin-bottom: 5px; width: 20%;"> 
                                 <span style="color: black; font-size: 12px;"> Pharmacy BD</span>
@@ -226,7 +229,10 @@
                         </div>
                     </div> 
                     <div class="modal-footer">
-                                    <button class="btn btn-success btn-icon icon-left hidden-print">Print Details<i class="entypo-doc-text"></i></button> <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button></div></div>
+                        <button type="button" onclick="printDiv('printableArea2')" class="btn btn-success btn-icon icon-left print">Print Details<i class="entypo-doc-text"></i></button> 
+                        <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                    </div>
+                </div>
     </div>
 </div>
 @endsection
@@ -254,6 +260,23 @@
 
            });
 
+       });
+       $(".view").click(function(){
+            let id =$(this).attr("data-id");
+           $.ajax({
+            url:"{{route('customar_view')}}",
+			data:{'id':id,"_token": "{{ csrf_token() }}"},
+			type:"get",
+			dataType:"json",
+               success:function(data){
+                   console.log(data);
+                   $("#v_name").text(data.customar_name);
+                   $("#v_mobile").text(data.customar_mobile);
+                   $("#v_address").text(data.customar_address);
+
+               }
+
+           });
        });
 
    }); 
@@ -305,6 +328,13 @@
             }],
         ],
     });
+}
+function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+     document.body.innerHTML = printContents;
+     window.print();
+     document.body.innerHTML = originalContents;
 }
 </script>
 {!! JsValidator::formRequest('App\Http\Requests\CustomarRequest', '#addForm'); !!}

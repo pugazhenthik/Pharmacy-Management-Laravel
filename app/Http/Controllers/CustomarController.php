@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customar;
 use Illuminate\Http\Request;
 use App\Http\Requests\CustomarRequest;
+use PDF;
 
 class CustomarController extends Controller
 {
@@ -39,6 +40,16 @@ class CustomarController extends Controller
         return response()->json($status);
     }
 
+
+
+    public function invoice($id)
+    {
+        $customar = Customar::find($id);
+
+        $pdf = PDF::loadView('Backend.pages.Customar.invoice', compact('customar'));
+        return $pdf->stream('invoice.pdf');
+
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -64,9 +75,13 @@ class CustomarController extends Controller
      * @param  \App\Models\Customar  $customar
      * @return \Illuminate\Http\Response
      */
-    public function show(Customar $customar)
+    public function show(Request $request)
     {
-        //
+        
+
+        $id=$request->id;
+        $customar=Customar::find($id);
+        return response()->json($customar);
     }
 
     /**

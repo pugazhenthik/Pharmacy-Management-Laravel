@@ -263,16 +263,20 @@
             success: function (response) {
             	console.log(response);
                 if (response == 200) 
-                	{
-							iziToast.success({
-								title: "Customar Status",
-								message: "Customar Status Successfully Changed",
-								position: 'topButtom',
-							});
-							location.reload();
-						}
+                {
+                    iziToast.show({
+				    title: 'Category',
+				    timeout: 20000,
+				    timeout: 20000,
+			        close: true,
+			        overlay: true,
+			        displayMode: 'once',
+				    message: 'status Changed successfully'
+					});
+					location.reload();
+                }
             }
-        })
+        });
 		});
     });
     function Delete(id){
