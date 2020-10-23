@@ -99,7 +99,9 @@
                 <div class="form-group col-md-12">
                     <div class="col-sm-7">
                         <label for="image" class="control-label">Medicine Image</label> 
-                        <input type="file" id="image" class="form-control" name="med_image" value="{{ $medicines->med_image }}">
+
+                        <input type="file" id="image" class="form-control" name="image" value="{{ $medicines->med_image }}">
+
                     </div>
                 </div>
          </div> 

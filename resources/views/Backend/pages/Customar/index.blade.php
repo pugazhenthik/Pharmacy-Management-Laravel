@@ -229,10 +229,14 @@
                         </div>
                     </div> 
                     <div class="modal-footer">
-                        <button type="button" onclick="printDiv('printableArea2')" class="btn btn-success btn-icon icon-left print">Print Details<i class="entypo-doc-text"></i></button> 
+                     <button type="button" onclick="printDiv('printableArea2')" class="btn btn-success btn-icon icon-left print">Print Details<i class="entypo-doc-text"></i></button> 
                         <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
                     </div>
                 </div>
+
+                                   
+                                </div>
+                            </div>
     </div>
 </div>
 @endsection

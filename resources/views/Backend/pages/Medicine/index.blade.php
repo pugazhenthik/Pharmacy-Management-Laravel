@@ -36,19 +36,24 @@
            
             <tr>
                 <td><input type="checkbox" data-id=""></td>
-                <td>{{ $medicine->generic->generic_name }}</td>
-                <td>{{ $medicine-> med_name }}</td>
-                @if($medicine-> med_image== null)
+                <td><img width="70" height="70" src="{{asset ('Backend_assets/Medicine/'. $medicine->med_name) }}"> </td>
+
+                <td>{{ $medicine->generic ? $medicine->generic->generic_name : "Not Set" }}</td>
+                <td>{{ $medicine->med_name }}</td>
+                @if($medicine->med_image== null)
                 <td><img alt="image" id="previmage" width="40" height="40" src='/blankmedicine.jpeg' class="rounded-circle mb-3 emp_img"></td>
                 @else
                 
-                <td><img width="70" height="70" src="{{asset ('Backend_assets/Medicine/'. $medicine->med_name) }}"> </td>
+                <td><img width="40" height="40" src={{$medicine->med_image}}> </td>
+
 
                 @endif
                 
                 <td>{{ $medicine-> med_sku}}</td>
-                <td>{{ $medicine->category->category_name }}</td>
-                <td>{{ $medicine->category->category_name}}</td>
+
+                <td>{{ $medicine->category ? $medicine->category->category_name : "Not Set" }}</td>
+                <td>{{ $medicine->sub_category ? $medicine->sub_category->category_name : "Not Set"}}</td>
+
                 <td>{{ $medicine->type->type_name }}</td>
                 <td>
                     @if($medicine-> med_status == 1)
