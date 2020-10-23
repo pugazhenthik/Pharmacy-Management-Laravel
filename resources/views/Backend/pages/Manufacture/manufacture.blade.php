@@ -52,9 +52,6 @@
     </table>
 </div>
 
-
-
-
 <!-- Add Modal -->
 
 <div class="modal fade" tabindex="-1" role="dialog" id="addModal">

@@ -24,13 +24,17 @@
     text-decoration: none;
     background: black;
 }
+
 /* .table td, .table th {
+
     padding: -0.25rem;
     padding: 10px 6px 0px 2px;
     vertical-align: top;
     /* margin-top: -1px; */
     border-top: 1px;
+
 } */
+
 .dataTables_filter {
     display: inline;
     float: right;
@@ -58,3 +62,5 @@
 .form-container{
     background-color: #e6f2ff;
 }
+
+#sidebar ul.menu-categories li.menu > .dropdown-toggle:hover, #sidebar ul.menu-categories li.menu a:hover{text-decoration: none;}

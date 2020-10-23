@@ -8,10 +8,13 @@
 <div class="col-md-10 header">
     <h3>Customer</h3>
 </div>
-<div class="col-md-2"><button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add
-        Customer</button></div>
+<div class="col-md-2">
+    <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add Customer</button>
+    {{-- <input type="button" onclick="printDiv('printableArea')" value="print" />   --}}
+    <button type="button" onclick="printDiv('printableArea')" class="btn btn-primary mt-1 float-right" > Print</button>  
+</div>
 
-<div class="col-md mt-5 ">
+<div class="col-md mt-5 " id="printableArea">
     <table id="dataTable" class="table table-striped table-bordered ">
         <thead class="text-center">
             <tr>
@@ -158,7 +161,7 @@
         <h4 id="exampleModalLabel" class="modal-title"><b >View Customer</b></h4> 
         <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
     </div>
-     <div class="modal-body">
+     <div class="modal-body" id="printableArea2">
          <div id="printDiv" class="invoice">
              <div class="row">
                  <div class="col-sm-6 invoice-left">
@@ -226,9 +229,12 @@
                         </div>
                     </div> 
                     <div class="modal-footer">
-                                    <a href=""><button  class="btn btn-success btn-icon icon-left print">Print Details<i class="entypo-doc-text"></i>
-                                    </button> </a>
-                                    <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                     <button type="button" onclick="printDiv('printableArea2')" class="btn btn-success btn-icon icon-left print">Print Details<i class="entypo-doc-text"></i></button> 
+                        <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                    </div>
+                </div>
+
+                                   
                                 </div>
                             </div>
     </div>
@@ -326,6 +332,13 @@
             }],
         ],
     });
+}
+function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+     document.body.innerHTML = printContents;
+     window.print();
+     document.body.innerHTML = originalContents;
 }
 </script>
 {!! JsValidator::formRequest('App\Http\Requests\CustomarRequest', '#addForm'); !!}
