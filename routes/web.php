@@ -44,4 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::get('medicine/view','MedicineController@show')->name('medicine_view');
     });
 
+    // Sell Route
+
+    Route::resource('sell','SellController');
+
 });
