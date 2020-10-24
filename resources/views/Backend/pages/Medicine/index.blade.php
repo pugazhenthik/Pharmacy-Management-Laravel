@@ -100,7 +100,7 @@
                 <div class="col-sm-6 invoice-left">
                     <a href="/">
                         <img src="{{asset('Backend_assets/assets/img/favicon1.png')}}"  width="60" alt="">
-                        <b>BIZ Pharmacy</b></a>
+                        <b>Bd Pharmacy</b></a>
                 </div>
                  <div class="col-sm-6 invoice-right">
                      </div>
@@ -170,6 +170,7 @@
             $("#v_gen_name").text(data.med_gen_id);
             $("#v_cat_name").text(data.med_cat_id);
             $("#v_sub_cat_name").text(data.med_sub_cat_id);
+            $("#v_man_name").text(data.med_manuf_id);
             $("#v_email").text(data.med_gen_id);
             $("#v_address").text(data.med_gen_id);
             $("#v_mobile").text(data.med_gen_id);

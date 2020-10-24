@@ -142,7 +142,7 @@ class MedicineController extends Controller
             \File::delete(public_path($medicine->med_image));
           }else{
             
-          
+        
             if($request->image)
             {    
                 $ext=$request->file('image')->getClientOriginalExtension();
@@ -158,10 +158,10 @@ class MedicineController extends Controller
                 'message'=>'Medicine Update Successfully!',
                 'alert-type' => 'success',
             );
-    
+        }
         return redirect()->back()->with($notification);
         
-    }
+    
 
 
         

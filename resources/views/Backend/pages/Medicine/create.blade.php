@@ -3,6 +3,7 @@
 @section('head', 'Add Medicine')
 @section('content')
 
+
     <div class="col-md-12 center">
         <div class="card-header">
            <div> Add Medicine</div> 

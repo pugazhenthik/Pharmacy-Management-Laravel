@@ -87,7 +87,7 @@
                     <a href=""> Sale List </a>
                 </li>
                 <li>
-                    <a href=""> Add Sale  </a>
+                    <a href="{{ url('/admin/sell') }}"> Add Sale  </a>
                 </li>
                 <li>
                     <a href="/admin/customar"> Customer</a>
