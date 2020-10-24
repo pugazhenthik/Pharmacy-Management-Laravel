@@ -58,11 +58,19 @@ class ManufactureController extends Controller
      * @param  \App\Models\Manufacture  $manufacture
      * @return \Illuminate\Http\Response
      */
-    public function show(Manufacture $manufacture)
+    public function show($id)
     {
-        //
+        $data = Manufacture::findOrFail($id);
+        if($data->status == 1) {
+            $data->status= 0;
+        }
+        else{
+            $data->status= 1;
+        } 
+        $data->save();
+        $status=200;
+        return response()->json($status);
     }
-
     /**
      * Show the form for editing the specified resource.
      *

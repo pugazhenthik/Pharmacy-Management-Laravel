@@ -16,8 +16,7 @@
                 <th>#</th>
                 <th>Gemeric Name</th>
                 <th>Name</th>
-        
-                <th>image</th>
+                <th>Image</th>
                 <th>SKU</th>
                 <th>Category</th>
                 <th>Sub-Category</th>
@@ -36,9 +35,8 @@
            
             <tr>
                 <td><input type="checkbox" data-id=""></td>
-                <td><img width="70" height="70" src="{{asset ('Backend_assets/Medicine/'. $medicine->med_name) }}"> </td>
-
-                <td>{{ $medicine->generic ? $medicine->generic->generic_name : "Not Set" }}</td>
+                 <td>{{ $medicine->generic ? $medicine->generic->generic_name : "Not Set" }}</td>
+               
                 <td>{{ $medicine->med_name }}</td>
                 @if($medicine->med_image== null)
                 <td><img alt="image" id="previmage" width="40" height="40" src='/blankmedicine.jpeg' class="rounded-circle mb-3 emp_img"></td>
@@ -141,7 +139,8 @@
                         <span style="color: black; font-size: 12px;"> Pharmacy BD</span>
                          <br> <span style="color: black; font-size: 12px;">01305976639</span>
                           <br> <span style="color: black; font-size: 12px;">Pharmacy@gmail.com</span>
-                           <br> <span style="color: black; font-size: 12px;"></span>House:28 - RoadNO:6 Blog:D,Mirpur 1. </span> <p></p></center></div></div> <div class="modal-footer"><button class="btn btn-success btn-icon icon-left hidden-print">
+                           <br> <span style="color: black; font-size: 12px;"></span>House:28 - RoadNO:6 Blog:D,Mirpur 1. </span> <p></p></center></div></div> <div class="modal-footer">
+                            <button class="btn btn-success btn-icon icon-left hidden-print">
 						Print Details
                         <i class="entypo-doc-text"></i></button> <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
                     </div>

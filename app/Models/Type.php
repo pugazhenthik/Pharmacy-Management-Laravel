@@ -13,4 +13,9 @@ class Type extends Model
     protected $primaryKey = 'type_id';
 
     protected $fillable =['type_name', 'type_description'];
+
+    public function scopeActive($query)
+    {
+        $query->where("status", 1);
+    }
 }

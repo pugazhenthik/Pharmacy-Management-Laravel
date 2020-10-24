@@ -14,7 +14,7 @@
             <tr>
                 <th>#</th>
                 <th>Category Name</th>
-                <th>Category Descryption</th>
+                <th>Details</th>
                 <th>Satus</th>
                 <th>Action</th>
             </tr>
@@ -32,22 +32,22 @@
                 </td>
                 <td>{{ $value['description'] }}</td>
                 <td>
-                	@if ($value['status'] == 1)
+                    @if ($value['status'] == 1)
                     <span class="text-success">Active</span>
-	                @else
-	                    <span class="text-danger">Inactive</span>
-	                @endif
-	            </td>
+                    @else
+                        <span class="text-danger">Inactive</span>
+                    @endif
+                </td>
     
     
                 <td class="text-left">
                     <ul class="table-controls">
 
-                    	@if ($value['status'] == 1)
-		                    <a class="status_id active_btn" data-id="{{$value['id']}}"><i data-feather="refresh-ccw"></i></a>
-		                @else
-		                    <a class="status_id inactive_btn" data-id="{{$value['id']}}"><i data-feather="refresh-ccw"></i></a>
-		                @endif
+                        @if ($value['status'] == 1)
+                            <a class="status_id active_btn" data-id="{{$value['id']}}"><i data-feather="refresh-ccw"></i></a>
+                        @else
+                            <a class="status_id inactive_btn" data-id="{{$value['id']}}"><i data-feather="refresh-ccw"></i></a>
+                        @endif
 
                         <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$value['id']}}" title="Edit" data-target="#editModal"><i class="text-info" data-feather="edit"></i></a>
 
@@ -63,21 +63,24 @@
             <tr class="text-center">
                 <th>#</th>
                 <th>Category Name</th>
-                <th>Category Descryption</th>
+                <th>Details</th>
                 <th>Status</th>
                 <th class="text-center">Action</th>
             </tr>
         </tfoot>
     </table>
 <br>
-<br>
+<br><br>
+<div class="col-md-10 header">
+    <h5>_Sub Category</h5><br>
+</div>
     <table id="dataTable" class="table table-striped table-bordered ">
         <thead>
             <tr class="text-center">
                 <th>#</th>
                 <th>Category Name</th>
                 <th>Sub Category Name</th>
-                <th>Sub Category Descryption</th>
+                <th>Sub Category Details</th>
                 <th>Satus</th>
                 <th>Action</th>
             </tr>
@@ -153,8 +156,8 @@
                         <input type="text" name="category_name" class="form-control" placeholder="Category Name">
                     </div>
                     <div class="form-group mb-4">
-                        <label class="control-label">Category Description:</label>
-                        <input type="text" name="category_description" class="form-control" placeholder="Category Descryption">
+                        <label class="control-label">Details:</label>
+                        <input type="text" name="category_description" class="form-control" placeholder="Details">
                     </div>
                     <div>
                         <input type="checkbox" name="parent_category" id="parent_category" onchange="checkSubCategory('parent_category','parent_category_div','parent_category')" value="false">
@@ -196,11 +199,11 @@
 
                     <div class="form-group mb-4">
                         <label class="control-label">Category Name:</label>
-                        <input type="text" name="category_name" class="form-control" id="e_category_name">
+                        <input type="text" name="category_name" class="form-control" id="e_category_name" placeholder="Category Name">
                     </div>
                     <div class="form-group mb-4">
-                        <label class="control-label">Category Descryption:</label>
-                        <input type="text" name="category_description" class="form-control" id="e_category_description">
+                        <label class="control-label">Details:</label>
+                        <input type="text" name="category_description" class="form-control" id="e_category_description" placeholder="Details">
                     </div>
 
                      <div>
@@ -216,7 +219,7 @@
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary">Save</button>
+                    <button class="btn btn-primary">Update</button>
             </form>
         </div>
     </div>
@@ -227,7 +230,9 @@
 <script>
     $(document).ready(function(){
         $("#dataTable").DataTable();
-        $(".edit").click(function(){
+    });
+
+    $(document).on('click',".edit",function(){
             let id=$(this).attr("data-id");
            
 
@@ -252,33 +257,51 @@
             });
         });
 
+        $(document).on('click',".status_id",function(){
+            var id=$(this).attr("data-id");
 
-        $('.status_id').click(function(){
-			var id=$(this).attr("data-id");
-
-			$.ajax({
+            $.ajax({
             url: "/admin/category/show/"+id,
             type: "get",
             dataType: "json",
             success: function (response) {
-            	console.log(response);
+                console.log(response);
                 if (response == 200) 
                 {
-                    iziToast.show({
-				    title: 'Category',
-				    timeout: 20000,
-				    timeout: 20000,
-			        close: true,
-			        overlay: true,
-			        displayMode: 'once',
-				    message: 'status Changed successfully'
-					});
-					location.reload();
+                    location.reload();
                 }
             }
+        })
         });
-		});
-    });
+
+        function Delete(id){
+        var id=id;
+        iziToast.question({
+            timeout: 20000,
+            close: true,
+            overlay: true,
+            displayMode: 'once',
+            id: 'question',
+            zindex: 999,
+            title: 'Wait!',
+            message: 'Are you sure? Once Deleted Can\'t be undone!',
+            position: 'center',
+            buttons: [
+                ['<button><b>YES</b></button>', function () {
+                    var $form = $("#deleteForm").closest('form');
+
+                    $form.attr('action','/admin/category/'+id);
+                    $form.submit()
+                }, true],
+                ['<button>NO</button>', function (instance, toast) {
+
+                    instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
+
+                }],
+            ],
+        });
+    }
+
     function Delete(id){
     var id=id;
     iziToast.question({
@@ -342,8 +365,8 @@
 
 </script>
 
-<!-- {!! JsValidator::formRequest('App\Http\Requests\CategoryRequest', '#addForm'); !!} -->
-<!-- {!! JsValidator::formRequest('App\Http\Requests\CategoryRequest', '#editForm'); !!} -->
+{!! JsValidator::formRequest('App\Http\Requests\CategoryRequest', '#addForm'); !!}
+{!! JsValidator::formRequest('App\Http\Requests\CategoryRequest', '#editForm'); !!}
 
 @endsection
 

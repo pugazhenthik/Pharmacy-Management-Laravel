@@ -13,14 +13,17 @@ Route::middleware('auth')->group(function () {
     
     //Manufacture Route
     Route::resource('manufacture','ManufactureController');
+    Route::get('manufacture/show/{id}','ManufactureController@show');
     //Category Route
     Route::resource('category','CategoryController');
     Route::get('allCategory','CategoryController@allCategory');
     Route::get('category/show/{id}','CategoryController@show');
     //Generic Route
     Route::resource('generic','GenericController');
+    Route::get('generic/show/{id}','GenericController@show');
     //Type Route
-    Route::resource('/type','TypeController');
+    Route::resource('type','TypeController');
+    Route::get('type/show/{id}','TypeController@show');
 
     //Unit Route
     Route::resource('unit','UnitController');

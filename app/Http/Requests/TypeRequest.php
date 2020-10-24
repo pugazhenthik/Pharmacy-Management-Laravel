@@ -25,13 +25,11 @@ class TypeRequest extends FormRequest
     {
         return [
             "type_name"=>"required",
-            "type_description"=>"required",
         ];
     }
     public function name(){
         return[
             "type_name"=>"Type Name",
-            "type_description"=>"Type Description"
         ];
     }
 }

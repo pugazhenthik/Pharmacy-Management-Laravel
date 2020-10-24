@@ -17,8 +17,8 @@ class CreateSuppliersTable extends Migration
             $table->bigIncrements('supplier_id');
             $table->string('supplier_name');
             $table->string('supplier_address');
-            $table->string('supplier_mobile');
-            $table->string('supplier_email');
+            $table->string('supplier_mobile')->unique();
+            $table->string('supplier_email')->unique()->nullable();
             $table->string('supplier_previous_balance')->nullable();
             $table->string('supplier_current_balance');
             $table->integer('status')->default(1);

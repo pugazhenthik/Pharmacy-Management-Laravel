@@ -17,6 +17,7 @@ class CreateTypesTable extends Migration
             $table->bigIncrements('type_id');
             $table->string('type_name');
             $table->string('type_description');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

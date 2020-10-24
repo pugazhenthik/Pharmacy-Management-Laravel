@@ -26,8 +26,8 @@ class SupplierRequest extends FormRequest
         return [
             "supplier_name"=>"required",
             "supplier_address"=>"required",
-            "supplier_mobile"=>"required",
-            "supplier_email"=>"required",
+            "supplier_mobile"=>"required|unique:suppliers",
+            "supplier_email"=>"nullable|unique:suppliers",
             "supplier_current_balance"=>"required",
         ];
     }

@@ -23,9 +23,6 @@ class MedicineController extends Controller
      */
     public function index()
     {
-
-    
-
         $medicines = Medicine::with('category','sub_category','generic','type')->get();
 
         return view('Backend.pages.Medicine.index',compact('medicines'));
