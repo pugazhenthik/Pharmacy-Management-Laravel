@@ -54,9 +54,18 @@ class GenericController extends Controller
      * @param  \App\Models\Generic  $generic
      * @return \Illuminate\Http\Response
      */
-    public function show(Generic $generic)
+    public function show($id)
     {
-        //
+        $data = Generic::findOrFail($id);
+        if($data->status == 1) {
+            $data->status= 0;
+        }
+        else{
+            $data->status= 1;
+        } 
+        $data->save();
+        $status=200;
+        return response()->json($status);
     }
 
     /**

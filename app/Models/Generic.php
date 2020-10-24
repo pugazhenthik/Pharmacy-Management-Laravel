@@ -15,6 +15,10 @@ class Generic extends Model
     protected$fillable = [
         'generic_name',
         'generic_details',
-        
     ];
+    
+    public function scopeActive($query)
+    {
+        $query->where("status", 1);
+    }
 }

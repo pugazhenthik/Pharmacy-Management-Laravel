@@ -1,6 +1,6 @@
 @extends('Backend.layouts.app')
-@section('title') Type @endsection
-@section('head', 'Type')
+@section('title') Unit @endsection
+@section('head', 'Unit')
 @section('content')
 
 <div class="col-md-10 header">
@@ -14,7 +14,7 @@
             <tr>
                 <th>#</th>
                 <th>Unit Name</th>
-                <th>Unit Descryption</th>
+                <th>Descryption</th>
                 <th>Status</th>
                 <th class="text-center">Action</th>
             </tr>
@@ -32,12 +32,12 @@
                 <td>{{ $value-> unit_name }}</td>
                 <td>{{ $value-> unit_description }}</td>
                 <td>
-                	@if ($value->status == 1)
+                    @if ($value->status == 1)
                     <span class="text-success">Active</span>
-	                @else
-	                    <span class="text-danger">Inactive</span>
-	                @endif
-	            </td>
+                    @else
+                        <span class="text-danger">Inactive</span>
+                    @endif
+                </td>
     
                 <td>
                     <ul class="table-controls">
@@ -48,7 +48,7 @@
                             <a class="status_id inactive_btn" data-id="{{$value->unit_id}}"><i data-feather="refresh-ccw"></i></a>
                         @endif
 
-                    	<a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$value->unit_id}}" title="Edit" data-target="#editModal"><i class="text-info" data-feather="edit"></i></a>
+                        <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$value->unit_id}}" title="Edit" data-target="#editModal"><i class="text-info" data-feather="edit"></i></a>
 
                         <a href="{{ route('unit.destroy',($value->unit_id)) }}" data-toggle="tooltip" data-placement="top" title=""onclick="event.preventDefault(); Delete({{ $value->unit_id }})";
                                 data-original-title="Delete"><i class="text-danger" data-feather="trash-2"></i></a>                      
@@ -81,11 +81,11 @@
 
                     <div class="form-group mb-4">
                         <label class="control-label">Unit Name:</label>
-                        <input type="text" name="unit_name" class="form-control" placeholder="Type Name">
+                        <input type="text" name="unit_name" class="form-control" placeholder="Unit Name">
                     </div>
                     <div class="form-group mb-4">
-                        <label class="control-label">Unit Descryption:</label>
-                        <input type="text" name="unit_description" class="form-control" placeholder="Unit Descryption">
+                        <label class="control-label">Descryption:</label>
+                        <input type="text" name="unit_description" class="form-control" placeholder="Descryption">
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
@@ -115,11 +115,11 @@
 
                     <div class="form-group mb-4">
                         <label class="control-label">Unit Name:</label>
-                        <input type="text" name="unit_name" class="form-control" id="e_unit_name">
+                        <input type="text" name="unit_name" class="form-control" id="e_unit_name" placeholder="Unit Name">
                     </div>
                     <div class="form-group mb-4">
-                        <label class="control-label">Unit Descryption:</label>
-                        <input type="text" name="unit_description" class="form-control" id="e_unit_description">
+                        <label class="control-label">Descryption:</label>
+                        <input type="text" name="unit_description" class="form-control" id="e_unit_description" placeholder="Descryption">
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
@@ -135,53 +135,47 @@
 <script>
 
     $(document).ready(function(){
-        $("#dataTable").DataTable();
-        $(".edit").click(function(){
-            let id=$(this).attr("data-id");
-           
+        $("#dataTable").DataTable();        
+    });
+    
+    $(document).on('click','.edit',function(){
+        let id=$(this).attr("data-id");
+       
 
-            $.ajax({
-                url:"/admin/unit/"+id+"/edit",
-                type:'get',
-                data:{"_token":"{{ csrf_token() }}"},
-                dataType:"json",
-                success:function(data)
-                {
-                    console.log(data);
-                    $("#e_unit_name").val(data.unit_name);
-                    $("#e_unit_description").val(data.unit_description);
+        $.ajax({
+            url:"/admin/unit/"+id+"/edit",
+            type:'get',
+            data:{"_token":"{{ csrf_token() }}"},
+            dataType:"json",
+            success:function(data)
+            {
+                console.log(data);
+                $("#e_unit_name").val(data.unit_name);
+                $("#e_unit_description").val(data.unit_description);
 
-                    $("#editForm").attr("action","/admin/unit/"+data.unit_id);
+                $("#editForm").attr("action","/admin/unit/"+data.unit_id);
 
-                }
-
-            });
-        });
-        $('.status_id').click(function(){
-            var id=$(this).attr("data-id");
-
-            $.ajax({
-            url: "/admin/unit/show/"+id,
-            type: "get",
-            dataType: "json",
-            success: function (response) {
-                console.log(response);
-                if (response == 200) 
-                {
-                    iziToast.show({
-                    title: 'Category',
-                    timeout: 20000,
-                    timeout: 20000,
-                    close: true,
-                    overlay: true,
-                    displayMode: 'once',
-                    message: 'status Changed successfully'
-                    });
-                    location.reload();
-                }
             }
-        })
+
         });
+    });
+
+
+    $(document).on('click','.status_id',function(){
+        var id=$(this).attr("data-id");
+
+        $.ajax({
+        url: "/admin/unit/show/"+id,
+        type: "get",
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            if (response == 200) 
+            {
+                location.reload();
+            }
+        }
+    })
     });
 
     function Delete(id){

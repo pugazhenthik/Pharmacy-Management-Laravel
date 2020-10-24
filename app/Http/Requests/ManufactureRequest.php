@@ -25,9 +25,10 @@ class ManufactureRequest extends FormRequest
     {
         return [
             'manufac_name'=> "required",
-            'manufac_mobile'=> "required",
+            'manufac_mobile'=> "required|unique:manufactures",
             'manufac_address'=> "required",
             'manufac_balance'=> "required",
+            'manufac_email' => 'nullable|unique:manufactures',
 
         
         ];
@@ -40,6 +41,7 @@ class ManufactureRequest extends FormRequest
             'manufac_mobile' => 'Manufacture Mobile',
             'manufac_address' => 'Manufacture Address',
             'manufac_balance' => 'Manufacture Balance',
+            'manufac_email' => 'Manufacture Email',
 
         ];
  }

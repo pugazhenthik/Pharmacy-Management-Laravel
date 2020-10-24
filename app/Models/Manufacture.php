@@ -19,6 +19,10 @@ class Manufacture extends Model
         'manufac_address',
         'manufac_details',
         'manufac_balance', 
-
     ];
+
+    public function scopeActive($query)
+    {
+        $query->where("status", 1);
+    }
 }

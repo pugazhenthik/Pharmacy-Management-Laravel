@@ -57,9 +57,18 @@ class TypeController extends Controller
      * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function show(Type $type)
+    public function show($id)
     {
-        //
+        $data = Type::findOrFail($id);
+        if($data->status == 1) {
+            $data->status= 0;
+        }
+        else{
+            $data->status= 1;
+        } 
+        $data->save();
+        $status=200;
+        return response()->json($status);
     }
 
     /**

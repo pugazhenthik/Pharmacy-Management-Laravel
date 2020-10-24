@@ -14,7 +14,8 @@
             <tr>
                 <th>#</th>
                 <th>Type Name</th>
-                <th>Type Descryption</th>
+                <th>Descryption</th>
+                <th>Status</th>
                 <th class="text-center">Action</th>
             </tr>
         </thead>
@@ -30,9 +31,22 @@
                 <td><input type="checkbox" data-id=""></td>
                 <td>{{ $value-> type_name }}</td>
                 <td>{{ $value-> type_description }}</td>
+                <td>
+                    @if ($value->status == 1)
+                    <span class="text-success">Active</span>
+                    @else
+                        <span class="text-danger">Inactive</span>
+                    @endif
+                </td>
     
                 <td>
                     <ul class="table-controls">
+
+                        @if ($value->status == 1)
+                            <a class="status_id active_btn" data-id="{{$value->type_id}}"><i data-feather="refresh-ccw"></i></a>
+                        @else
+                            <a class="status_id inactive_btn" data-id="{{$value->type_id}}"><i data-feather="refresh-ccw"></i></a>
+                        @endif
 
                         <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$value->type_id}}" title="Edit" data-target="#editModal"><i class="text-info" data-feather="edit"></i></a>
 
@@ -70,8 +84,8 @@
                         <input type="text" name="type_name" class="form-control" placeholder="Type Name">
                     </div>
                     <div class="form-group mb-4">
-                        <label class="control-label">Type Descryption:</label>
-                        <input type="text" name="type_description" class="form-control" placeholder="Type Descryption">
+                        <label class="control-label">Descryption:</label>
+                        <input type="text" name="type_description" class="form-control" placeholder="Descryption">
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
@@ -101,16 +115,16 @@
 
                     <div class="form-group mb-4">
                         <label class="control-label">Type Name:</label>
-                        <input type="text" name="type_name" class="form-control" id="e_type_name">
+                        <input type="text" name="type_name" class="form-control" id="e_type_name" placeholder="Type Name">
                     </div>
                     <div class="form-group mb-4">
-                        <label class="control-label">Type Descryption:</label>
-                        <input type="text" name="type_description" class="form-control" id="e_type_description">
+                        <label class="control-label">Descryption:</label>
+                        <input type="text" name="type_description" class="form-control" id="e_type_description" placeholder="Descryption">
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary">Save</button>
+                    <button class="btn btn-primary">Update</button>
             </form>
         </div>
     </div>
@@ -121,7 +135,9 @@
 
     $(document).ready(function(){
         $("#dataTable").DataTable();
-        $(".edit").click(function(){
+    });
+
+    $(document).on('click','.edit',function(){
             let id=$(this).attr("data-id");
            
 
@@ -142,7 +158,23 @@
 
             });
         });
-    });
+
+        $(document).on('click','.status_id',function(){
+            var id=$(this).attr("data-id");
+
+            $.ajax({
+            url: "/admin/type/show/"+id,
+            type: "get",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                if (response == 200) 
+                {
+                    location.reload();
+                }
+            }
+        })
+        });
 
     function Delete(id){
     var id=id;
@@ -178,5 +210,3 @@
 {!! JsValidator::formRequest('App\Http\Requests\TypeRequest', '#editForm'); !!}
 
 @endsection
-
-

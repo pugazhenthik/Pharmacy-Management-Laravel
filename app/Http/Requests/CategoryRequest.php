@@ -25,7 +25,7 @@ class CategoryRequest extends FormRequest
     {
         
         return [
-            "category_name"=>"required",
+            "category_name"=>"required|unique:categories",
         ];
     }
     public function name(){

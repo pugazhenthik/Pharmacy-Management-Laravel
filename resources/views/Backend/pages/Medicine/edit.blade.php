@@ -139,45 +139,42 @@
         <div class="form-group col-md-12">
             <div class="col-sm-7">
                 <label for="single_weight" class="control-label">Single Unit Weight</label>
-                    <input type="text" id="single_weight" name="med_single_weight" value="{{ $medicines->med_single_weight }}" class="form-control">
+                    <input type="text" id="single_weight" name="med_single_weight" value="{{ $medicines->med_single_weight }}" class="form-control" placeholder="Enter Single Unit Weight">
                 </div>
             </div> 
             <div class="form-group col-md-12">
                 <div class="col-sm-7">
                     <label for="box_weight" class="control-label">Box Weight</label> 
-                    <input type="text" name="med_box_weight" id="box_weight" value="{{ $medicines->med_box_weight }}"class="form-control">
+                    <input type="text" name="med_box_weight" id="box_weight" value="{{ $medicines->med_box_weight }}"class="form-control" placeholder="Enter Box Weight">
                 </div>
             </div> 
         <div class="form-group col-md-12">
             <div class="col-sm-7">
                 <label for="unit_per_box" class="control-label">Unit Per Box</label>
-                    <input type="number" min="0" name="med_per_box" id="unit_per_box" value="{{ $medicines->med_per_box }}" class="form-control">
+                    <input type="number" min="0" name="med_per_box" id="unit_per_box" value="{{ $medicines->med_per_box }}" class="form-control" placeholder="Enter Unit per Box">
                 </div>
             </div>
             <div class="form-group col-md-12">
                 <div class="col-sm-7">
                     <label for="minimum_unit" class="control-label">Minimum Unit</label> 
-                    <input type="number" min="0" name="med_mini_unit" id="minimum_unit" value="{{ $medicines->med_mini_unit }}" class="form-control">
+                    <input type="number" min="0" name="med_mini_unit" id="minimum_unit" value="{{ $medicines->med_mini_unit }}" class="form-control" placeholder="Enter Minimum unit">
                 </div>
             </div>
                 <div class="form-group col-md-12">
                     <div class="col-sm-7">
                         <label for="unit_location" class="control-label">Unit Location</label> 
-                        <input type="text" name="med_location" id="unit_location" value="{{ $medicines->med_location }}" class="form-control">
+                        <input type="text" name="med_location" id="unit_location" value="{{ $medicines->med_location }}" class="form-control" placeholder="Enter Unit Location">
                     </div>
                 </div>
-                <div class="float-right">
+                <div class="float-right" style="margin-bottom: 10px;">
                     <button class="btn btn-success" type="submit">update</button> 
-                    <a href="{{ url('/admin/medicine') }}" class="btn-sm btn-danger" >Close</a> 
+                    <a href="{{ url('/admin/medicine') }}" class="btn-sm btn-danger" style="margin-right: 10px;">Close</a> 
                 </div>
             </div> 
-           
         </div>
-        
     </form>
 </div>
-    </div>
-
+<br>
 @endsection
 @section('script')
 <script>

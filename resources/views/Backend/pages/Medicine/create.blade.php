@@ -158,9 +158,9 @@
                         <input type="text" name="med_location" id="unit_location" placeholder="Where you store this unit?" class="form-control">
                     </div>
                 </div>
-                <div class="float-right">
+                <div class="float-right" style="margin-bottom: 10px;">
                     <button class="btn-sm btn-success" type="submit">Save</button> 
-                    <a href="{{ url('/admin/medicine') }}" class="close-btn"> Close</a> 
+                    <a href="{{ url('/admin/medicine') }}" class="close-btn" style="margin-right: 10px;"> Close</a> 
                 </div>
                    
                 </div>

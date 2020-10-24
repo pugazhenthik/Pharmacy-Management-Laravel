@@ -17,6 +17,7 @@ class CreateGenericsTable extends Migration
             $table->id('generic_id');
             $table->string('generic_name');
             $table->string('generic_details')->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

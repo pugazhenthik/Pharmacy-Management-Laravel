@@ -13,10 +13,11 @@
         <thead class="text-center">
             <tr>
                 <th>#</th>
-                <th>Name</th>
+                <th>Manufacture Name</th>
                 <th>Mobile</th>
                 <th>Address</th>
                 <th>Balance</th>
+                <th>Status</th>
                 <th class="text-center">Action</th>
             </tr>
         </thead>
@@ -34,10 +35,23 @@
                 <td>{{ $manufacture-> manufac_mobile }}</td>
                 <td>{{ $manufacture-> manufac_address}}</td>
                 <td>{{ $manufacture-> manufac_balance }}</td>
-    
-    
+                <td>
+                    @if ($manufacture->status == 1)
+                    <span class="text-success">Active</span>
+                    @else
+                        <span class="text-danger">Inactive</span>
+                    @endif
+                </td>
+
                 <td class="text-left">
                     <ul class="table-controls">
+
+                        @if ($manufacture->status == 1)
+                            <a class="status_id active_btn" data-id="{{$manufacture->manufac_id}}"><i data-feather="refresh-ccw"></i></a>
+                        @else
+                            <a class="status_id inactive_btn" data-id="{{$manufacture->manufac_id}}"><i data-feather="refresh-ccw"></i></a>
+                        @endif
+
                         <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$manufacture->manufac_id}}" title="Edit" data-target="#editModal"><i class="text-info" data-feather="edit"></i></a>
 
 
@@ -51,6 +65,9 @@
         </tbody>
     </table>
 </div>
+
+
+
 
 <!-- Add Modal -->
 
@@ -69,39 +86,39 @@
 
                     <div class="form-row sm mb-4">
                         <div class="form-group col-md-6">
-                            <label for="name">Name</label>
+                            <label for="name">Manufacture Name:</label>
                             <input type="name" class="form-control" name="manufac_name" id="name"
-                                placeholder="Type Name">
+                                placeholder="Manufacture Name">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="email">Email</label>
+                            <label for="email">Email:</label>
                             <input type="email" class="form-control" name="manufac_email" id="email"
-                                placeholder="Type Email">
+                                placeholder="email@gmail.com">
                         </div>
                     </div>
 
                     <div class="form-row sm mb-4">
                         <div class="form-group col-md-6">
                             <label>Balance:</label>
-                        <input type="number" class="form-control" name="manufac_balance" id="balence">
+                        <input type="number" class="form-control" name="manufac_balance" id="balence" placeholder="Balance">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="mobile">Mobile</label>
+                            <label for="mobile">Mobile:</label>
                             <input type="text" class="form-control" name="manufac_mobile" id="mobile"
-                                placeholder="Type Mobile">
+                                placeholder="Mobile">
                         </div>
                     </div>
 
             
                     <div class="form-group">
-                        <label> Address:</label>
+                        <label>Address:</label>
                         <textarea class="form-control" style="max-height: 65px;" name="manufac_address" cols="10"
-                            rows="10"></textarea>
+                            rows="10" placeholder="Address"></textarea>
                     </div>
                     <div class="form-group">
                         <label> Details:</label>
                         <textarea class="form-control" style="max-height: 65px;" name="manufac_details" cols="10"
-                            rows="10"></textarea>
+                            rows="10" placeholder="Details"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
@@ -131,44 +148,44 @@
 
                     <div class="form-row sm mb-4">
                         <div class="form-group col-md-6">
-                            <label for="name">Name</label>
+                            <label for="name">Manufacture Name:</label>
                             <input type="name" class="form-control" name="manufac_name" id="e_name"
-                                placeholder="Type Name">
+                                placeholder="Manufacture Name">
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="email">Email</label>
+                            <label for="email">Email:</label>
                             <input type="email" class="form-control" name="manufac_email" id="e_email"
-                                placeholder="Type Email">
+                                placeholder="email@gmail.com">
                         </div>
                     </div>
 
                     <div class="form-row sm mb-4">
                         <div class="form-group col-md-6">
                             <label>Balance:</label>
-                        <input type="number" class="form-control" name="manufac_balance" id="e_balence">
+                        <input type="number" class="form-control" name="manufac_balance" id="e_balence" placeholder="Balance">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="mobile">Mobile</label>
                             <input type="text" class="form-control" name="manufac_mobile" id="e_mobile"
-                                placeholder="Type Mobile">
+                                placeholder="Mobile">
                         </div>
                     </div>
 
             
                     <div class="form-group">
-                        <label> Address:</label>
+                        <label>Address:</label>
                         <textarea class="form-control" style="max-height: 65px;" name="manufac_address" cols="10"
-                            rows="10" id="e_manufac_address"></textarea>
+                            rows="10" id="e_manufac_address" placeholder="Address"></textarea>
                     </div>
                     <div class="form-group">
-                        <label> Details:</label>
+                        <label>Details:</label>
                         <textarea class="form-control" style="max-height: 65px;" name="manufac_details" cols="10"
-                            rows="10" id="e_manufac_details"></textarea>
+                            rows="10" id="e_manufac_details" placeholder="Details"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary">Save</button>
+                    <button class="btn btn-primary">Update</button>
             </form>
         </div>
     </div>
@@ -183,6 +200,7 @@
     $(document).ready(function(){
         $("#dataTable").DataTable();
     });
+
     $(document).on("click",".edit",function(){
             let id=$(this).attr("data-id");
             $.ajax({
@@ -204,6 +222,22 @@
                 }
 
             });
+        });
+        $(document).on('click','.status_id',function(){
+            var id=$(this).attr("data-id");
+
+            $.ajax({
+            url: "/admin/manufacture/show/"+id,
+            type: "get",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                if (response == 200) 
+                {
+                    location.reload();
+                }
+            }
+            })
         });
 
     function Delete(id){

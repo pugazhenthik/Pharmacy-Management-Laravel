@@ -10,8 +10,7 @@
 </div>
 <div class="col-md-2">
     <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add Customer</button>
-    {{-- <input type="button" onclick="printDiv('printableArea')" value="print" />   --}}
-    <button type="button" onclick="printDiv('printableArea')" class="btn btn-primary mt-1 float-right" > Print</button>  
+    <!-- <input type="button" onclick="printDiv('printableArea')" value="print" /> --> 
 </div>
 
 <div class="col-md mt-5 " id="printableArea">
@@ -98,7 +97,7 @@
                     <div class="form-group">
                         <label> Address:</label>
                         <textarea class="form-control" style="max-height: 65px;" name="customar_address" cols="10"
-                            rows="10"></textarea>
+                            rows="10" placeholder="Type Address"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
@@ -129,7 +128,7 @@
                     <div class="form-group">
                         <label> Name:</label>
                         <input class="form-control" name="customar_name" 
-                            id="e_name">
+                            id="e_name" placeholder="Type Name">
                     </div>
 
                     <div class="form-group">
@@ -140,12 +139,12 @@
                     <div class="form-group">
                         <label> Address:</label>
                         <textarea class="form-control" style="max-height: 65px;" name="customar_address" cols="10"
-                            rows="10" id="e_address"></textarea>
+                            rows="10" id="e_address" placeholder="Type Address"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary">Save</button>
+                    <button class="btn btn-primary">Update</button>
             </form>
         </div>
     </div>
@@ -161,8 +160,9 @@
         <h4 id="exampleModalLabel" class="modal-title"><b >View Customer</b></h4> 
         <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
     </div>
-     <div class="modal-body" id="printableArea2">
-         <div id="printDiv" class="invoice">
+
+     <div class="modal-body" >
+         <div id="printableArea">
              <div class="row">
                  <div class="col-sm-6 invoice-left">
                      <a href="/">
@@ -175,11 +175,11 @@
                 </div> 
                 <hr class="margin">
                  <div class="row">
-                     <div class="col-sm-6 invoice-left"><h4 >Customer Details</h4> 
-    Name:<b id="v_name"></b>
-    <br > <strong >Mobile: <b id="v_mobile"></b> </strong>
-    <br > <strong >Address: <b id="v_address"></b> </strong>
-    <br > <strong >Due Able: </strong>NO
+                    <div class="col-sm-6 invoice-left" style="font-family: ubuntu;"><h5>Customer Details:</h5> 
+         <strong>Name &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: <b id="v_name"></b> </strong>
+    <br> <strong>Mobile &nbsp&nbsp&nbsp&nbsp: <b id="v_mobile"></b> </strong>
+    <br> <strong>Address &nbsp&nbsp: <b id="v_address"></b> </strong>
+    <br> <strong>Due Able : </strong>NO
      </div>
      </div>
  <div class="margin">
@@ -229,14 +229,13 @@
                         </div>
                     </div> 
                     <div class="modal-footer">
-                     <button type="button" onclick="printDiv('printableArea2')" class="btn btn-success btn-icon icon-left print">Print Details<i class="entypo-doc-text"></i></button> 
+                     <!-- <button type="button" onclick="printDiv('printableArea2')" class="btn btn-success btn-icon icon-left print">Print Details<i class="entypo-doc-text"></i></button>  -->
+                     <input type="button" class="btn btn-success btn-icon icon-left print" onclick="printDiv('printableArea')" value="Print Details" />
                         <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
                     </div>
                 </div>
 
                                    
-                                </div>
-                            </div>
     </div>
 </div>
 @endsection
@@ -333,13 +332,18 @@
         ],
     });
 }
+
 function printDiv(divName) {
      var printContents = document.getElementById(divName).innerHTML;
      var originalContents = document.body.innerHTML;
+
      document.body.innerHTML = printContents;
+
      window.print();
+
      document.body.innerHTML = originalContents;
 }
+
 </script>
 {!! JsValidator::formRequest('App\Http\Requests\CustomarRequest', '#addForm'); !!}
 {!! JsValidator::formRequest('App\Http\Requests\CustomarRequest', '#editForm'); !!}

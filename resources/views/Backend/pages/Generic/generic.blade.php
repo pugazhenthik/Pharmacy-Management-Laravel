@@ -1,8 +1,6 @@
 @extends('Backend.layouts.app')
 @section('title') Generic @endsection
-
 @section('head', 'Generic')
-
 @section('content')
 
 <div class="col-md-10 header">
@@ -16,8 +14,9 @@
         <thead class="text-center">
             <tr>
                 <th>#</th>
-                <th>Name</th>
+                <th>Generic Name</th>
                 <th>Detalis</th>
+                <th>Status</th>
                 <th class="text-center">Action</th>
             </tr>
         </thead>
@@ -33,10 +32,22 @@
                 <td><input type="checkbox" data-id=""></td>
                 <td>{{ $generic-> generic_name}}</td>
                 <td>{{ $generic-> generic_details }}</td>
-    
-    
+                <td>
+                    @if ($generic->status == 1)
+                    <span class="text-success">Active</span>
+                    @else
+                        <span class="text-danger">Inactive</span>
+                    @endif
+                </td>
                 <td>
                     <ul class="table-controls">
+
+                        @if ($generic->status == 1)
+                            <a class="status_id active_btn" data-id="{{$generic->generic_id}}"><i data-feather="refresh-ccw"></i></a>
+                        @else
+                            <a class="status_id inactive_btn" data-id="{{$generic->generic_id}}"><i data-feather="refresh-ccw"></i></a>
+                        @endif
+
                         <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$generic->generic_id}}" title="Edit" data-target="#editModal"><i class="text-info" data-feather="edit"></i></a>
 
                         <a href="{{ route('generic.destroy',($generic->generic_id)) }}" data-toggle="tooltip" data-placement="top" title=""onclick="event.preventDefault(); Delete({{ $generic->generic_id }});"
@@ -67,15 +78,15 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label> Name:</label>
-                        <input type="text" class="form-control"  name="generic_name" placeholder="Type Name">
+                        <label>Generic Name:</label>
+                        <input type="text" class="form-control"  name="generic_name" placeholder="Generic Name">
                     </div>
             
 
                     <div class="form-group">
                         <label> Details:</label>
                         <textarea class="form-control" style="max-height: 65px;" name="generic_details" cols="10"
-                            rows="10"></textarea>
+                            rows="10" placeholder="Details"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
@@ -104,19 +115,19 @@
                 <div class="modal-body">
             
                     <div class="form-group">
-                        <label> Name:</label>
+                        <label>Generic Name:</label>
                         <input class="form-control" name="generic_name" 
-                            id="e_name">
+                            id="e_name" placeholder="Generic Name">
                     </div>
                     <div class="form-group">
                         <label> Details:</label>
                         <textarea class="form-control" style="max-height: 65px;" name="generic_details" cols="10"
-                            rows="10" id="e_details"></textarea>
+                            rows="10" id="e_details" placeholder="Details"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer bg-whitesmoke br">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary">Save</button>
+                    <button class="btn btn-primary">Update</button>
             </form>
         </div>
     </div>
@@ -124,12 +135,13 @@
 </div>
 
 @endsection
-
 @section('script')
 <script>
    $(document).ready(function(){
        $("#dataTable").DataTable();
-       $(".edit").click(function(){
+   }); 
+
+      $(document).on('click','.edit',function(){
            let id=$(this).attr("data-id");
            $.ajax({
                url:"/admin/generic/"+id+"/edit",
@@ -144,12 +156,24 @@
                    $("#editForm").attr("action","/admin/generic/"+data.generic_id);
 
                }
-
            });
-
        });
+      $(document).on('click','.status_id',function(){
+            var id=$(this).attr("data-id");
 
-   }); 
+            $.ajax({
+            url: "/admin/generic/show/"+id,
+            type: "get",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                if (response == 200) 
+                {
+                    location.reload();
+                }
+            }
+        })
+        });
 
    function Delete(id){
     var id=id;
