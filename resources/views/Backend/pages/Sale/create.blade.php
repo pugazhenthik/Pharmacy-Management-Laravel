@@ -1,17 +1,24 @@
 @extends('Backend.layouts.app')
 @section('title') Seal @endsection
-@section('head', 'Add Sea;')
+@section('head', 'Add Seal')
 @section('content')
-<div>
-    <h3>Sale</h3> 
-    <br> 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <div class="panel-title">Sale Product</div> 
-            <div class="panel-options"><a href="#/sale" class="router-link-active" type="button" style="margin-top: 4px;">
-                <button class="btn btn-blue btn-sm">List</button></a>
-            </div>
-        </div>
+<style>
+.custom-card{
+    box-shadow: 2px 3px 10px 0px #888889;
+}
+.custom-card:hover{
+    box-shadow: 3px 10px 12px 7px #c5e1ff;
+    color: black;
+    cursor: pointer;
+}
+
+</style>
+<div class="col-md-12 center">
+    <div class="card-header">
+       <div> Seal Medicine</div> 
+        <div><a href="{{ url('/admin/medicine') }}"><button  style="margin-top:-2rem;" class="btn-sm btn-dark float-right">List</button></a> </div>
+    </div>
+    <div class="mt-3">
      <form>
          <div class="container-fluid panel panel-primary">
              <div class="row">
@@ -21,7 +28,7 @@
                          <div class="col-md-4">
                              <div class="input-group">
                                  <input type="text" placeholder="Enter Customer Phone" class="form-control">
-                                 <span class="input-group-btn"><button type="button" class="btn btn-primary"><i class="entypo-arrows-ccw"></i></button></span>
+                                 <span class="input-group-btn"><i class="refresh-ccw"></i></span>
                             </div>
                         </div> 
                         <div class="col-md-4">
@@ -30,118 +37,58 @@
                     </div> 
                     <div class="row">
                         <div class="col-md-4">
-                        <select class="form-control">
-                            <optgroup label="Manufacturer List">
-                                <option value="1">Beximco</option>
-                                <option value="2">Skg</option>
-                                <option value="3">Square</option>
-                                <option value="4">Incepta</option>
-                            </optgroup>
+                            <select id="manufacturer" class="form-control" name="med_manuf_id">
+                                <option value="">Select Somthing</option>
+                                @foreach($manufactures as  $manufac)
+                                <option value="{{ $manufac->manufac_id }}">{{ $manufac->manufac_name }}</option>
+                                @endforeach
+              
+                            </select>
+                    </div> 
+                    <div class="col-md-4">
+                        <select id="med_gen_id" class="form-control" name="med_gen_id">
+                            <option value="">Generic select</option>
+                            @foreach($generics as $generic)
+                            <option value="{{ $generic->generic_id }}">{{ $generic->generic_name }}</option>
+                            @endforeach
                         </select>
                     </div> 
                     <div class="col-md-4">
-                        <select class="form-control">
-                            <optgroup label="Generic List">
-                                <option value="14">Esomeprazole</option>
-                                <option value="15">Vitamin D3</option>
-                            </optgroup>
-                        </select>
-                    </div> 
-                    <div class="col-md-4">
-                        <select class="form-control">
-                            <optgroup label="Category List">
-                                <option value="1">Tablet</option>
-                                <option value="2">Syrup</option>
-                                <option value="3">Liquid</option>
-                                <option value="18">My Category</option>
-                            </optgroup>
-                        </select>
+                        <select id="category" class="form-control" name="med_cat_id">
+                            <option value=""> Category Select</option>
+                            @foreach($categorys as $category)
+                            @if($category->parentId == null)
+                            <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
+                            @endif 
+                            @endforeach
+                            </select>
                     </div>
                 </div> 
                 <div class="row" style="margin-top: 5px;">
                     <div class="col-md-4"></div> 
                     <div class="col-md-4">
                         <div class="input-group minimal">
-                            <input type="text" placeholder="Search Medicine By Name, SKU etc." class="form-control"> 
+                            <input type="text" placeholder="Search Medicine By Name, SKU etc." class="form-control search"> 
                             <span class="input-group-addon"><i class="entypo-search"></i></span>
                         </div>
                     </div>
                      <div class="col-md-4"></div>
-                    </div> 
-                    <div class="custom-div3">
-                        <div class="custom-div2">
-                            <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
-                                <div class="card text-center">
-                                    <img src="assets/images/Medicines/1600925177.webp" alt="Card image cap" class="card-img-top" style="max-width: 14rem; max-height: 10rem;">
-                                     <div class="card-body"><h5>Seclo(b)</h5> <p>Esomeprazole</p></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
-                                <div class="card text-center">
-                                    <img src="assets/images/Medicines/1600753332.webp" alt="Card image cap" class="card-img-top" style="max-width: 14rem; max-height: 10rem;"> 
-                                    <div class="card-body"><h5>Ace(b)</h5> <p>Parasetamol</p></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
-                                <div class="card text-center">
-                                    <img src="assets/images/Medicines/1600683784.webp" alt="Card image cap" class="card-img-top" style="max-width: 14rem; max-height: 10rem;"> 
-                                    <div class="card-body"><h5>SuroDine(pc)</h5> <p>Parasetamol</p></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
-                                <div class="card text-center">
-                                    <img src="assets/images/Medicines/1600683755.webp" alt="Card image cap" class="card-img-top" style="max-width: 14rem; max-height: 10rem;"> 
-                                    <div class="card-body"><h5>Flixotide(pc)</h5> <p>Acyclovir</p></div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
-                                <div class="card text-center">
-                                    <img src="assets/images/Medicines/1600683730.webp" alt="Card image cap" class="card-img-top" style="max-width: 14rem; max-height: 10rem;">
-                                     <div class="card-body"><h5>Tuspel(pc)</h5> <p>Vitamin D3</p></div>
-                                    </div>
-                                </div>
-                                    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
-                                        <div class="card text-center">
-                                            <img src="assets/images/Medicines/1600683691.webp" alt="Card image cap" class="card-img-top" style="max-width: 14rem; max-height: 10rem;"> 
-                                            <div class="card-body"><h5>Lexum(pc)</h5> <p>Parasetamol</p></div>
+                 </div> 
+                    <div class="custom-div3 mt-2">
+                        
+                            <div class="col-md-12 row">
+                                @foreach($medicines as $medicine)
+                                <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
+                                    <div class="card text-center custom-card">
+                                        <td><img width="130" height="97" style="padding: 6px;" src={{$medicine->med_image}}> </td>
+                                        <div class="card-body"><h5>{{ $medicine->generic ? $medicine->generic->generic_name : "Not Set" }}</h5> 
+                                            <p>{{ $medicine->type ? $medicine->type->type_name : "Not Set" }}</p>
                                         </div>
                                     </div>
-                                   
-                                    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
-                                        <div class="card text-center">
-                                            <img src="assets/images/Medicines/1600683612.webp" alt="Card image cap" class="card-img-top" style="max-width: 14rem; max-height: 10rem;"> 
-                                            <div class="card-body"><h5>Sofovir-C(pc)</h5> <p>Acyclovir</p></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
-                                        <div class="card text-center">
-                                            <img src="assets/images/Medicines/1600683552.webp" alt="Card image cap" class="card-img-top" style="max-width: 14rem; max-height: 10rem;"> 
-                                            <div class="card-body"><h5>Boxol(pc)</h5> <p>Dexmethylphenidate</p></div>
-                                        </div>
-                                    </div>
-                            </div>           
-                                <ul class="pagination" style="margin-left: 2rem;">       
-                                  <li class="page-item pagination-page-nav active"><a href="#" class="page-link">
-                                        1
-                                     <span class="sr-only">(current)</span>
-                                    </a>
-                                </li>
-                                <li class="page-item pagination-page-nav">
-                                    <a href="#" class="page-link">
-                                      2
-                                   </a>
-                                </li>
-                                <li class="page-item pagination-page-nav">
-                                    <a href="#" class="page-link">
-                                     3
-                                   </a>
-                                </li>
-                                <li class="page-item pagination-next-nav">
-                                    <a href="#" aria-label="Next" class="page-link">
-                                        <span>Next &gt;</span>
-                                    </a>
-                                </li>
-                            </ul>
+                                </div>
+                                @endforeach
+                        </div>           
+                      
                         </div>
                     </div> 
                     <div class="col-sm-6" style="height: 70rem;">
@@ -324,4 +271,10 @@
     </div>
 </div>
                     
+@endsection
+
+@section('script')
+<script>
+    
+</script>
 @endsection
