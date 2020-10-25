@@ -1,8 +1,6 @@
 @extends('Backend.layouts.app')
 @section('title') Customer @endsection
-
 @section('head', 'Customer')
-
 @section('content')
 
 <div class="col-md-10 header">
@@ -10,10 +8,9 @@
 </div>
 <div class="col-md-2">
     <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add Customer</button>
-    <!-- <input type="button" onclick="printDiv('printableArea')" value="print" /> --> 
 </div>
 
-<div class="col-md mt-5 " id="printableArea">
+<div class="col-md mt-5">
     <table id="dataTable" class="table table-striped table-bordered ">
         <thead class="text-center">
             <tr>
@@ -229,7 +226,6 @@
                         </div>
                     </div> 
                     <div class="modal-footer">
-                     <!-- <button type="button" onclick="printDiv('printableArea2')" class="btn btn-success btn-icon icon-left print">Print Details<i class="entypo-doc-text"></i></button>  -->
                      <input type="button" class="btn btn-success btn-icon icon-left print" onclick="printDiv('printableArea')" value="Print Details" />
                         <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
                     </div>

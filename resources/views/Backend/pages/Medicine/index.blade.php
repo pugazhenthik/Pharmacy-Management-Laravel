@@ -95,7 +95,7 @@
         <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
     </div> 
     <div class="modal-body">
-        <div id="printDiv" class="invoice">
+        <div id="printableArea">
             <div class="row">
                 <div class="col-sm-6 invoice-left">
                     <a href="/">
@@ -108,27 +108,27 @@
              <hr class="margin"> 
              <div class="row">
                  <div class="col-sm-4 invoice-left">
-                     <h4>Medicine</h4>
-                      <strong >Name:  </strong><b id="v_name"></b>
-								<br> <strong>Generic Name:</strong> <b id="v_gen_name"></b>
-								<br> <strong>Category Name:</strong><b id="v_cat_name"></b>
-								<br> <strong>Sub Category Name:</strong> <b id="v_sub_cat_name"></b>
+                     <h5 style="font-family: ubuntu;">Medicine:</h5>
+                      <strong >Name : </strong><b id="v_name"></b>
+								<br> <strong>Generic Name : </strong> <b id="v_gen_name"></b>
+								<br> <strong>Category Name : </strong><b id="v_cat_name"></b>
+								<br> <strong>Sub Category Name : </strong> <b id="v_sub_cat_name"></b>
 
                     </div> 
                     <div class="col-sm-4 invoice-left">
-                        <h4>Manufacturer</h4> 
-                        <strong>Name: </strong> <b id="v_man_name"></b>
-								<br> <strong>Email: </strong> <b id="v_email"></b>
-								<br> <strong>Mobile: </strong> <b id="v_mobile"></b>
-								<br> <strong>Address: </strong> <b id="v_address"></b>
+                        <h5 style="font-family: ubuntu;">Manufacturer:</h5> 
+                        <strong>Name : </strong> <b id="v_man_name"></b>
+								<br> <strong>Email : </strong> <b id="v_email"></b>
+								<br> <strong>Mobile : </strong> <b id="v_mobile"></b>
+								<br> <strong>Address : </strong> <b id="v_address"></b>
                     </div> 
                     <div class="col-md-4 invoice-left">
-                        <h4>Unit Details:</h4> 
-                        <strong>Unit Type:</strong> <b id="v_tye_name"></b>
-								<br> <strong>Single Unit Weight:</strong><b id="v_unit_weight"></b>
-								<br> <strong>Box Weight:</strong> <b id="v_weight"></b>
-								<br> <strong>Unit Location:</strong> <b id="v_location"></b>
-								<br> <strong>Minimum Unit:</strong> <b id="v_m_unit"></b>
+                        <h5 style="font-family: ubuntu;">Unit Details:</h5> 
+                        <strong>Unit Type : </strong> <b id="v_tye_name"></b>
+								<br> <strong>Single Unit Weight : </strong><b id="v_unit_weight"></b>
+								<br> <strong>Box Weight : </strong> <b id="v_weight"></b>
+								<br> <strong>Unit Location: </strong> <b id="v_location"></b>
+								<br> <strong>Minimum Unit : </strong> <b id="v_m_unit"></b>
 
                             </div>
                         </div> 
@@ -140,9 +140,9 @@
                          <br> <span style="color: black; font-size: 12px;">01305976639</span>
                           <br> <span style="color: black; font-size: 12px;">Pharmacy@gmail.com</span>
                            <br> <span style="color: black; font-size: 12px;"></span>House:28 - RoadNO:6 Blog:D,Mirpur 1. </span> <p></p></center></div></div> <div class="modal-footer">
-                            <button class="btn btn-success btn-icon icon-left hidden-print">
-						Print Details
-                        <i class="entypo-doc-text"></i></button> <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
+
+                            <input type="button" class="btn btn-success btn-icon icon-left print" onclick="printDiv('printableArea')" value="Print Details" />
+                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
                     </div>
                 </div>
     </div> 
@@ -179,9 +179,6 @@
             $("#v_weight").text(data.med_box_weight	);
             $("#v_location").text(data.med_location);
             $("#v_m_unit").text(data.med_mini_unit);
-
-
-
         }
        });
     });
@@ -235,5 +232,17 @@ $(document).on('click',".status_id",function(){
 			}
 		});
 });
+
+function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+
 </script>
 @endsection
