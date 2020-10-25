@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Sell;
 use Illuminate\Http\Request;
-
+use App\Models\Category;
+use App\Models\Generic;
+use App\Models\Manufacture;
+use App\Models\Medicine;
 class SellController extends Controller
 {
     /**
@@ -13,8 +16,12 @@ class SellController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('Backend.pages.Sale.create');
+    {   
+        $medicines = Medicine::with('generic','type')->get();
+        $categorys = Category:: orderBy('category_name','asc')->get();
+        $generics = Generic::orderBy('generic_name','asc')->get();
+        $manufactures = Manufacture::orderBy('manufac_name','asc')->get();
+        return view('Backend.pages.Sale.create',compact('categorys','generics','manufactures','medicines'));
     }
 
     /**
