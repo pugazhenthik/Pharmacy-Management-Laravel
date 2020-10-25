@@ -61,8 +61,6 @@
                     @endif
                 </td>
 
-    
-    
                 <td class="text-left">
                     <ul class="table-controls">
                         <a href="" class="view" data-toggle="modal" data-placement="top" data-id="{{$medicine->med_id}}" title="View" data-target="#view"><i class="text-info" data-feather="eye"></i></a>
