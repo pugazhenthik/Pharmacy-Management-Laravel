@@ -101,5 +101,6 @@
     reader.readAsDataURL(input.files[0]);
   }
 }
+@livewireScripts  
 </script>
 @yield('script')

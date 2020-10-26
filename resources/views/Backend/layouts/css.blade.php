@@ -33,3 +33,9 @@
 <!-- CustomCss -->
 <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 <!-- CustomCss -->
+
+@livewireStyles
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css">

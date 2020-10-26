@@ -647,6 +647,7 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'App\\Http\\Controllers\\GenericController' => __DIR__ . '/../..' . '/app/Http/Controllers/GenericController.php',
         'App\\Http\\Controllers\\ManufactureController' => __DIR__ . '/../..' . '/app/Http/Controllers/ManufactureController.php',
         'App\\Http\\Controllers\\MedicineController' => __DIR__ . '/../..' . '/app/Http/Controllers/MedicineController.php',
+        'App\\Http\\Controllers\\SellController' => __DIR__ . '/../..' . '/app/Http/Controllers/SellController.php',
         'App\\Http\\Controllers\\SupplierController' => __DIR__ . '/../..' . '/app/Http/Controllers/SupplierController.php',
         'App\\Http\\Controllers\\TypeController' => __DIR__ . '/../..' . '/app/Http/Controllers/TypeController.php',
         'App\\Http\\Controllers\\UnitController' => __DIR__ . '/../..' . '/app/Http/Controllers/UnitController.php',
