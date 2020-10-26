@@ -65,33 +65,19 @@
                     </div>
                 </div> 
                 <div class="row" style="margin-top: 5px;">
-                    <div class="col-md-4"></div> 
+                    {{-- <div class="col-md-4"></div> 
                     <div class="col-md-4">
                         <div class="input-group minimal">
                             <input type="text" placeholder="Search Medicine By Name, SKU etc." class="form-control search"> 
                             <span class="input-group-addon"><i class="entypo-search"></i></span>
                         </div>
                     </div>
-                     <div class="col-md-4"></div>
+                     <div class="col-md-4"></div> --}}
                  </div> 
-                    <div class="custom-div3 mt-2">
-                        
-                            <div class="col-md-12 row">
-                                @foreach($medicines as $medicine)
-                                <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4">
-                                    <div class="card text-center custom-card">
-                                        <td><img width="130" height="97" style="padding: 6px;" src={{$medicine->med_image}}> </td>
-                                        <div class="card-body"><h5>{{ $medicine->generic ? $medicine->generic->generic_name : "Not Set" }}</h5> 
-                                            <p>{{ $medicine->type ? $medicine->type->type_name : "Not Set" }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-                        </div>           
-                      
-                        </div>
+                 @livewire('filter')
+                   
                     </div> 
-                    <div class="col-sm-6" style="height: 70rem;">
+                    <div class="col-sm-6" style="height: 50rem;">
                         <table class="table table-bordered">
                             <thead>
                                 <th class="text-center bg-dark " style="max-width: 1rem; color:rgb(248, 248, 248); ">Batch  </th> 
@@ -270,11 +256,12 @@
         </center>
     </div>
 </div>
-                    
+                 
 @endsection
 
 @section('script')
 <script>
-    
+
 </script>
 @endsection
+@livewireScripts  
