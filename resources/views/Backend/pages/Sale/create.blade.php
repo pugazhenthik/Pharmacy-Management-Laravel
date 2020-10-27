@@ -71,14 +71,6 @@
                     </div>
                 </div> 
                 <div class="row" style="margin-top: 5px;">
-                    {{-- <div class="col-md-4"></div> 
-                    <div class="col-md-4">
-                        <div class="input-group minimal">
-                            <input type="text" placeholder="Search Medicine By Name, SKU etc." class="form-control search"> 
-                            <span class="input-group-addon"><i class="entypo-search"></i></span>
-                        </div>
-                    </div>
-                     <div class="col-md-4"></div> --}}
                  </div> 
                  @livewire('filter')
                    
@@ -95,8 +87,10 @@
                             </thead>
                         </table>
                          <div class="custom-div">
-                             <table class="table table-bordered">
-                                 <tbody></tbody>
+                             <table class="table table-bordered mt-4" id="dynamic_field">
+                                 <tbody>
+                                 
+                                 </tbody>
                             </table>
                         </div> 
                         <table class="table table-bordered">
@@ -267,7 +261,16 @@
 
 @section('script')
 <script>
-
+  $('#add').click(function(){ 
+          let i = 1;  
+           i++;  
+           $('#dynamic_field').append(
+               '<tr style="height: 50px;" id="row'+i+'"><td class="text-center" style="max-width: 1rem; width: 5rem;"><select class="form-control"><option value="[object Object]">2002</option></select></td>   <td class="text-center" style="max-width: 1rem; width: 5rem;"><input min="0" class="form-control"></td><td class="text-center" style="min-width: 1rem; max-width: 1rem;">Ace (b)</td> <td class="text-center" style="min-width: 1rem; max-width: 2rem;"></td> <td class="text-center" style="max-width: 1rem;"><p></p></td> <td class="text-center" style="max-width: 1rem;"> <button type="button"id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+      });
+      $(document).on('click', '.btn_remove', function(){  
+           var button_id = $(this).attr("id");   
+           $('#row'+button_id+'').remove();  
+      });    
 </script>
 @endsection
 @livewireScripts  
