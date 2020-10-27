@@ -1,6 +1,6 @@
 @extends('Backend.layouts.app')
-@section('title') Seal @endsection
-@section('head', 'Add Seal')
+@section('title') Stock @endsection
+@section('head', 'Add Stock')
 @section('content')
 <style>
 .custom-card{
@@ -21,7 +21,7 @@
 </style>
 <div class="col-md-12 center">
     <div class="card-header">
-       <div> Seal Medicine</div> 
+       <div> Stock Medicine</div> 
         <div><a href="{{ url('/admin/medicine') }}"><button  style="margin-top:-2rem;" class="btn-sm btn-dark float-right">List</button></a> </div>
     </div>
     <div class="mt-3">
