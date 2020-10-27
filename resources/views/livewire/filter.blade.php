@@ -12,7 +12,7 @@
             @foreach($medicines as $medicine)
             <div class="col-md-4 col-sm-6 col-xs-12 col-lg-4 mt-4">
                 <div class="card text-center custom-card">
-                    <td><img width="130" height="97" style="padding: 6px;" src={{$medicine->med_image}}> </td>
+                    <td><img width="130" height="97" style="padding: 8px;" src={{$medicine->med_image}}> </td>
                     <div class="card-body"><h5>{{ $medicine->med_name  }}</h5> 
                         <p>{{ $medicine->type ? $medicine->type->type_name : "Not Set" }}</p>
                     </div>

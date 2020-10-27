@@ -7,9 +7,15 @@
     box-shadow: 2px 3px 10px 0px #888889;
 }
 .custom-card:hover{
-    box-shadow: 3px 10px 12px 7px #c5e1ff;
+    box-shadow: 4px 15px 16px 7px #c2c3c3;
     color: black;
     cursor: pointer;
+}
+.custom-div{
+    min-height: 30rem;
+    max-height: 30rem;
+    overflow: scroll;
+    margin-top: -2rem;
 }
 
 </style>
@@ -77,7 +83,7 @@
                  @livewire('filter')
                    
                     </div> 
-                    <div class="col-sm-6" style="height: 50rem;">
+                    <div class="col-sm-6">
                         <table class="table table-bordered">
                             <thead>
                                 <th class="text-center bg-dark " style="max-width: 1rem; color:rgb(248, 248, 248); ">Batch  </th> 
@@ -96,20 +102,20 @@
                         <table class="table table-bordered">
                             <tfoot>
                                 <tr>
-                                    <td><h4><b>Total:</b></h4></td>
-                                     <td><h4>0</h4></td>
+                                    <td><h6><b>Total:</b></h6></td>
+                                     <td><h6>0</h6></td>
                                 </tr> 
                                <tr>
-                                   <td><h4><b>Pay:</b></h4></td>
+                                   <td><h6><b>Pay:</b></h6></td>
                                     <td><input type="text" class="form-control form-control-sm" style="width: 30%;"></td>
                                 </tr> 
                                 <tr>
-                                    <td><h4><b>Change Due:</b></h4></td>
-                                     <td><h4>0</h4></td>
+                                    <td><h6><b>Change Due:</b></h6></td>
+                                     <td><h6>0</h6></td>
                                 </tr>
                                  <tr class="hidden">
-                                     <td><h4><b>Due:</b></h4></td>
-                                      <td><h4>0</h4></td>
+                                     <td><h6><b>Due:</b></h6></td>
+                                      <td><h6>0</h6></td>
                                 </tr> 
                                 <tr>
                                     <td>
