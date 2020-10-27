@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sell;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Generic;
 use App\Models\Manufacture;
 use App\Models\Medicine;
-
-class SellController extends Controller
+use App\Models\Supplier;
+class StockController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +17,13 @@ class SellController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $medicines = Medicine::with('generic','type')->get();
         $categorys = Category:: orderBy('category_name','asc')->get();
         $generics = Generic::orderBy('generic_name','asc')->get();
         $manufactures = Manufacture::orderBy('manufac_name','asc')->get();
-        return view('Backend.pages.Sale.create',compact('categorys','generics','manufactures','medicines'));
+        $suppliers = Supplier::orderBy('supplier_name','asc')->get();
+       return view('Backend.pages.Stock.create',compact('medicines','categorys','generics','manufactures','suppliers'));
     }
 
     /**
@@ -49,10 +50,10 @@ class SellController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Sell  $sell
+     * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function show(Sell $sell)
+    public function show(Stock $stock)
     {
         //
     }
@@ -60,10 +61,10 @@ class SellController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Sell  $sell
+     * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sell $sell)
+    public function edit(Stock $stock)
     {
         //
     }
@@ -72,10 +73,10 @@ class SellController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Sell  $sell
+     * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sell $sell)
+    public function update(Request $request, Stock $stock)
     {
         //
     }
@@ -83,10 +84,10 @@ class SellController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Sell  $sell
+     * @param  \App\Models\Stock  $stock
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sell $sell)
+    public function destroy(Stock $stock)
     {
         //
     }

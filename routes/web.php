@@ -50,4 +50,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('sell','SellController');
 
+    // Stock Route 
+
+     Route::resource('stock','StockController');
+
 });
