@@ -69,7 +69,18 @@
                             @endforeach
                             </select>
                     </div>
+
+                    <div class="col-md-4">
+                        
+                         <select id="sub_cat" class="form-control" name="med_sub_cat_id">
+                             
+                            </select>
+                        
+                    </div> 
+                </div> 
+
                 </div>
+
                 <div class="row" style="margin-top: 5px;">
                  </div>
                  @livewire('filter')

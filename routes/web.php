@@ -51,7 +51,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('sell','SellController');
 
     // Stock Route 
-
+      
      Route::resource('stock','StockController');
+     Route::get('stock/subCategory/{id}','StockController@subCatFind');
+     
 
 });

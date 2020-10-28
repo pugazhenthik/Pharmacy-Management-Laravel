@@ -9,8 +9,10 @@ use App\Models\Generic;
 use App\Models\Manufacture;
 use App\Models\Medicine;
 use App\Models\Supplier;
+use App\Traits\subCategoryTraits;
 class StockController extends Controller
 {
+    use subCategoryTraits;
     /**
      * Display a listing of the resource.
      *
