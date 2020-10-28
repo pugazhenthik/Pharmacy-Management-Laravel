@@ -275,11 +275,15 @@
 
 @section('script')
 <script>
-  $('#add').click(function(){ 
-          let i = 1;  
+  $('.each_medicine').click(function(){ 
+          
+          let id = $(this).attr("data-id");
+           console.log(id);
+        
+           let i = 1; 
            i++;  
            $('#dynamic_field').append(
-               '<tr style="height: 50px;" id="row'+i+'"><td class="text-center" style="width: 1rem;"><input min="0" class="form-control"></td> <td class="text-center" style="max-width: 1rem;"><input type="text" class="form-control form-control-sm"></td> <td class="text-center" style="min-width: 1rem; max-width: 1rem;">Flixotide (pc)</td> <td class="text-center" style="min-width: 1rem;"><input type="number" min="0" id="purchase" class="form-control form-control-sm"></td> <td class="text-center" style="min-width: 1rem;"><input type="number" min="0" id="sale" class="form-control form-control-sm"></td> <td class="text-center" style="min-width: 2rem;"><input type="date" class="form-control"></td> <td class="text-center" style="max-width: 1rem;"><p>0</p></td> <td class="text-center" style="max-width: 1rem;"><button type="button" id="'+i+'" class="btn btn-danger btn_remove">X</button></button></td></tr>');
+               '<tr style="height: 50px;" id="row'+i+'"><td class="text-center" style="width: 1rem;"><input min="0" class="form-control"></td> <td class="text-center" style="max-width: 1rem;"><input type="text" class="form-control form-control-sm"></td> <td class="text-center" style="min-width: 1rem; max-width: 1rem;">(pc)</td> <td class="text-center" style="min-width: 1rem;"><input type="number" min="0" id="purchase" class="form-control form-control-sm"></td> <td class="text-center" style="min-width: 1rem;"><input type="number" min="0" id="sale" class="form-control form-control-sm"></td> <td class="text-center" style="min-width: 2rem;"><input type="date" class="form-control"></td> <td class="text-center" style="max-width: 1rem;"><p>0</p></td> <td class="text-center" style="max-width: 1rem;"><button type="button" id="'+i+'" class="btn btn-danger btn_remove">X</button></button></td></tr>');
       });
       $(document).on('click', '.btn_remove', function(){  
            var button_id = $(this).attr("id");   
