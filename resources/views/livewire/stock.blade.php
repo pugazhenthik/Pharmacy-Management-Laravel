@@ -1,11 +1,5 @@
 <div>
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-        <input wire:model="searchTerm" style="margin-left: 8rem;
-        margin-top: 1rem;" type="text" placeholder="Medicine search..."/>
-    </div>
-   
-    <div class="col-md-4"></div>
+    
     <div class="custom-div3 mt-2">
                        
         <div class="col-md-12 row" id="add">

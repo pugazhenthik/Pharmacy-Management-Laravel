@@ -52,7 +52,7 @@
                 <td>{{ $medicine->category ? $medicine->category->category_name : "Not Set" }}</td>
                 <td>{{ $medicine->sub_category ? $medicine->sub_category->category_name : "Not Set"}}</td>
 
-                <td>{{ $medicine->type->type_name }}</td>
+                <td>{{ $medicine->type ? $medicine->type->type_name : "Not set"}}</td>
                 <td>
                     @if($medicine-> med_status == 1)
                     <span class="text-success">Active</span>

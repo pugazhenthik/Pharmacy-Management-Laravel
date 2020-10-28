@@ -1,6 +1,6 @@
 @extends('Backend.layouts.app')
-@section('title') Seal @endsection
-@section('head', 'Add Seal')
+@section('title') Stock @endsection
+@section('head', 'Add Stock')
 @section('content')
 <style>
 .custom-card{
@@ -21,27 +21,78 @@
 </style>
 <div class="col-md-12 center">
     <div class="card-header">
-       <div> Seal Medicine</div> 
+       <div> Stock Medicine</div> 
         <div><a href="{{ url('/admin/medicine') }}"><button  style="margin-top:-2rem;" class="btn-sm btn-dark float-right">List</button></a> </div>
     </div>
     <div class="mt-3">
      <form>
          <div class="container-fluid panel panel-primary">
              <div class="row">
+                <div class="col-sm-6">
+                    <table class="table table-bordered">
+                        <thead style=" font-size:12px;">
+                            <th class="text-center bg-secondary" style="max-width: 2rem; color:white;">QTY</th> 
+                            <th class="text-center bg-secondary " style="max-width: 2rem; color:rgb(255, 255, 255); ">Batch</th> 
+
+                            <th class="text-center bg-secondary" style="max-width: 3rem; color:white;">Product</th> 
+                            <th class="text-center bg-secondary" style="max-width: 3rem; color:white;">Purchase</th>
+                            <th class="text-center bg-secondary" style="max-width: 3rem; color:white;">sale</th>	
+                            <th class="text-center bg-secondary" style="max-width: 3rem;color:white;">Exp Date</th> 
+
+                             <th class="text-center bg-secondary" style="max-width: 3rem;color:white;">Subtotal</th> 
+                             <th class="text-center bg-secondary" style="max-width: 2rem; color: white;"><i class="" data-feather="trash"></i></th>
+                        </thead>
+                    </table>
+                     <div class="custom-div">
+                         <table class="table table-bordered mt-4" id="dynamic_field">
+                             <tbody>
+                             
+                             </tbody>
+                        </table>
+                    </div> 
+                    <table class="table table-bordered">
+                        <tfoot>
+                            <tr>
+                                <td><h6><b>Total:</b></h6></td>
+                                 <td><h6>0</h6></td>
+                            </tr> 
+                           <tr>
+                               <td><h6><b>Pay:</b></h6></td>
+                                <td><input type="text" class="form-control form-control-sm" style="width: 30%;"></td>
+                            </tr> 
+                            <tr>
+                                <td><h6><b>Change Due:</b></h6></td>
+                                 <td><h6>0</h6></td>
+                            </tr>
+                             <tr class="hidden">
+                                 <td><h6><b>Due:</b></h6></td>
+                                  <td><h6>0</h6></td>
+                            </tr> 
+                            <tr>
+                                <td>
+                                    <button type="submit" class="btn btn-info btn-lg" style="display: block; width: 100%; height: 100%;">Save</button>
+                                </td>
+                               <td>
+                                   <button type="submit" class="btn btn-success btn-lg pull-left" style="width: 100%; height: 100%;">Sale</button>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
                  <div class="col-sm-6">
                      <div class="row" style="padding-bottom: 5px;">
-                        <div class="col-md-4"><input type="date" class="form-control"></div>
-                         <div class="col-md-4">
-                             <div class="input-group">
-                                 <input type="text" placeholder="Enter Customer Phone" class="form-control">
-                                 <span class="input-group-btn"><i class="refresh-ccw"></i></span>
-                            </div>
-                        </div> 
                         <div class="col-md-4">
-                            <input type="text" placeholder="Enter Customer Name" class="form-control">
+                          <input type="date" name="stock_date" class="form-control" id="">
+                       </div> 
+                        <div class="col-md-4">
+                           <select name="sup_name" id="supplier" class="form-control">
+                               <option value="">Select Supplier</option>
+                               @foreach($suppliers as $supplier)
+                               <option value="{{$supplier->supplier_id }}">{{ $supplier->supplier_name }}</option>
+                                   
+                               @endforeach
+                           </select>
                         </div>
-                    </div> 
-                    <div class="row">
                         <div class="col-md-4">
                             <select id="manufacturer" class="form-control" name="med_manuf_id">
                                 <option value="">Select Somthing</option>
@@ -51,6 +102,9 @@
               
                             </select>
                     </div> 
+                        
+                    </div> 
+                    <div class="row">
                     <div class="col-md-4">
                         <select id="med_gen_id" class="form-control" name="med_gen_id">
                             <option value="">Generic select</option>
@@ -75,53 +129,7 @@
                  @livewire('filter')
                    
                     </div> 
-                    <div class="col-sm-6">
-                        <table class="table table-bordered">
-                            <thead>
-                                <th class="text-center bg-dark " style="max-width: 1rem; color:rgb(248, 248, 248); ">Batch  </th> 
-                                <th class="text-center bg-dark" style="max-width: 1rem; color:white;">QTY</th> 
-                                <th class="text-center bg-dark" style="max-width: 2rem; color:white;">Product</th> 
-                                <th class="text-center bg-dark" style="max-width: 2rem; color:white;">Price</th>
-                                 <th class="text-center bg-dark" style="max-width: 2rem;color:white;">Subtotal</th> 
-                                 <th class="text-center bg-dark" style="max-width: 2rem; color: white;"><i class="" data-feather="trash"></i></th>
-                            </thead>
-                        </table>
-                         <div class="custom-div">
-                             <table class="table table-bordered mt-4" id="dynamic_field">
-                                 <tbody>
-                                 
-                                 </tbody>
-                            </table>
-                        </div> 
-                        <table class="table table-bordered">
-                            <tfoot>
-                                <tr>
-                                    <td><h6><b>Total:</b></h6></td>
-                                     <td><h6>0</h6></td>
-                                </tr> 
-                               <tr>
-                                   <td><h6><b>Pay:</b></h6></td>
-                                    <td><input type="text" class="form-control form-control-sm" style="width: 30%;"></td>
-                                </tr> 
-                                <tr>
-                                    <td><h6><b>Change Due:</b></h6></td>
-                                     <td><h6>0</h6></td>
-                                </tr>
-                                 <tr class="hidden">
-                                     <td><h6><b>Due:</b></h6></td>
-                                      <td><h6>0</h6></td>
-                                </tr> 
-                                <tr>
-                                    <td>
-                                        <button type="submit" class="btn btn-info btn-lg" style="display: block; width: 100%; height: 100%;">Save</button>
-                                    </td>
-                                   <td>
-                                       <button type="submit" class="btn btn-success btn-lg pull-left" style="width: 100%; height: 100%;">Sale</button>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
+               
                 </div>
             </div>
         </form>
@@ -265,7 +273,7 @@
           let i = 1;  
            i++;  
            $('#dynamic_field').append(
-               '<tr style="height: 50px;" id="row'+i+'"><td class="text-center" style="max-width: 1rem; width: 6rem;"><select class="form-control"><option value="[object Object]">2002</option></select></td>   <td class="text-center" style="max-width: 1rem; width: 5rem;"><input min="0" class="form-control"></td><td class="text-center" style="min-width: 1rem; max-width: 1rem;">Ace (b)</td> <td class="text-center" style="min-width: 1rem; max-width: 2rem;"></td> <td class="text-center" style="max-width: 1rem;"><p></p></td> <td class="text-center" style="max-width: 1rem;"> <button type="button"id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+               '<tr style="height: 50px;" id="row'+i+'"><td class="text-center" style="width: 1rem;"><input min="0" class="form-control"></td> <td class="text-center" style="max-width: 1rem;"><input type="text" class="form-control form-control-sm"></td> <td class="text-center" style="min-width: 1rem; max-width: 1rem;">Flixotide (pc)</td> <td class="text-center" style="min-width: 1rem;"><input type="number" min="0" id="purchase" class="form-control form-control-sm"></td> <td class="text-center" style="min-width: 1rem;"><input type="number" min="0" id="sale" class="form-control form-control-sm"></td> <td class="text-center" style="min-width: 2rem;"><input type="date" class="form-control"></td> <td class="text-center" style="max-width: 1rem;"><p>0</p></td> <td class="text-center" style="max-width: 1rem;"><button type="button" id="'+i+'" class="btn btn-danger btn_remove">X</button></button></td></tr>');
       });
       $(document).on('click', '.btn_remove', function(){  
            var button_id = $(this).attr("id");   

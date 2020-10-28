@@ -22,7 +22,7 @@ class Filter extends Component
     		'medicines'		=>	Medicine::where(function($sub_query){
     							$sub_query->where('med_name', 'like', '%'.$this->searchTerm.'%')
     									  ->orWhere('med_barcode', 'like', '%'.$this->searchTerm.'%');
-    						})->paginate(6)
+    						})->paginate(9)
     	]);
     }
 
