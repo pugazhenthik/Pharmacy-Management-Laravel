@@ -123,7 +123,13 @@
                             @endforeach
                             </select>
                     </div>
-                </div> 
+                    <div class="col-md-4">
+                       
+                         <select id="sub_cat" class="form-control" name="med_sub_cat_id">
+                             
+                            </select>
+                        </div>
+                
                 <div class="row" style="margin-top: 5px;">
                  </div> 
                  @livewire('filter')
@@ -278,7 +284,23 @@
       $(document).on('click', '.btn_remove', function(){  
            var button_id = $(this).attr("id");   
            $('#row'+button_id+'').remove();  
-      });    
+      }); 
+      $("#category").change(function(){
+         let id = $("#category").val();
+         $.ajax({
+                url:"/admin/stock/subCategory/"+id,
+                type:'get',
+                dataType:"json",
+                success:function(data)
+                {  console.log(data); 
+                    $(".sub_cat_option").remove();
+                    $.each(data,function(i,v){
+                        $("#sub_cat").append(`<option class="sub_cat_option" value=${v.category_id}>${v.category_name}</option>`);
+                    });
+                }
+
+            });
+      });   
 </script>
 @endsection
 @livewireScripts  

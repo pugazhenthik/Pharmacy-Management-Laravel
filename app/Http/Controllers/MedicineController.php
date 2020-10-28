@@ -10,10 +10,12 @@ use App\Models\Manufacture;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use App\Http\Requests\MedicineRequest;
+use App\Traits\subCategoryTraits;
 use Arr;
 use File;
 class MedicineController extends Controller
 {
+    use subCategoryTraits;
     /**
      * Display a listing of the resource.
      *
@@ -40,11 +42,11 @@ class MedicineController extends Controller
         return view('Backend.pages.Medicine.create',compact('categorys','medTypes','generics','manufactures','units'));
     }
 
-    public function subCatFind($id)
-    {   
-        $subCategory=Category::where('parentId',$id)->get();
-        return response()->json($subCategory,200);
-    }
+    // public function subCatFind($id)
+    // {   
+    //     $subCategory=Category::where('parentId',$id)->get();
+    //     return response()->json($subCategory,200);
+    // }
 
     public function status($id)
     {
