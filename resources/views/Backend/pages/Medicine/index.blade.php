@@ -5,7 +5,7 @@
 
 <div class="col-md-12 header">
     <div class="card-header">
-        <div> <strong>Medicine</strong>  </div> 
+        <div> <strong>Medicine</strong>  </div>
          <div><a href="{{ url('/admin/medicine/create') }}"><button  style="margin-top:-2rem;" class="btn-sm btn-success float-right">Add Medicine</button></a> </div>
      </div>
 
@@ -14,7 +14,7 @@
         <thead class="text-center">
             <tr>
                 <th>#</th>
-                <th>Gemeric Name</th>
+                <th>Generic Name</th>
                 <th>Name</th>
                 <th>Image</th>
                 <th>SKU</th>
@@ -31,22 +31,22 @@
         </form>
         <tbody class="text-center">
             @foreach($medicines as $medicine)
-    
-           
+
+
             <tr>
                 <td><input type="checkbox" data-id=""></td>
                  <td>{{ $medicine->generic ? $medicine->generic->generic_name : "Not Set" }}</td>
-               
+
                 <td>{{ $medicine->med_name }}</td>
                 @if($medicine->med_image== null)
                 <td><img alt="image" id="previmage" width="40" height="40" src='/blankmedicine.jpeg' class="rounded-circle mb-3 emp_img"></td>
                 @else
-                
+
                 <td><img width="40" height="40" src={{$medicine->med_image}}> </td>
 
 
                 @endif
-                
+
                 <td>{{ $medicine-> med_sku}}</td>
 
                 <td>{{ $medicine->category ? $medicine->category->category_name : "Not Set" }}</td>
@@ -79,7 +79,7 @@
                 </td>
             </tr>
             @endforeach
-    
+
         </tbody>
     </table>
 </div>
@@ -89,9 +89,9 @@
     <div class="modal-dialog modal-lg" role="document">
      <div class="modal-content">
        <div class="modal-header">
-        <h4 id="exampleModalLabel" class="modal-title"><b>View Medicine</b></h4> 
+        <h4 id="exampleModalLabel" class="modal-title"><b>View Medicine</b></h4>
         <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-    </div> 
+    </div>
     <div class="modal-body">
         <div id="printableArea">
             <div class="row">
@@ -102,8 +102,8 @@
                 </div>
                  <div class="col-sm-6 invoice-right">
                      </div>
-             </div> 
-             <hr class="margin"> 
+             </div>
+             <hr class="margin">
              <div class="row">
                  <div class="col-sm-4 invoice-left">
                      <h5 style="font-family: ubuntu;">Medicine:</h5>
@@ -112,16 +112,16 @@
 								<br> <strong>Category Name : </strong><b id="v_cat_name"></b>
 								<br> <strong>Sub Category Name : </strong> <b id="v_sub_cat_name"></b>
 
-                    </div> 
+                    </div>
                     <div class="col-sm-4 invoice-left">
-                        <h5 style="font-family: ubuntu;">Manufacturer:</h5> 
+                        <h5 style="font-family: ubuntu;">Manufacturer:</h5>
                         <strong>Name : </strong> <b id="v_man_name"></b>
 								<br> <strong>Email : </strong> <b id="v_email"></b>
 								<br> <strong>Mobile : </strong> <b id="v_mobile"></b>
 								<br> <strong>Address : </strong> <b id="v_address"></b>
-                    </div> 
+                    </div>
                     <div class="col-md-4 invoice-left">
-                        <h5 style="font-family: ubuntu;">Unit Details:</h5> 
+                        <h5 style="font-family: ubuntu;">Unit Details:</h5>
                         <strong>Unit Type : </strong> <b id="v_tye_name"></b>
 								<br> <strong>Single Unit Weight : </strong><b id="v_unit_weight"></b>
 								<br> <strong>Box Weight : </strong> <b id="v_weight"></b>
@@ -129,11 +129,11 @@
 								<br> <strong>Minimum Unit : </strong> <b id="v_m_unit"></b>
 
                             </div>
-                        </div> 
-                    <div class="margin"></div> 
+                        </div>
                     <div class="margin"></div>
-                     <div style="margin-top: 30px;"></div> 
-                     <center style="margin-top: 15px;"><p><strong style="color: black;"> Developed By:</strong></p><hr style="margin-top: -5px; margin-bottom: 5px; width: 20%;"> 
+                    <div class="margin"></div>
+                     <div style="margin-top: 30px;"></div>
+                     <center style="margin-top: 15px;"><p><strong style="color: black;"> Developed By:</strong></p><hr style="margin-top: -5px; margin-bottom: 5px; width: 20%;">
                         <span style="color: black; font-size: 12px;"> Pharmacy BD</span>
                          <br> <span style="color: black; font-size: 12px;">01305976639</span>
                           <br> <span style="color: black; font-size: 12px;">Pharmacy@gmail.com</span>
@@ -143,7 +143,7 @@
                             <button type="button" data-dismiss="modal" class="btn btn-secondary">Close</button>
                     </div>
                 </div>
-    </div> 
+    </div>
 </div>
 @endsection
 @section('script')
@@ -151,7 +151,7 @@
     $(document).ready(function(){
         $("#dataTable").DataTable();
 
-       
+
     });
     $(".view").click(function(){
        let id = $(this).attr("data-id");
@@ -211,7 +211,7 @@
 $(document).on('click',".status_id",function(){
          var id=$(this).attr('data-id');
           console.log(id);
-	
+
 		$.ajax({
 			url:"/admin/medicine/status/"+id,
 			type:'get',
