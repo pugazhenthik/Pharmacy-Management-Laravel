@@ -63,7 +63,7 @@
         <li class="menu">
             <a href="#pages" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">
                 <div class="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                    <i data-feather="shopping-cart"></i>
                     <span>Stock</span>
                 </div>
                 <div>
@@ -81,7 +81,6 @@
                 <li>
                     <a href="{{ url('/admin/supplier') }}" aria-expanded="false" class="dropdown-toggle">
                         <div class="">
-                            <i data-feather="truck"></i>
                             <span>Supplier</span>
                         </div>
                     </a>
@@ -95,7 +94,7 @@
         <li class="menu">
             <a href="#app" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <div class="">
-                    <i data-feather="clipboard"></i>
+                    <i data-feather="shopping-bag"></i>
                     <span>Sale</span>
                 </div>
                 <div>
