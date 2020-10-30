@@ -28,7 +28,7 @@
      <form>
          <div class="container-fluid panel panel-primary">
              <div class="row">
-                <div class="col-sm-7">
+                <div class="col-sm-6">
                     <table class="table table-bordered" style="width: 97%;">
                         <thead style=" font-size:12px;">
                             <th class="text-center bg-secondary" style="max-width: 2rem; color:white;">QTY</th>
@@ -79,7 +79,7 @@
                         </tfoot>
                     </table>
                 </div>
-                 <div class="col-sm-5">
+                 <div class="col-sm-6">
                      <div class="row" style="padding-bottom: 5px;">
                         <div class="col-md-4">
                           <input type="date" name="stock_date" class="form-control" id="">
@@ -135,6 +135,7 @@
                 </div>
 
                 <div class="row" style="margin-top: 5px;">
+                    
                  </div>
                  @livewire('filter')
 
@@ -288,7 +289,7 @@
            let i = 1; 
            i++;  
            $('#dynamic_field').append(
-               '<tr style="height: 50px;" id="row'+i+'"><td class="text-center" style="width: 1rem;"><input min="0" class="form-control"></td> <td class="text-center" style="max-width: 1rem;"><input type="text" class="form-control form-control-sm"></td> <td class="text-center" style="min-width: 1rem; max-width: 1rem;">(pc)</td> <td class="text-center" style="min-width: 1rem;"><input type="number" min="0" id="purchase" class="form-control form-control-sm"></td> <td class="text-center" style="min-width: 1rem;"><input type="number" min="0" id="sale" class="form-control form-control-sm"></td> <td class="text-center" style="min-width: 2rem;"><input type="date" class="form-control"></td> <td class="text-center" style="max-width: 1rem;"><p>0</p></td> <td class="text-center" style="max-width: 1rem;"><button type="button" id="'+i+'" class="btn btn-danger btn_remove">X</button></button></td></tr>');
+               '<tr style="height: 55px;" id="row'+i+'"><td class="" style="width: 4rem; max-widht:5rem;"><input min="0" class="form-control"></td> <td class="text-center" style="width:4rem; max-width:5rem;"><input type="text" class="form-control form-control"></td> <td class="text-center" style="max-width: 3rem; width: 3rem;">(pc)</td> <td class="text-center" style="min-width:5rem; width:12%;"><input type="number" min="0" id="purchase" class="form-control form-control-sm"></td> <td class="text-center" style="max-width: 4rem; widht:12%;"><input type="number" min="0" id="sale" class="form-control form-control-sm"></td> <td class="text-center" style="max-width: 6rem; width:2rem;"><input type="date" class="form-control"></td> <td class="text-center" style="max-width: 1rem; widht:2rem;"><p>0</p></td> <td class="text-center" style="max-width: 1rem; widht:2rem;"><button type="button" id="'+i+'" class="btn btn-danger btn_remove">X</button></button></td></tr>');
       });
       $(document).on('click', '.btn_remove', function(){  
            var button_id = $(this).attr("id");   

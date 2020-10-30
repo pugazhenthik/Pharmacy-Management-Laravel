@@ -69,23 +69,16 @@
                             @endforeach
                             </select>
                     </div>
-
-                    <div class="col-md-4">
-                        
-                         <select id="sub_cat" class="form-control" name="med_sub_cat_id">
-                             
-                            </select>
-                        
-                    </div> 
                 </div> 
-
-                </div>
-
                 <div class="row" style="margin-top: 5px;">
+                    @livewire('filter')
                  </div>
-                 @livewire('filter')
+            </div>
 
-                    </div>
+             
+                 
+
+                    
                     <div class="col-sm-6">
                         <table class="table table-bordered">
                             <thead>
@@ -135,6 +128,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </form>
     </div>
     <div id="saleInvoice" tabindex="-1" aria-hidden="true" class="modal fade in">
@@ -272,7 +266,7 @@
 
 @section('script')
 <script>
-  $('#add').click(function(){
+  $('.each_medicine').click(function(){
           let i = 1;
            i++;
            $('#dynamic_field').append(

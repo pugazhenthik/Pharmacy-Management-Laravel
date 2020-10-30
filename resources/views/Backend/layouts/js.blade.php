@@ -6,6 +6,8 @@
 <script src="{{asset('Backend_assets/bootstrap/js/popper.min.js')}}"></script>
 <script src="{{asset('Backend_assets/bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- Bootstrap -->
+<script src="{{ asset('Backend_assets/assets/js/dash_1.js') }}"></script>
+<script src="{{ asset('Backend_assets/assets/js/dash_2.js') }}"></script>
 
 <!-- Feather  Icon -->
 <script>
@@ -14,7 +16,11 @@
 <!-- Feather  Icon -->
 
 <!-- Theme JS -->
-<script src="{{asset('Backend_assets/plugins/apex/apexcharts.min.js')}}"></script>
+<script src="{{asset('Backend_assets/assets/js/apex/apexcharts.min.js')}}"></script>
+<script src="{{asset('Backend_assets/assets/js/apex/custom-apexcharts.js')}}"></script>
+<script src="{{asset('Backend_assets/assets/js/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+
+
 
 <script src="{{asset('Backend_assets/assets/js/app.js')}}"></script>
 <script>
