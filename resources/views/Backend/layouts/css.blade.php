@@ -6,6 +6,11 @@
 
 <!-- Theme Css -->
 <link href="{{asset('Backend_assets/assets/css/plugins.css')}}" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="{{ asset('Backend_assets/assets/css/dash_1.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('Backend_assets/assets/css/dash_2.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('Backend_assets/assets/js/apex/apexcharts.css') }}" type="text/css">
+<link rel="stylesheet" href="{{ asset('Backend_assets/assets/js/perfect-scrollbar/perfect-scrollbar.css') }}" type="text/css">
+
 <!-- Theme Css -->
 
 <!-- Preloader -->

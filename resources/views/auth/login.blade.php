@@ -43,7 +43,12 @@
                                         <circle cx="12" cy="7" r="4"></circle>
                                     </svg>
                                     <input id="username" type="email" name="email" :value="old('email')" required
-                                        autofocus class="form-control" placeholder="Username">
+                                        autofocus class="form-control @error('email') is-invalid @enderror" placeholder="Username">
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
 
                                 <div id="password-field" class="field-wrapper input mb-2">
@@ -52,8 +57,14 @@
                                         stroke-linejoin="round" class="feather feather-lock">
                                         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                                         <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                    </svg> <input id="password" type="password" name="password" required
-                                        autocomplete="current-password" class="form-control" placeholder="Password">
+                                    </svg> 
+                                    <input id="password" type="password" name="password"  required
+                                        autocomplete="current-password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+                                        @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="block mt-4">
                                     <label class="flex items-center">
