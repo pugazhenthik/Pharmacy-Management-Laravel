@@ -4,6 +4,8 @@
 <script src="https://unpkg.com/feather-icons"></script>
 <!-- Feather Icon -->
 
+
+
 <!-- Theme Css -->
 <link href="{{asset('Backend_assets/assets/css/plugins.css')}}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="{{ asset('Backend_assets/assets/css/dash_1.css') }}" type="text/css">
@@ -27,6 +29,7 @@
 
 <!-- Font -->
 <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.css" integrity="sha512-72McA95q/YhjwmWFMGe8RI3aZIMCTJWPBbV8iQY3jy1z9+bi6+jHnERuNrDPo/WGYEzzNs4WdHNyyEr/yXJ9pA==" crossorigin="anonymous" />
 <!-- Font -->
 
 <!-- Bootstrap -->

@@ -57,7 +57,7 @@
                                         stroke-linejoin="round" class="feather feather-lock">
                                         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                                         <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                    </svg> 
+                                    </svg>
                                     <input id="password" type="password" name="password"  required
                                         autocomplete="current-password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
                                         @error('password')
