@@ -114,13 +114,10 @@
                 <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                     <div class="">
                         <div class="dropdown-item">
-                            <a class="" href="user_profile.html"><i data-feather="user"></i> My Profile</a>
+                            <a class="" href="{{url('/admin/profile')}}"><i data-feather="user"></i> My Profile</a>
                         </div>
                         <div class="dropdown-item">
-                            <a class="" href="apps_mailbox.html"><i data-feather="inbox"></i> Inbox</a>
-                        </div>
-                        <div class="dropdown-item">
-                            <a class="" href="auth_lockscreen.html"><i data-feather="lock"></i>Lock Screen</a>
+                            <a class="" href="{{url('/admin/password')}}"><i data-feather="lock"></i> Change Password</a>
                         </div>
                         <div class="dropdown-item">
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

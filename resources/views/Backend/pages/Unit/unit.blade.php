@@ -4,10 +4,10 @@
 @section('content')
 
 <div class="col-md-10 header">
-    <h3>Type</h3>
+    <h3>Unit</h3>
 </div>
 <div class="col-md-2"> <button class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal">Add Unit</button> </div>
-    
+
 <div class="col-md  mt-5">
     <table id="dataTable" class="table table-striped table-bordered ">
         <thead class="text-center">
@@ -25,8 +25,8 @@
         </form>
         <tbody class="text-center">
             @foreach($unit as $value)
-    
-           
+
+
             <tr>
                 <td><input type="checkbox" data-id=""></td>
                 <td>{{ $value-> unit_name }}</td>
@@ -38,7 +38,7 @@
                         <span class="text-danger">Inactive</span>
                     @endif
                 </td>
-    
+
                 <td>
                     <ul class="table-controls">
 
@@ -51,12 +51,12 @@
                         <a href="javascript:void(0);" class="edit" data-toggle="modal" data-placement="top" data-id="{{$value->unit_id}}" title="Edit" data-target="#editModal"><i class="text-info" data-feather="edit"></i></a>
 
                         <a href="{{ route('unit.destroy',($value->unit_id)) }}" data-toggle="tooltip" data-placement="top" title=""onclick="event.preventDefault(); Delete({{ $value->unit_id }})";
-                                data-original-title="Delete"><i class="text-danger" data-feather="trash-2"></i></a>                      
+                                data-original-title="Delete"><i class="text-danger" data-feather="trash-2"></i></a>
                     </ul>
                 </td>
             </tr>
             @endforeach
-    
+
         </tbody>
     </table>
 </div>
@@ -135,12 +135,12 @@
 <script>
 
     $(document).ready(function(){
-        $("#dataTable").DataTable();        
+        $("#dataTable").DataTable();
     });
-    
+
     $(document).on('click','.edit',function(){
         let id=$(this).attr("data-id");
-       
+
 
         $.ajax({
             url:"/admin/unit/"+id+"/edit",
@@ -170,7 +170,7 @@
         dataType: "json",
         success: function (response) {
             console.log(response);
-            if (response == 200) 
+            if (response == 200)
             {
                 location.reload();
             }
