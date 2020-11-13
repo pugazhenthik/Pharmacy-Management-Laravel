@@ -36,7 +36,7 @@
 
                             <th class="text-center bg-secondary" style="max-width: 3rem; color:white;">Product</th>
                             <th class="text-center bg-secondary" style="max-width: 3rem; color:white;">Purchase</th>
-                            <th class="text-center bg-secondary" style="max-width: 3rem; color:white;">sale</th>
+                            <th class="text-center bg-secondary" style="max-width: 3rem; color:white;">Sale</th>
                             <th class="text-center bg-secondary" style="max-width: 3rem;color:white;">Exp Date</th>
 
                              <th class="text-center bg-secondary" style="max-width: 3rem;color:white;">Subtotal</th>
@@ -125,17 +125,18 @@
                     </div>
 
                     <div class="col-md-4">
-                       
+
                          <select id="sub_cat" class="form-control" name="med_sub_cat_id">
-                             
+
                             </select>
                         </div>
-                
+
 
                 </div>
 
                 <div class="row" style="margin-top: 5px;">
-                    
+
+
                  </div>
                  @livewire('filter')
 
@@ -281,20 +282,45 @@
 @section('script')
 <script>
 
-  $('.each_medicine').click(function(){ 
-          
-          let id = $(this).attr("data-id");
-           console.log(id);
-        
-           let i = 1; 
-           i++;  
+  $('.each_medicine').click(function(){
+          let data = $(this).attr("data-id");
+          data=JSON.parse(data);
+          console.log(data);
+           let i = 1;
+           i++;
            $('#dynamic_field').append(
-               '<tr style="height: 55px;" id="row'+i+'"><td class="" style="width: 4rem; max-widht:5rem;"><input min="0" class="form-control"></td> <td class="text-center" style="width:4rem; max-width:5rem;"><input type="text" class="form-control form-control"></td> <td class="text-center" style="max-width: 3rem; width: 3rem;">(pc)</td> <td class="text-center" style="min-width:5rem; width:12%;"><input type="number" min="0" id="purchase" class="form-control form-control-sm"></td> <td class="text-center" style="max-width: 4rem; widht:12%;"><input type="number" min="0" id="sale" class="form-control form-control-sm"></td> <td class="text-center" style="max-width: 6rem; width:2rem;"><input type="date" class="form-control"></td> <td class="text-center" style="max-width: 1rem; widht:2rem;"><p>0</p></td> <td class="text-center" style="max-width: 1rem; widht:2rem;"><button type="button" id="'+i+'" class="btn btn-danger btn_remove">X</button></button></td></tr>');
+               `<tr style="height: 55px;" id="row${i}">
+                    <td class="" style="width: 4rem; max-width:5rem;">
+                        <input min="0" class="form-control">
+                    </td>
+                    <td class="text-center" style="width:4rem; max-width:5rem;">
+                        <input type="text" class="form-control form-control">
+                    </td>
+                    <td class="text-center" style="width: 6rem;">
+                    ${data.med_name}
+
+                    </td>
+                    <td class="text-center" style="min-width:5rem; width:12%;">
+                        <input type="number" min="0" id="purchase" class="form-control form-control-sm">
+                    </td>
+                    <td class="text-center" style="max-width: 4rem; width:12%;">
+                        <input type="number" min="0" id="sale" class="form-control form-control-sm">
+                    </td>
+                    <td class="text-center" style="max-width: 6rem; width:2rem;">
+                        <input type="date" class="form-control">
+                    </td>
+                    <td class="text-center" style="max-width: 1rem; width:2rem;">
+                        <p>0</p>
+                    </td>
+                    <td class="text-center" style="max-width: 1rem; width:2rem;">
+                        <button type="button" id="'+i+'" class="btn btn-danger btn_remove">X</button>
+                    </td>
+                </tr>`);
       });
-      $(document).on('click', '.btn_remove', function(){  
-           var button_id = $(this).attr("id");   
-           $('#row'+button_id+'').remove();  
-      }); 
+      $(document).on('click', '.btn_remove', function(){
+           var button_id = $(this).attr("id");
+           $('#row'+button_id+'').remove();
+      });
       $("#category").change(function(){
          let id = $("#category").val();
          $.ajax({
@@ -302,7 +328,7 @@
                 type:'get',
                 dataType:"json",
                 success:function(data)
-                {  console.log(data); 
+                {  console.log(data);
                     $(".sub_cat_option").remove();
                     $.each(data,function(i,v){
                         $("#sub_cat").append(`<option class="sub_cat_option" value=${v.category_id}>${v.category_name}</option>`);
@@ -310,7 +336,7 @@
                 }
 
             });
-      });   
+      });
 
 
 </script>
