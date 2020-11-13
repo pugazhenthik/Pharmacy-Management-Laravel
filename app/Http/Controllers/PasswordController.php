@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class PasswordController extends Controller
 {
@@ -24,6 +27,16 @@ class PasswordController extends Controller
     public function create()
     {
         //
+    }
+
+    public function password(Request $request)
+    {
+        $match = hash::check($request->current_password, Auth::user()->password);
+        if ($match) {
+            echo "Matched";
+        } else {
+            echo "error";
+        }
     }
 
     /**

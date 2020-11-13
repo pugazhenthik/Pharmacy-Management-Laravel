@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Stock;
-use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Generic;
 use App\Models\Manufacture;
 use App\Models\Medicine;
+use App\Models\Stock;
 use App\Models\Supplier;
 use App\Traits\subCategoryTraits;
+use Illuminate\Http\Request;
+
 class StockController extends Controller
 {
     use subCategoryTraits;
@@ -20,12 +21,12 @@ class StockController extends Controller
      */
     public function index()
     {
-        $medicines = Medicine::with('generic','type')->get();
-        $categorys = Category:: orderBy('category_name','asc')->get();
-        $generics = Generic::orderBy('generic_name','asc')->get();
-        $manufactures = Manufacture::orderBy('manufac_name','asc')->get();
-        $suppliers = Supplier::orderBy('supplier_name','asc')->get();
-       return view('Backend.pages.Stock.create',compact('medicines','categorys','generics','manufactures','suppliers'));
+        $medicines = Medicine::with('generic', 'type')->get();
+        $categorys = Category::orderBy('category_name', 'asc')->get();
+        $generics = Generic::orderBy('generic_name', 'asc')->get();
+        $manufactures = Manufacture::orderBy('manufac_name', 'asc')->get();
+        $suppliers = Supplier::orderBy('supplier_name', 'asc')->get();
+        return view('Backend.pages.Stock.create', compact('medicines', 'categorys', 'generics', 'manufactures', 'suppliers'));
     }
 
     /**
